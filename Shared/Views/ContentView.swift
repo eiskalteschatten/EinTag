@@ -10,10 +10,8 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            Sidebar()
-            List(0 ..< 20) {_ in
-                Text("Book")
-            }
+            MainSidebar()
+            PlannerView()
         }
     }
 }
@@ -24,21 +22,21 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct Sidebar: View {
+struct MainSidebar: View {
     var body: some View {
         NavigationView {
-            #if os(iOS)
-                SidebarContent()
-                    .navigationTitle("Code")
+            #if os(macOS)
+            MainSidebarContent()
+                .frame(minWidth: 200, idealWidth: 250, maxWidth: 300)
             #else
-                SidebarContent()
-                    .frame(minWidth: 200, idealWidth: 250, maxWidth: 300)
+            MainSidebarContent()
+                .navigationTitle("View")
             #endif
         }
     }
 }
 
-struct SidebarContent: View {
+struct MainSidebarContent: View {
     var body: some View {
         List {
             Label("My Day", systemImage: "cloud.sun")
@@ -47,6 +45,5 @@ struct SidebarContent: View {
 //            Label("Notes", systemImage: "note.text")
         }
         .listStyle(SidebarListStyle())
-        .navigationTitle("View")
     }
 }
