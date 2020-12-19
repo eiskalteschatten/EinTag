@@ -1,0 +1,691 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		93BE3EA4258E02E500EA17CC /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3EA3258E02E500EA17CC /* Tests_iOS.swift */; };
+		93BE3EAF258E02E500EA17CC /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3EAE258E02E500EA17CC /* Tests_macOS.swift */; };
+		93BE3EB1258E02E500EA17CC /* EinTagApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3E88258E02E200EA17CC /* EinTagApp.swift */; };
+		93BE3EB2258E02E500EA17CC /* EinTagApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3E88258E02E200EA17CC /* EinTagApp.swift */; };
+		93BE3EB3258E02E500EA17CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3E89258E02E200EA17CC /* ContentView.swift */; };
+		93BE3EB4258E02E500EA17CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3E89258E02E200EA17CC /* ContentView.swift */; };
+		93BE3EB5258E02E500EA17CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93BE3E8A258E02E500EA17CC /* Assets.xcassets */; };
+		93BE3EB6258E02E500EA17CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93BE3E8A258E02E500EA17CC /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		93BE3EA0258E02E500EA17CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93BE3E83258E02E100EA17CC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93BE3E8E258E02E500EA17CC;
+			remoteInfo = "EinTag (iOS)";
+		};
+		93BE3EAB258E02E500EA17CC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93BE3E83258E02E100EA17CC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93BE3E96258E02E500EA17CC;
+			remoteInfo = "EinTag (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		93BE3E88258E02E200EA17CC /* EinTagApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EinTagApp.swift; sourceTree = "<group>"; };
+		93BE3E89258E02E200EA17CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		93BE3E8A258E02E500EA17CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		93BE3E8F258E02E500EA17CC /* EinTag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EinTag.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		93BE3E92258E02E500EA17CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93BE3E97258E02E500EA17CC /* EinTag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EinTag.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		93BE3E99258E02E500EA17CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93BE3E9A258E02E500EA17CC /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		93BE3E9F258E02E500EA17CC /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93BE3EA3258E02E500EA17CC /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
+		93BE3EA5258E02E500EA17CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93BE3EAA258E02E500EA17CC /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93BE3EAE258E02E500EA17CC /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
+		93BE3EB0258E02E500EA17CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		93BE3E8C258E02E500EA17CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93BE3E94258E02E500EA17CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93BE3E9C258E02E500EA17CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93BE3EA7258E02E500EA17CC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		93BE3E82258E02E100EA17CC = {
+			isa = PBXGroup;
+			children = (
+				93BE3E87258E02E200EA17CC /* Shared */,
+				93BE3E91258E02E500EA17CC /* iOS */,
+				93BE3E98258E02E500EA17CC /* macOS */,
+				93BE3EA2258E02E500EA17CC /* Tests iOS */,
+				93BE3EAD258E02E500EA17CC /* Tests macOS */,
+				93BE3E90258E02E500EA17CC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		93BE3E87258E02E200EA17CC /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				93BE3E88258E02E200EA17CC /* EinTagApp.swift */,
+				93BE3E89258E02E200EA17CC /* ContentView.swift */,
+				93BE3E8A258E02E500EA17CC /* Assets.xcassets */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		93BE3E90258E02E500EA17CC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				93BE3E8F258E02E500EA17CC /* EinTag.app */,
+				93BE3E97258E02E500EA17CC /* EinTag.app */,
+				93BE3E9F258E02E500EA17CC /* Tests iOS.xctest */,
+				93BE3EAA258E02E500EA17CC /* Tests macOS.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		93BE3E91258E02E500EA17CC /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				93BE3E92258E02E500EA17CC /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		93BE3E98258E02E500EA17CC /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				93BE3E99258E02E500EA17CC /* Info.plist */,
+				93BE3E9A258E02E500EA17CC /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		93BE3EA2258E02E500EA17CC /* Tests iOS */ = {
+			isa = PBXGroup;
+			children = (
+				93BE3EA3258E02E500EA17CC /* Tests_iOS.swift */,
+				93BE3EA5258E02E500EA17CC /* Info.plist */,
+			);
+			path = "Tests iOS";
+			sourceTree = "<group>";
+		};
+		93BE3EAD258E02E500EA17CC /* Tests macOS */ = {
+			isa = PBXGroup;
+			children = (
+				93BE3EAE258E02E500EA17CC /* Tests_macOS.swift */,
+				93BE3EB0258E02E500EA17CC /* Info.plist */,
+			);
+			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		93BE3E8E258E02E500EA17CC /* EinTag (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93BE3EB9258E02E500EA17CC /* Build configuration list for PBXNativeTarget "EinTag (iOS)" */;
+			buildPhases = (
+				93BE3E8B258E02E500EA17CC /* Sources */,
+				93BE3E8C258E02E500EA17CC /* Frameworks */,
+				93BE3E8D258E02E500EA17CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "EinTag (iOS)";
+			productName = "EinTag (iOS)";
+			productReference = 93BE3E8F258E02E500EA17CC /* EinTag.app */;
+			productType = "com.apple.product-type.application";
+		};
+		93BE3E96258E02E500EA17CC /* EinTag (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93BE3EBC258E02E500EA17CC /* Build configuration list for PBXNativeTarget "EinTag (macOS)" */;
+			buildPhases = (
+				93BE3E93258E02E500EA17CC /* Sources */,
+				93BE3E94258E02E500EA17CC /* Frameworks */,
+				93BE3E95258E02E500EA17CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "EinTag (macOS)";
+			productName = "EinTag (macOS)";
+			productReference = 93BE3E97258E02E500EA17CC /* EinTag.app */;
+			productType = "com.apple.product-type.application";
+		};
+		93BE3E9E258E02E500EA17CC /* Tests iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93BE3EBF258E02E500EA17CC /* Build configuration list for PBXNativeTarget "Tests iOS" */;
+			buildPhases = (
+				93BE3E9B258E02E500EA17CC /* Sources */,
+				93BE3E9C258E02E500EA17CC /* Frameworks */,
+				93BE3E9D258E02E500EA17CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				93BE3EA1258E02E500EA17CC /* PBXTargetDependency */,
+			);
+			name = "Tests iOS";
+			productName = "Tests iOS";
+			productReference = 93BE3E9F258E02E500EA17CC /* Tests iOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		93BE3EA9258E02E500EA17CC /* Tests macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93BE3EC2258E02E500EA17CC /* Build configuration list for PBXNativeTarget "Tests macOS" */;
+			buildPhases = (
+				93BE3EA6258E02E500EA17CC /* Sources */,
+				93BE3EA7258E02E500EA17CC /* Frameworks */,
+				93BE3EA8258E02E500EA17CC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				93BE3EAC258E02E500EA17CC /* PBXTargetDependency */,
+			);
+			name = "Tests macOS";
+			productName = "Tests macOS";
+			productReference = 93BE3EAA258E02E500EA17CC /* Tests macOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		93BE3E83258E02E100EA17CC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1230;
+				LastUpgradeCheck = 1230;
+				TargetAttributes = {
+					93BE3E8E258E02E500EA17CC = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					93BE3E96258E02E500EA17CC = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					93BE3E9E258E02E500EA17CC = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 93BE3E8E258E02E500EA17CC;
+					};
+					93BE3EA9258E02E500EA17CC = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 93BE3E96258E02E500EA17CC;
+					};
+				};
+			};
+			buildConfigurationList = 93BE3E86258E02E100EA17CC /* Build configuration list for PBXProject "EinTag" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 93BE3E82258E02E100EA17CC;
+			productRefGroup = 93BE3E90258E02E500EA17CC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				93BE3E8E258E02E500EA17CC /* EinTag (iOS) */,
+				93BE3E96258E02E500EA17CC /* EinTag (macOS) */,
+				93BE3E9E258E02E500EA17CC /* Tests iOS */,
+				93BE3EA9258E02E500EA17CC /* Tests macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		93BE3E8D258E02E500EA17CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93BE3EB5258E02E500EA17CC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93BE3E95258E02E500EA17CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93BE3EB6258E02E500EA17CC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93BE3E9D258E02E500EA17CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93BE3EA8258E02E500EA17CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		93BE3E8B258E02E500EA17CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93BE3EB3258E02E500EA17CC /* ContentView.swift in Sources */,
+				93BE3EB1258E02E500EA17CC /* EinTagApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93BE3E93258E02E500EA17CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93BE3EB4258E02E500EA17CC /* ContentView.swift in Sources */,
+				93BE3EB2258E02E500EA17CC /* EinTagApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93BE3E9B258E02E500EA17CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93BE3EA4258E02E500EA17CC /* Tests_iOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93BE3EA6258E02E500EA17CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93BE3EAF258E02E500EA17CC /* Tests_macOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		93BE3EA1258E02E500EA17CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93BE3E8E258E02E500EA17CC /* EinTag (iOS) */;
+			targetProxy = 93BE3EA0258E02E500EA17CC /* PBXContainerItemProxy */;
+		};
+		93BE3EAC258E02E500EA17CC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93BE3E96258E02E500EA17CC /* EinTag (macOS) */;
+			targetProxy = 93BE3EAB258E02E500EA17CC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		93BE3EB7258E02E500EA17CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		93BE3EB8258E02E500EA17CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		93BE3EBA258E02E500EA17CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexseifert.EinTag;
+				PRODUCT_NAME = EinTag;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		93BE3EBB258E02E500EA17CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexseifert.EinTag;
+				PRODUCT_NAME = EinTag;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		93BE3EBD258E02E500EA17CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexseifert.EinTag;
+				PRODUCT_NAME = EinTag;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		93BE3EBE258E02E500EA17CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.alexseifert.EinTag;
+				PRODUCT_NAME = EinTag;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		93BE3EC0258E02E500EA17CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Tests iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alexseifert.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "EinTag (iOS)";
+			};
+			name = Debug;
+		};
+		93BE3EC1258E02E500EA17CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Tests iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alexseifert.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "EinTag (iOS)";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		93BE3EC3258E02E500EA17CC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Tests macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alexseifert.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "EinTag (macOS)";
+			};
+			name = Debug;
+		};
+		93BE3EC4258E02E500EA17CC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "Tests macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.alexseifert.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "EinTag (macOS)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		93BE3E86258E02E100EA17CC /* Build configuration list for PBXProject "EinTag" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93BE3EB7258E02E500EA17CC /* Debug */,
+				93BE3EB8258E02E500EA17CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93BE3EB9258E02E500EA17CC /* Build configuration list for PBXNativeTarget "EinTag (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93BE3EBA258E02E500EA17CC /* Debug */,
+				93BE3EBB258E02E500EA17CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93BE3EBC258E02E500EA17CC /* Build configuration list for PBXNativeTarget "EinTag (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93BE3EBD258E02E500EA17CC /* Debug */,
+				93BE3EBE258E02E500EA17CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93BE3EBF258E02E500EA17CC /* Build configuration list for PBXNativeTarget "Tests iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93BE3EC0258E02E500EA17CC /* Debug */,
+				93BE3EC1258E02E500EA17CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93BE3EC2258E02E500EA17CC /* Build configuration list for PBXNativeTarget "Tests macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93BE3EC3258E02E500EA17CC /* Debug */,
+				93BE3EC4258E02E500EA17CC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 93BE3E83258E02E100EA17CC /* Project object */;
+}
