@@ -9,8 +9,23 @@ import SwiftUI
 
 struct MyDayView: View {
     var body: some View {
-        Text("My Day")
-            .font(.title)
+        VStack(alignment: .leading) {
+            HStack {
+                Text(getLocalizedDate())
+                    .font(.system(size: 35.0))
+                Spacer()
+                MyDayWeatherView()
+            }
+            .padding()
+            Spacer()
+        }
+        .frame(
+            minWidth: 0,
+            maxWidth: .infinity,
+            minHeight: 0,
+            maxHeight: .infinity,
+            alignment: .topLeading
+        )
     }
 }
 
@@ -20,3 +35,9 @@ struct MyDayView_Previews: PreviewProvider {
     }
 }
 
+struct MyDayWeatherView: View {
+    var body: some View {
+        Image(systemName: "cloud.sun.bolt.fill")
+            .font(.system(size: 60.0))
+    }
+}

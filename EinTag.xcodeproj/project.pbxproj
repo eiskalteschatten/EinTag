@@ -21,6 +21,8 @@
 		93BE3EDE258E28F200EA17CC /* MyDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3EDC258E28F100EA17CC /* MyDayView.swift */; };
 		93BE3EE4258E2C4200EA17CC /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3EE3258E2C4200EA17CC /* RemindersView.swift */; };
 		93BE3EE5258E2C4200EA17CC /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3EE3258E2C4200EA17CC /* RemindersView.swift */; };
+		93E01C49258E512200DD4808 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E01C48258E512200DD4808 /* Helpers.swift */; };
+		93E01C4A258E512200DD4808 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E01C48258E512200DD4808 /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,7 @@
 		93BE3ED5258E1F8500EA17CC /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
 		93BE3EDC258E28F100EA17CC /* MyDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayView.swift; sourceTree = "<group>"; };
 		93BE3EE3258E2C4200EA17CC /* RemindersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersView.swift; sourceTree = "<group>"; };
+		93E01C48258E512200DD4808 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +116,7 @@
 				93BE3ED2258E1D9500EA17CC /* Views */,
 				93BE3ED4258E1F2700EA17CC /* Model */,
 				93BE3E8A258E02E500EA17CC /* Assets.xcassets */,
+				93E01C48258E512200DD4808 /* Helpers.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -339,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93BE3EB3258E02E500EA17CC /* ContentView.swift in Sources */,
+				93E01C49258E512200DD4808 /* Helpers.swift in Sources */,
 				93BE3EDD258E28F100EA17CC /* MyDayView.swift in Sources */,
 				93BE3EE4258E2C4200EA17CC /* RemindersView.swift in Sources */,
 				93BE3EB1258E02E500EA17CC /* EinTagApp.swift in Sources */,
@@ -351,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93BE3EB4258E02E500EA17CC /* ContentView.swift in Sources */,
+				93E01C4A258E512200DD4808 /* Helpers.swift in Sources */,
 				93BE3EDE258E28F200EA17CC /* MyDayView.swift in Sources */,
 				93BE3EE5258E2C4200EA17CC /* RemindersView.swift in Sources */,
 				93BE3EB2258E02E500EA17CC /* EinTagApp.swift in Sources */,
@@ -441,6 +447,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -494,6 +502,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
