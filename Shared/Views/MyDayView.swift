@@ -8,21 +8,33 @@
 import SwiftUI
 
 struct MyDayView: View {
+    #if !os(macOS)
+    @Environment(\.horizontalSizeClass) var sizeClass
+    #endif
+    
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
+            AdaptiveStack(verticalAlignment: .top) {
                 Text(getLocalizedDate())
                     .font(.system(size: 35.0))
+                
+                #if os(macOS)
                 Spacer()
+                #else
+                if sizeClass != .compact {
+                    Spacer()
+                }
+                #endif
+                
                 MyDayWeatherView()
             }
             .padding()
             Spacer()
         }
         .frame(
-            minWidth: 0,
+            minWidth: 400,
             maxWidth: .infinity,
-            minHeight: 0,
+            minHeight: 200,
             maxHeight: .infinity,
             alignment: .topLeading
         )
@@ -37,7 +49,13 @@ struct MyDayView_Previews: PreviewProvider {
 
 struct MyDayWeatherView: View {
     var body: some View {
-        Image(systemName: "cloud.sun.bolt.fill")
-            .font(.system(size: 60.0))
+        HStack(alignment: .bottom, spacing: 6) {
+            Image(systemName: "cloud.sun.bolt.fill")
+                .font(.system(size: 60.0))
+            
+            Text("5°C")
+                .font(.title)
+                .padding()
+        }
     }
 }
