@@ -23,19 +23,6 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            ContentView()
-                .previewDevice("iPad Air (4th generation)")
-                .preferredColorScheme(.dark)
-            ContentView()
-                .preferredColorScheme(.dark)
-                .previewDevice("iPhone 11")
-        }
-    }
-}
-
 struct MainSidebar: View {
     @Binding var screen: Screen?
     
@@ -96,5 +83,18 @@ struct MainSidebarContent: View {
 //            )
         }
         .listStyle(SidebarListStyle())
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ContentView()
+                .previewDevice("iPad Air (4th generation)")
+                .preferredColorScheme(.dark)
+            ContentView()
+                .preferredColorScheme(.dark)
+                .previewDevice("iPhone 11")
+        }
     }
 }

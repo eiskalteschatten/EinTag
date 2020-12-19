@@ -28,6 +28,3 @@ struct RemindersView_Previews: PreviewProvider {
         RemindersView()
     }
 }
-
-
-

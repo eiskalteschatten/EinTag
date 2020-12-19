@@ -67,12 +67,6 @@ struct MyDayView: View {
     }
 }
 
-struct MyDayView_Previews: PreviewProvider {
-    static var previews: some View {
-        MyDayView()
-    }
-}
-
 struct MyDayWeatherView: View {
     var temperatureUnit: TemperatureUnit?
     
@@ -87,5 +81,11 @@ struct MyDayWeatherView: View {
                 .font(.title)
                 .padding()
         }
+    }
+}
+
+struct MyDayView_Previews: PreviewProvider {
+    static var previews: some View {
+        MyDayView()
     }
 }
