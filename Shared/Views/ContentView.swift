@@ -7,11 +7,17 @@
 
 import SwiftUI
 
+enum Screen: Hashable {
+   case myDay, planner, reminders, notes
+}
+
 struct ContentView: View {
+    @State var screen: Screen? = .myDay
+    
     var body: some View {
         NavigationView {
-            MainSidebar()
-            PlannerView()
+            MainSidebar(screen: $screen)
+            MyDayView()
         }
     }
 }
@@ -23,16 +29,15 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 struct MainSidebar: View {
+    @Binding var screen: Screen?
+    
     var body: some View {
         #if os(macOS)
-        NavigationView {
-            MainSidebarContent()
-                .frame(minWidth: 200, idealWidth: 250, maxWidth: 300)
-        }
+        MainSidebarContent(state: $screen)
+            .frame(minWidth: 200, idealWidth: 250, maxWidth: 300)
         #else
         NavigationView {
-            MainSidebarContent()
-                .navigationTitle("View")
+            MainSidebarContent(state: $screen)
         }
         .navigationViewStyle(StackNavigationViewStyle())
         #endif
@@ -40,12 +45,42 @@ struct MainSidebar: View {
 }
 
 struct MainSidebarContent: View {
+    @Binding var state: Screen?
+    
     var body: some View {
         List {
-            Label("My Day", systemImage: "cloud.sun")
-            Label("Planner", systemImage: "calendar")
-            Label("Reminders", systemImage: "checkmark.circle")
-//            Label("Notes", systemImage: "note.text")
+            NavigationLink(
+                destination: MyDayView(),
+                tag: Screen.myDay,
+                selection: $state,
+                label: {
+                    Label("My Day", systemImage: "cloud.sun")
+                }
+            )
+            NavigationLink(
+                destination: PlannerView(),
+                tag: Screen.planner,
+                selection: $state,
+                label: {
+                    Label("Planner", systemImage: "calendar")
+                }
+            )
+            NavigationLink(
+                destination: RemindersView(),
+                tag: Screen.reminders,
+                selection: $state,
+                label: {
+                    Label("Reminders", systemImage: "checkmark.circle")
+                }
+            )
+//            NavigationLink(
+//                destination: PlannerView(),
+//                tag: Screen.notes,
+//                selection: $state,
+//                label: {
+//                    Label("Notes", systemImage: "note.text")
+//                }
+//            )
         }
         .listStyle(SidebarListStyle())
     }

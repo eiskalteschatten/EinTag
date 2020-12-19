@@ -17,6 +17,10 @@
 		93BE3EB6258E02E500EA17CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93BE3E8A258E02E500EA17CC /* Assets.xcassets */; };
 		93BE3ED6258E1F8500EA17CC /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3ED5258E1F8500EA17CC /* PlannerView.swift */; };
 		93BE3ED7258E1F8500EA17CC /* PlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3ED5258E1F8500EA17CC /* PlannerView.swift */; };
+		93BE3EDD258E28F100EA17CC /* MyDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3EDC258E28F100EA17CC /* MyDayView.swift */; };
+		93BE3EDE258E28F200EA17CC /* MyDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3EDC258E28F100EA17CC /* MyDayView.swift */; };
+		93BE3EE4258E2C4200EA17CC /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3EE3258E2C4200EA17CC /* RemindersView.swift */; };
+		93BE3EE5258E2C4200EA17CC /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3EE3258E2C4200EA17CC /* RemindersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,8 @@
 		93BE3EB0258E02E500EA17CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93BE3EC9258E049400EA17CC /* EinTag.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EinTag.entitlements; sourceTree = "<group>"; };
 		93BE3ED5258E1F8500EA17CC /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
+		93BE3EDC258E28F100EA17CC /* MyDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayView.swift; sourceTree = "<group>"; };
+		93BE3EE3258E2C4200EA17CC /* RemindersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +168,8 @@
 			children = (
 				93BE3E89258E02E200EA17CC /* ContentView.swift */,
 				93BE3ED5258E1F8500EA17CC /* PlannerView.swift */,
+				93BE3EDC258E28F100EA17CC /* MyDayView.swift */,
+				93BE3EE3258E2C4200EA17CC /* RemindersView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -331,6 +339,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				93BE3EB3258E02E500EA17CC /* ContentView.swift in Sources */,
+				93BE3EDD258E28F100EA17CC /* MyDayView.swift in Sources */,
+				93BE3EE4258E2C4200EA17CC /* RemindersView.swift in Sources */,
 				93BE3EB1258E02E500EA17CC /* EinTagApp.swift in Sources */,
 				93BE3ED6258E1F8500EA17CC /* PlannerView.swift in Sources */,
 			);
@@ -341,6 +351,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				93BE3EB4258E02E500EA17CC /* ContentView.swift in Sources */,
+				93BE3EDE258E28F200EA17CC /* MyDayView.swift in Sources */,
+				93BE3EE5258E2C4200EA17CC /* RemindersView.swift in Sources */,
 				93BE3EB2258E02E500EA17CC /* EinTagApp.swift in Sources */,
 				93BE3ED7258E1F8500EA17CC /* PlannerView.swift in Sources */,
 			);
