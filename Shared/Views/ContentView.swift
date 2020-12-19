@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum Screen: Hashable {
-   case myDay, planner, reminders, notes
+   case myDay, planner, reminders, notes, news
 }
 
 struct ContentView: View {
@@ -28,9 +28,9 @@ struct ContentView_Previews: PreviewProvider {
         Group {
             ContentView()
                 .preferredColorScheme(.dark)
-            ContentView()
-                .preferredColorScheme(.dark)
-                .previewDevice("iPhone 11")
+//            ContentView()
+//                .preferredColorScheme(.dark)
+//                .previewDevice("iPhone 11")
         }
     }
 }
@@ -83,6 +83,14 @@ struct MainSidebarContent: View {
 //                selection: $state,
 //                label: {
 //                    Label("Notes", systemImage: "note.text")
+//                }
+//            )
+//            NavigationLink(
+//                destination: RemindersView().navigationTitle("News"),
+//                tag: Screen.news,
+//                selection: $state,
+//                label: {
+//                    Label("News", systemImage: "newspaper")
 //                }
 //            )
         }
