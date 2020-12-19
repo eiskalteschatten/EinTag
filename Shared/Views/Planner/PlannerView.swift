@@ -9,9 +9,11 @@ import SwiftUI
 
 struct PlannerView: View {
     var body: some View {
-        List {
-            PlannerDayView(date: Date())
-            PlannerDayView(date: Date())
+        ScrollView {
+            VStack {
+                PlannerDayView(date: Date())
+                PlannerDayView(date: Date())
+            }
         }
         .toolbar {
             #if os(macOS)

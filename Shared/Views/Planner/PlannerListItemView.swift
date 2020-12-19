@@ -44,6 +44,9 @@ struct PlannerListItemView: View {
             }
         }
         .padding(.vertical, 5)
+        .frame(
+            maxHeight: 50
+        )
     }
 }
 

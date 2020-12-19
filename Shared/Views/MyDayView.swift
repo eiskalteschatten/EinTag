@@ -75,7 +75,9 @@ struct MyDayPlannerView: View {
             Text("Planner")
                 .font(.title)
             
-            PlannerDayView(date: Date())
+            ScrollView {
+                PlannerDayView(date: Date())
+            }
         }
     }
 }

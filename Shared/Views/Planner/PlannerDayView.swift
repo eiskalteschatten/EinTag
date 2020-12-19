@@ -40,10 +40,8 @@ struct PlannerDayView: View {
                 .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
                 .opacity(0.7)
             
-            List {
-                ForEach(plannerTestItems) { item in
-                    PlannerListItemView(listItem: item)
-                }
+            ForEach(plannerTestItems) { item in
+                PlannerListItemView(listItem: item)
             }
         }
         .padding(.vertical)
