@@ -87,6 +87,5 @@ struct MainSidebarContent: View {
 //            )
         }
         .listStyle(SidebarListStyle())
-        .navigationTitle("EinTag")
     }
 }
