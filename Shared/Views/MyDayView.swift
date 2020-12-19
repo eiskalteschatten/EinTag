@@ -7,10 +7,16 @@
 
 import SwiftUI
 
+enum TemperatureUnit: Hashable {
+   case celcius, fahrenheit
+}
+
 struct MyDayView: View {
     #if !os(macOS)
     @Environment(\.horizontalSizeClass) var sizeClass
     #endif
+    
+    @State private var temperatureUnit: TemperatureUnit = .celcius
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -26,7 +32,7 @@ struct MyDayView: View {
                 }
                 #endif
                 
-                MyDayWeatherView()
+                MyDayWeatherView(temperatureUnit: temperatureUnit)
             }
             .padding()
             Spacer()
@@ -38,6 +44,22 @@ struct MyDayView: View {
             maxHeight: .infinity,
             alignment: .topLeading
         )
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Menu {
+                    Button(action: {}) {
+                        Label("Refresh", systemImage: "arrow.clockwise")
+                    }
+                    Picker(selection: $temperatureUnit, label: Text("Temparture Unit")) {
+                        Text("Celcius").tag(TemperatureUnit.celcius)
+                        Text("Fahrenheit").tag(TemperatureUnit.fahrenheit)
+                    }
+                }
+                label: {
+                    Label("Settings", systemImage: "gear")
+                }
+            }
+        }
     }
 }
 
@@ -48,12 +70,16 @@ struct MyDayView_Previews: PreviewProvider {
 }
 
 struct MyDayWeatherView: View {
+    var temperatureUnit: TemperatureUnit?
+    
     var body: some View {
         HStack(alignment: .bottom, spacing: 6) {
             Image(systemName: "cloud.sun.bolt.fill")
                 .font(.system(size: 60.0))
             
-            Text("5°C")
+            let temperatureText = temperatureUnit == .celcius ? "5°C" : "5°F";
+            
+            Text(temperatureText)
                 .font(.title)
                 .padding()
         }
