@@ -14,6 +14,7 @@ struct PlannerView: View {
                 PlannerDayView(date: Date())
                 PlannerDayView(date: Date())
             }
+            .padding(.leading)
         }
         .toolbar {
             #if os(macOS)
