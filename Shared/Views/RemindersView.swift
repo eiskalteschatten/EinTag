@@ -11,6 +11,15 @@ struct RemindersView: View {
     var body: some View {
         Text("Reminders")
             .font(.title)
+            .toolbar {
+                #if os(macOS)
+                ToolbarItem(placement: .primaryAction) {
+                    Button(action: {}) {
+                        Label("Refresh", systemImage: "arrow.clockwise")
+                    }
+                }
+                #endif
+            }
     }
 }
 

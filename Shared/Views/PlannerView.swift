@@ -12,6 +12,15 @@ struct PlannerView: View {
         List(0 ..< 20) {_ in
             Text("Book")
         }
+        .toolbar {
+            #if os(macOS)
+            ToolbarItem(placement: .primaryAction) {
+                Button(action: {}) {
+                    Label("Refresh", systemImage: "arrow.clockwise")
+                }
+            }
+            #endif
+        }
     }
 }
 

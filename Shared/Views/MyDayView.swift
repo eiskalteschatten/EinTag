@@ -45,11 +45,15 @@ struct MyDayView: View {
             alignment: .topLeading
         )
         .toolbar {
+            #if os(macOS)
+            ToolbarItem(placement: .primaryAction) {
+                Button(action: {}) {
+                    Label("Refresh", systemImage: "arrow.clockwise")
+                }
+            }
+            #endif
             ToolbarItem(placement: .primaryAction) {
                 Menu {
-                    Button(action: {}) {
-                        Label("Refresh", systemImage: "arrow.clockwise")
-                    }
                     Picker(selection: $temperatureUnit, label: Text("Temparture Unit")) {
                         Text("Celcius").tag(TemperatureUnit.celcius)
                         Text("Fahrenheit").tag(TemperatureUnit.fahrenheit)
