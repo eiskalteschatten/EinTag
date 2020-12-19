@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-enum Screen: Hashable {
-   case myDay, planner, reminders, notes, news
+enum Screen: Int {
+    case myDay, planner, reminders, notes, news
 }
 
 struct ContentView: View {
-    @State var screen: Screen? = .myDay
+    @State private var screen: Screen? = Screen(rawValue: UserDefaults.standard.integer(forKey: "screen")) ?? .myDay
     
     var body: some View {
         NavigationView {

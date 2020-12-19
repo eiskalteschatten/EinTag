@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-enum TemperatureUnit: Hashable {
-   case celcius, fahrenheit
+enum TemperatureUnit: String {
+    case celcius = "C"
+    case fahrenheit = "F"
 }
 
 struct MyDayView: View {
@@ -16,7 +17,7 @@ struct MyDayView: View {
     @Environment(\.horizontalSizeClass) var sizeClass
     #endif
     
-    @State private var temperatureUnit: TemperatureUnit = .celcius
+    @State private var temperatureUnit: TemperatureUnit? = TemperatureUnit(rawValue: UserDefaults.standard.string(forKey: "temperatureUnit") ?? TemperatureUnit.celcius.rawValue)
     
     var body: some View {
         VStack(alignment: .leading) {
