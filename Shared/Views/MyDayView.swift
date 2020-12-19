@@ -7,19 +7,10 @@
 
 import SwiftUI
 
-enum TemperatureUnit: String {
-    case celcius = "C"
-    case fahrenheit = "F"
-}
-
-let USER_DEFAULT_TEMPERATURE_UNIT_KEY = "temperatureUnit"
-
 struct MyDayView: View {
     #if !os(macOS)
     @Environment(\.horizontalSizeClass) var sizeClass
     #endif
-    
-    @State private var temperatureUnit: TemperatureUnit = TemperatureUnit(rawValue: UserDefaults.standard.string(forKey: USER_DEFAULT_TEMPERATURE_UNIT_KEY) ?? TemperatureUnit.celcius.rawValue) ?? .celcius
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -35,7 +26,7 @@ struct MyDayView: View {
                 }
                 #endif
                 
-                MyDayWeatherView(temperatureUnit: temperatureUnit)
+                MyDayWeatherView()
             }
             .padding()
             Spacer()
@@ -55,35 +46,19 @@ struct MyDayView: View {
                 }
             }
             #endif
-            ToolbarItem(placement: .primaryAction) {
-                Menu {
-                    Picker(selection: $temperatureUnit, label: Text("Temparture Unit")) {
-                        Text("Celcius").tag(TemperatureUnit.celcius)
-                        Text("Fahrenheit").tag(TemperatureUnit.fahrenheit)
-                    }
-                    .onChange(of: temperatureUnit, perform: { value in
-                        UserDefaults.standard.set(temperatureUnit.rawValue, forKey: USER_DEFAULT_TEMPERATURE_UNIT_KEY)
-                    })
-                }
-                label: {
-                    Label("Settings", systemImage: "gear")
-                }
-            }
         }
     }
 }
 
 struct MyDayWeatherView: View {
-    var temperatureUnit: TemperatureUnit?
-    
     var body: some View {
         HStack(alignment: .bottom, spacing: 6) {
             Image(systemName: "cloud.sun.bolt.fill")
                 .font(.system(size: 60.0))
             
-            let temperatureText = temperatureUnit == .celcius ? "5°C" : "5°F";
+            let temperature = getLocalizedTemperature(temperatureInCelcius: 25.0)
             
-            Text(temperatureText)
+            Text(temperature)
                 .font(.title)
                 .padding()
         }

@@ -15,3 +15,10 @@ func getLocalizedDate() -> String {
     dateFormatter.locale = Locale.current
     return dateFormatter.string(from: date)
 }
+
+func getLocalizedTemperature(temperatureInCelcius: Double) -> String {
+    let temperature = Measurement(value: temperatureInCelcius, unit: UnitTemperature.celsius)
+    let formatter = MeasurementFormatter()
+    formatter.locale = Locale.current
+    return formatter.string(from: temperature)
+}
