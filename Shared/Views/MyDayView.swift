@@ -71,7 +71,12 @@ struct MyDayWeatherView: View {
 
 struct MyDayPlannerView: View {
     var body: some View {
-        PlannerDayView(date: Date())
+        VStack(alignment: .leading, spacing: 0) {
+            Text("Planner")
+                .font(.title)
+            
+            PlannerDayView(date: Date())
+        }
     }
 }
 

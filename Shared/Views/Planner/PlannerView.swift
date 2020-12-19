@@ -9,8 +9,9 @@ import SwiftUI
 
 struct PlannerView: View {
     var body: some View {
-        List(0 ..< 20) {_ in
-            Text("Book")
+        List {
+            PlannerDayView(date: Date())
+            PlannerDayView(date: Date())
         }
         .toolbar {
             #if os(macOS)
