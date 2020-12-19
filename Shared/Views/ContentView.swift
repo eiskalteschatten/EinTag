@@ -14,7 +14,6 @@ struct ContentView: View {
             List(0 ..< 20) {_ in
                 Text("Book")
             }
-            .navigationTitle("Book List")
         }
     }
 }
@@ -36,7 +35,6 @@ struct Sidebar: View {
                     .frame(minWidth: 200, idealWidth: 250, maxWidth: 300)
             #endif
         }
-
     }
 }
 
@@ -46,9 +44,9 @@ struct SidebarContent: View {
             Label("My Day", systemImage: "cloud.sun")
             Label("Planner", systemImage: "calendar")
             Label("Reminders", systemImage: "checkmark.circle")
-            Label("Notes", systemImage: "note.text")
+//            Label("Notes", systemImage: "note.text")
         }
         .listStyle(SidebarListStyle())
-        .navigationTitle("Code")
+        .navigationTitle("View")
     }
 }

@@ -101,7 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				93BE3E88258E02E200EA17CC /* EinTagApp.swift */,
-				93BE3E89258E02E200EA17CC /* ContentView.swift */,
+				93BE3ED2258E1D9500EA17CC /* Views */,
+				93BE3ED4258E1F2700EA17CC /* Model */,
 				93BE3E8A258E02E500EA17CC /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -151,6 +152,21 @@
 				93BE3EB0258E02E500EA17CC /* Info.plist */,
 			);
 			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		93BE3ED2258E1D9500EA17CC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				93BE3E89258E02E200EA17CC /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		93BE3ED4258E1F2700EA17CC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
