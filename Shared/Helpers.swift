@@ -7,8 +7,7 @@
 
 import Foundation
 
-func getLocalizedDate() -> String {
-    let date = Date()
+func getLocalizedDate(date: Date = Date()) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateStyle = .full
     dateFormatter.timeStyle = .none

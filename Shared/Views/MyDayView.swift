@@ -29,6 +29,10 @@ struct MyDayView: View {
                 MyDayWeatherView()
             }
             .padding()
+            
+            MyDayPlannerView()
+                .padding()
+            
             Spacer()
         }
         .frame(
@@ -62,6 +66,12 @@ struct MyDayWeatherView: View {
                 .font(.title)
                 .padding()
         }
+    }
+}
+
+struct MyDayPlannerView: View {
+    var body: some View {
+        PlannerDayView(date: Date())
     }
 }
 
