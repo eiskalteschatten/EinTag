@@ -12,12 +12,14 @@ enum TemperatureUnit: String {
     case fahrenheit = "F"
 }
 
+let USER_DEFAULT_TEMPERATURE_UNIT_KEY = "temperatureUnit"
+
 struct MyDayView: View {
     #if !os(macOS)
     @Environment(\.horizontalSizeClass) var sizeClass
     #endif
     
-    @State private var temperatureUnit: TemperatureUnit? = TemperatureUnit(rawValue: UserDefaults.standard.string(forKey: "temperatureUnit") ?? TemperatureUnit.celcius.rawValue)
+    @State private var temperatureUnit: TemperatureUnit = TemperatureUnit(rawValue: UserDefaults.standard.string(forKey: USER_DEFAULT_TEMPERATURE_UNIT_KEY) ?? TemperatureUnit.celcius.rawValue) ?? .celcius
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -59,6 +61,9 @@ struct MyDayView: View {
                         Text("Celcius").tag(TemperatureUnit.celcius)
                         Text("Fahrenheit").tag(TemperatureUnit.fahrenheit)
                     }
+                    .onChange(of: temperatureUnit, perform: { value in
+                        UserDefaults.standard.set(temperatureUnit.rawValue, forKey: USER_DEFAULT_TEMPERATURE_UNIT_KEY)
+                    })
                 }
                 label: {
                     Label("Settings", systemImage: "gear")

@@ -11,8 +11,10 @@ enum Screen: Int {
     case myDay, planner, reminders, notes, news
 }
 
+let USER_DEFAULT_SCREEN_KEY = "screen"
+
 struct ContentView: View {
-    @State private var screen: Screen? = Screen(rawValue: UserDefaults.standard.integer(forKey: "screen")) ?? .myDay
+    @State private var screen: Screen? = Screen(rawValue: UserDefaults.standard.integer(forKey: USER_DEFAULT_SCREEN_KEY)) ?? .myDay
     
     var body: some View {
         NavigationView {
@@ -83,6 +85,9 @@ struct MainSidebarContent: View {
 //            )
         }
         .listStyle(SidebarListStyle())
+        .onChange(of: state, perform: { value in
+            UserDefaults.standard.set(state?.rawValue, forKey: USER_DEFAULT_SCREEN_KEY)
+        })
     }
 }
 
