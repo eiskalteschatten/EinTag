@@ -19,12 +19,19 @@ struct ContentView: View {
             MainSidebar(screen: $screen)
             MyDayView()
         }
+        .navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+                .preferredColorScheme(.dark)
+            ContentView()
+                .preferredColorScheme(.dark)
+                .previewDevice("iPhone 11")
+        }
     }
 }
 
@@ -36,10 +43,7 @@ struct MainSidebar: View {
         MainSidebarContent(state: $screen)
             .frame(minWidth: 200, idealWidth: 250, maxWidth: 300)
         #else
-        NavigationView {
-            MainSidebarContent(state: $screen)
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
+        MainSidebarContent(state: $screen)
         #endif
     }
 }
@@ -83,5 +87,6 @@ struct MainSidebarContent: View {
 //            )
         }
         .listStyle(SidebarListStyle())
+        .navigationTitle("EinTag")
     }
 }
