@@ -12,7 +12,6 @@ struct PlannerView: View {
         List(0 ..< 20) {_ in
             Text("Book")
         }
-        .navigationTitle("Planner")
     }
 }
 

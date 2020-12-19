@@ -24,15 +24,18 @@ struct ContentView_Previews: PreviewProvider {
 
 struct MainSidebar: View {
     var body: some View {
+        #if os(macOS)
         NavigationView {
-            #if os(macOS)
             MainSidebarContent()
                 .frame(minWidth: 200, idealWidth: 250, maxWidth: 300)
-            #else
+        }
+        #else
+        NavigationView {
             MainSidebarContent()
                 .navigationTitle("View")
-            #endif
         }
+        .navigationViewStyle(StackNavigationViewStyle())
+        #endif
     }
 }
 
