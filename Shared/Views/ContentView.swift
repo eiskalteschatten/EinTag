@@ -54,7 +54,7 @@ struct MainSidebarContent: View {
     var body: some View {
         List {
             NavigationLink(
-                destination: MyDayView(),
+                destination: MyDayView().navigationTitle("My Day"),
                 tag: Screen.myDay,
                 selection: $state,
                 label: {
@@ -62,7 +62,7 @@ struct MainSidebarContent: View {
                 }
             )
             NavigationLink(
-                destination: PlannerView(),
+                destination: PlannerView().navigationTitle("Planner"),
                 tag: Screen.planner,
                 selection: $state,
                 label: {
@@ -70,7 +70,7 @@ struct MainSidebarContent: View {
                 }
             )
             NavigationLink(
-                destination: RemindersView(),
+                destination: RemindersView().navigationTitle("Reminders"),
                 tag: Screen.reminders,
                 selection: $state,
                 label: {
@@ -78,7 +78,7 @@ struct MainSidebarContent: View {
                 }
             )
 //            NavigationLink(
-//                destination: PlannerView(),
+//                destination: PlannerView().navigationTitle("Notes"),
 //                tag: Screen.notes,
 //                selection: $state,
 //                label: {
