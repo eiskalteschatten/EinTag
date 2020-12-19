@@ -43,11 +43,10 @@ struct Sidebar: View {
 struct SidebarContent: View {
     var body: some View {
         List {
-            Label("Books", systemImage: "book.closed")
-            Label("Tutorials", systemImage: "list.bullet.rectangle")
-            Label("Video Tutorials", systemImage: "tv")
-            Label("Contacts", systemImage: "mail.stack")
-            Label("Search", systemImage: "magnifyingglass")
+            Label("My Day", systemImage: "cloud.sun")
+            Label("Planner", systemImage: "calendar")
+            Label("Reminders", systemImage: "checkmark.circle")
+            Label("Notes", systemImage: "note.text")
         }
         .listStyle(SidebarListStyle())
         .navigationTitle("Code")
