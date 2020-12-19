@@ -39,6 +39,7 @@ struct PlannerDayView: View {
                 .font(.subheadline)
                 .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
                 .opacity(0.7)
+                .padding(.bottom, 15)
             
             ForEach(plannerTestItems) { item in
                 PlannerListItemView(listItem: item)
