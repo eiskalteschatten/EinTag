@@ -13,5 +13,8 @@ struct EinTagApp: App {
         WindowGroup {
             ContentView()
         }
+        .commands {
+            SidebarCommands()
+        }
     }
 }
