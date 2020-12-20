@@ -17,31 +17,33 @@ struct MyDayView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            AdaptiveStack(verticalAlignment: .top) {
-                Text(getLocalizedDate())
-                    .font(.system(size: 35.0))
-                
-                #if os(macOS)
-                Spacer()
-                #else
-                if sizeClass != .compact {
+            ScrollView {
+                AdaptiveStack(verticalAlignment: .top) {
+                    Text(getLocalizedDate())
+                        .font(.system(size: 35.0))
+                    
+                    #if os(macOS)
                     Spacer()
+                    #else
+                    if sizeClass != .compact {
+                        Spacer()
+                    }
+                    #endif
+                    
+                    WeatherIconView(temperatureFontSize: 40.0)
                 }
-                #endif
-                
-                WeatherIconView(temperatureFontSize: 40.0)
-            }
-            .padding()
+                .padding()
             
-            AdaptiveStack {
-                MyDayPlannerView()
-                    .padding([.leading, .bottom])
+                AdaptiveStack {
+                    MyDayPlannerView()
+                        .padding([.leading, .bottom])
+                    
+                    MyDayRemindersView()
+                        .padding(.horizontal)
+                }
                 
-                MyDayRemindersView()
-                    .padding(.horizontal)
+                Spacer()
             }
-                
-            Spacer()
         }
         .frame(
             minWidth: minWidth,
@@ -68,9 +70,7 @@ struct MyDayPlannerView: View {
             Text("Planner")
                 .font(.title)
 
-            ScrollView {
-                PlannerDayView(date: Date(), hideDate: true)
-            }
+            PlannerDayView(date: Date(), hideDate: true)
         }
     }
 }
@@ -81,9 +81,7 @@ struct MyDayRemindersView: View {
             Text("Reminders")
                 .font(.title)
 
-            ScrollView {
-                RemindersDayView(date: Date(), hideDate: true)
-            }
+            RemindersDayView(date: Date(), hideDate: true)
         }
     }
 }
