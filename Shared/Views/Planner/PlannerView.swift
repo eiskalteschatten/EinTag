@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct PlannerView: View {
-    @ObservedObject var plannerData = PlannerData()
-    
     var body: some View {
         ScrollView {
             VStack {
@@ -21,7 +19,7 @@ struct PlannerView: View {
                     .compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: today) }
                 
                 ForEach(days, id: \.self) { days in
-                    PlannerDayView(date: days, plannerData: plannerData)
+                    PlannerDayView(date: days)
                         .padding(.horizontal)
                 }
             }

@@ -12,6 +12,7 @@ struct EinTagApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(PlannerData())
         }
         .commands {
             SidebarCommands()

@@ -28,15 +28,15 @@ let plannerTestItems = [
 ]
 
 struct PlannerDayView: View {
+    @EnvironmentObject var plannerData: PlannerData
+    
     var eventStore = EKEventStore()
     let date: Date
     let hideDate: Bool
-    let plannerData: PlannerData
     
-    init(date: Date, plannerData: PlannerData, hideDate: Bool = false) {
+    init(date: Date, hideDate: Bool = false) {
         self.date = date
         self.hideDate = hideDate
-        self.plannerData = plannerData
     }
     
     var body: some View {
@@ -88,6 +88,6 @@ struct PlannerDayView: View {
 
 struct PlannerDayView_Previews: PreviewProvider {
     static var previews: some View {
-        PlannerDayView(date: Date(), plannerData: PlannerData())
+        PlannerDayView(date: Date())
     }
 }
