@@ -89,5 +89,6 @@ struct PlannerDayView: View {
 struct PlannerDayView_Previews: PreviewProvider {
     static var previews: some View {
         PlannerDayView(date: Date())
+            .environmentObject(PlannerData())
     }
 }
