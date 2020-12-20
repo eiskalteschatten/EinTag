@@ -29,7 +29,7 @@ struct MyDayView: View {
                 }
                 #endif
                 
-                MyDayWeatherView()
+                WeatherIconView(temperatureFontSize: 40.0)
             }
             .padding()
             
@@ -58,28 +58,6 @@ struct MyDayView: View {
                 }
             }
             #endif
-        }
-    }
-}
-
-struct MyDayWeatherView: View {
-    var body: some View {
-        HStack(alignment: .bottom, spacing: 6) {
-            ZStack(alignment: .center) {
-                Circle()
-                    .fill(Color.blue)
-                    .frame(width: 100, height: 100)
-                
-                Image(systemName: "cloud.sun.bolt.fill")
-                    .renderingMode(.original)
-                    .font(.system(size: 50.0))
-            }
-            
-            let temperature = getLocalizedTemperature(temperatureInCelcius: 25.0)
-            
-            Text(temperature)
-                .font(.title)
-                .padding()
         }
     }
 }

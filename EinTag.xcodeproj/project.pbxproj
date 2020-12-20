@@ -27,6 +27,8 @@
 		93CD822B258F4DAB009AE52B /* RemindersListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD8229258F4DAB009AE52B /* RemindersListItemView.swift */; };
 		93CD8231258F4E12009AE52B /* RemindersListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD8230258F4E12009AE52B /* RemindersListItem.swift */; };
 		93CD8232258F4E12009AE52B /* RemindersListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD8230258F4E12009AE52B /* RemindersListItem.swift */; };
+		93CD8239258F5ECC009AE52B /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD8238258F5ECC009AE52B /* WeatherView.swift */; };
+		93CD823A258F5ECC009AE52B /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD8238258F5ECC009AE52B /* WeatherView.swift */; };
 		93E01C49258E512200DD4808 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E01C48258E512200DD4808 /* Helpers.swift */; };
 		93E01C4A258E512200DD4808 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E01C48258E512200DD4808 /* Helpers.swift */; };
 		93E01C68258E56B500DD4808 /* AdaptiveStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E01C67258E56B500DD4808 /* AdaptiveStack.swift */; };
@@ -78,6 +80,7 @@
 		93CD8222258F4D63009AE52B /* RemindersDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersDayView.swift; sourceTree = "<group>"; };
 		93CD8229258F4DAB009AE52B /* RemindersListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersListItemView.swift; sourceTree = "<group>"; };
 		93CD8230258F4E12009AE52B /* RemindersListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersListItem.swift; sourceTree = "<group>"; };
+		93CD8238258F5ECC009AE52B /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		93E01C48258E512200DD4808 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		93E01C67258E56B500DD4808 /* AdaptiveStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveStack.swift; sourceTree = "<group>"; };
 		93E01C73258E6E9800DD4808 /* PlannerDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerDayView.swift; sourceTree = "<group>"; };
@@ -191,6 +194,7 @@
 		93BE3ED2258E1D9500EA17CC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				93CD8237258F5EB8009AE52B /* Weather */,
 				93CD821D258F4BA7009AE52B /* Reminders */,
 				93BE3E89258E02E200EA17CC /* ContentView.swift */,
 				93E01C6E258E6E7100DD4808 /* Planner */,
@@ -217,6 +221,14 @@
 				93CD8229258F4DAB009AE52B /* RemindersListItemView.swift */,
 			);
 			path = Reminders;
+			sourceTree = "<group>";
+		};
+		93CD8237258F5EB8009AE52B /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				93CD8238258F5ECC009AE52B /* WeatherView.swift */,
+			);
+			path = Weather;
 			sourceTree = "<group>";
 		};
 		93E01C6E258E6E7100DD4808 /* Planner */ = {
@@ -391,6 +403,7 @@
 				93BE3EB3258E02E500EA17CC /* ContentView.swift in Sources */,
 				93CD8223258F4D63009AE52B /* RemindersDayView.swift in Sources */,
 				93CD8231258F4E12009AE52B /* RemindersListItem.swift in Sources */,
+				93CD8239258F5ECC009AE52B /* WeatherView.swift in Sources */,
 				93E01C7F258E858A00DD4808 /* PlannerListItemView.swift in Sources */,
 				93E01C68258E56B500DD4808 /* AdaptiveStack.swift in Sources */,
 				93E01C49258E512200DD4808 /* Helpers.swift in Sources */,
@@ -411,6 +424,7 @@
 				93BE3EB4258E02E500EA17CC /* ContentView.swift in Sources */,
 				93CD8224258F4D63009AE52B /* RemindersDayView.swift in Sources */,
 				93CD8232258F4E12009AE52B /* RemindersListItem.swift in Sources */,
+				93CD823A258F5ECC009AE52B /* WeatherView.swift in Sources */,
 				93E01C80258E858A00DD4808 /* PlannerListItemView.swift in Sources */,
 				93E01C69258E56B500DD4808 /* AdaptiveStack.swift in Sources */,
 				93E01C4A258E512200DD4808 /* Helpers.swift in Sources */,

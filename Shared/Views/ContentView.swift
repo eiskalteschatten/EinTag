@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum Screen: Int {
-    case myDay, planner, reminders, notes, news
+    case myDay, planner, reminders, weather, notes, news
 }
 
 let USER_DEFAULT_SCREEN_KEY = "screen"
@@ -48,7 +48,7 @@ struct MainSidebarContent: View {
                 tag: Screen.myDay,
                 selection: $state,
                 label: {
-                    Label("My Day", systemImage: "cloud.sun")
+                    Label("My Day", systemImage: "sun.max")
                 }
             )
             NavigationLink(
@@ -65,6 +65,14 @@ struct MainSidebarContent: View {
                 selection: $state,
                 label: {
                     Label("Reminders", systemImage: "checkmark.circle")
+                }
+            )
+            NavigationLink(
+                destination: WeatherView().navigationTitle("Weather"),
+                tag: Screen.weather,
+                selection: $state,
+                label: {
+                    Label("Weather", systemImage: "cloud.sun")
                 }
             )
 //            NavigationLink(
