@@ -35,7 +35,7 @@ struct MyDayView: View {
                 }
                 .padding()
             
-                AdaptiveStack {
+                AdaptiveStack(verticalAlignment: .top) {
                     MyDayPlannerView()
                         .padding([.leading, .bottom])
                     
