@@ -8,19 +8,21 @@
 import SwiftUI
 
 let remindersTestItems = [
-    PlannerListItem(
+    RemindersListItem(
         id: 0,
-        calendar: "Work",
-        calendarColor: Color.red,
-        title: "Test Event",
+        list: "Band",
+        listColor: Color.green,
+        done: true,
+        title: "Test Reminder",
         note: "A note of some sort goes here",
         date: Date()
     ),
-    PlannerListItem(
+    RemindersListItem(
         id: 1,
-        calendar: "Home",
-        calendarColor: Color.blue,
-        title: "Some other event",
+        list: "Home",
+        listColor: Color.blue,
+        done: false,
+        title: "Some other reminder",
         note: "More notes!",
         date: Date().addingTimeInterval(5 * 60)
     )
@@ -41,8 +43,8 @@ struct RemindersDayView: View {
                 .opacity(0.7)
                 .padding(.bottom, 15)
             
-            ForEach(plannerTestItems) { item in
-                PlannerListItemView(listItem: item)
+            ForEach(remindersTestItems) { item in
+                RemindersListItemView(listItem: item)
             }
         }
         .padding(.vertical)

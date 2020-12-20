@@ -8,13 +8,14 @@
 import SwiftUI
 
 let remindersTestItem = RemindersListItem(
-                id: 0,
-                calendar: "Home",
-                calendarColor: Color.blue,
-                title: "Test Event",
-                note: "A note of some sort goes here",
-                date: Date()
-            )
+                            id: 0,
+                            list: "Home",
+                            listColor: Color.blue,
+                            done: true,
+                            title: "Test Reminder",
+                            note: "A note of some sort goes here",
+                            date: Date()
+                        )
 
 struct RemindersListItemView: View {
     let listItem: RemindersListItem
@@ -25,9 +26,11 @@ struct RemindersListItemView: View {
     
     var body: some View {
         HStack(spacing: 10) {
-            Rectangle()
-                .fill(listItem.calendarColor)
-                .frame(width: 6)
+            let circle = listItem.done ? "largecircle.fill.circle" : "circle"
+            
+            Image(systemName: circle)
+                .font(.system(size: 20.0))
+                .foregroundColor(listItem.listColor)
             
             VStack(alignment: .leading, spacing: 0) {
                 Text(listItem.title)
