@@ -8,13 +8,6 @@
 import SwiftUI
 
 fileprivate extension DateFormatter {
-    static var month: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM"
-        formatter.locale = Locale.autoupdatingCurrent
-        return formatter
-    }
-
     static var monthAndYear: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM yyyy"
@@ -146,7 +139,9 @@ struct MiniCalendarIntervalView: View {
     private func daysOfTheWeek() -> [DayOfTheWeek] {
         var localeCalendar = calendar
         localeCalendar.locale = Locale.autoupdatingCurrent
-        return localeCalendar.veryShortWeekdaySymbols.enumerated().map { (index, element) in
+        let symbols = localeCalendar.veryShortWeekdaySymbols
+        let localizedWeekdays: [String] = Array(symbols[Calendar.current.firstWeekday - 1 ..< Calendar.current.veryShortWeekdaySymbols.count] + symbols[0 ..< Calendar.current.firstWeekday - 1])
+        return localizedWeekdays.enumerated().map { (index, element) in
             DayOfTheWeek(
                 id: index,
                 name: element
