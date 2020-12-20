@@ -42,7 +42,7 @@ struct PlannerListItemView: View {
             #if os(macOS)
             let calendarColor = event.calendar.color!
             #else
-            let calendarColor = event.calendar.cgColor!
+            let calendarColor = UIColor(cgColor: event.calendar.cgColor!)
             #endif
             
             RoundedRectangle(cornerRadius: 100, style: .continuous)
@@ -81,7 +81,7 @@ struct PlannerListItemView: View {
                     .opacity(0.8)
             }
         }
-        .padding(.vertical, 5)
+        .padding(6)
         .if(event.endDate.isInThePast) { $0.opacity(0.4) }
         .frame(
             maxHeight: 50
