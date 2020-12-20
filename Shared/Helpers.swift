@@ -11,14 +11,14 @@ func getLocalizedDate(date: Date = Date()) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateStyle = .full
     dateFormatter.timeStyle = .none
-    dateFormatter.locale = Locale.current
+    dateFormatter.locale = Locale.autoupdatingCurrent
     return dateFormatter.string(from: date)
 }
 
 func getLocalizedDateWithFormat(date: Date = Date(), format: String) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = format
-    dateFormatter.locale = Locale.current
+    dateFormatter.locale = Locale.autoupdatingCurrent
     return dateFormatter.string(from: date)
 }
 
@@ -26,13 +26,13 @@ func getLocalizedTime(date: Date = Date()) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateStyle = .none
     dateFormatter.timeStyle = .short
-    dateFormatter.locale = Locale.current
+    dateFormatter.locale = Locale.autoupdatingCurrent
     return dateFormatter.string(from: date)
 }
 
 func getLocalizedTemperature(temperatureInCelcius: Double) -> String {
     let temperature = Measurement(value: temperatureInCelcius, unit: UnitTemperature.celsius)
     let formatter = MeasurementFormatter()
-    formatter.locale = Locale.current
+    formatter.locale = Locale.autoupdatingCurrent
     return formatter.string(from: temperature)
 }

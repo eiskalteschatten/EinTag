@@ -11,14 +11,14 @@ fileprivate extension DateFormatter {
     static var month: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM"
-        formatter.locale = Locale.current
+        formatter.locale = Locale.autoupdatingCurrent
         return formatter
     }
 
     static var monthAndYear: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMMM yyyy"
-        formatter.locale = Locale.current
+        formatter.locale = Locale.autoupdatingCurrent
         return formatter
     }
 }
@@ -59,42 +59,38 @@ struct MiniCalendarView: View {
     
     var body: some View {
         VStack {
-            MiniCalendarIntervalView(interval: month) { date in
-                Text(String(self.calendar.component(.day, from: date)))
-                    .frame(width: 22, height: 20, alignment: .center)
-                    .clipShape(Circle())
-                    .padding(.vertical, 2)
-            }
+            MiniCalendarIntervalView(interval: month)
         }
     }
 }
 
-struct MiniCalendarIntervalView<DateView>: View where DateView: View {
+struct MiniCalendarIntervalView: View {
     @Environment(\.calendar) var calendar
 
     let interval: DateInterval
     let showHeaders: Bool
-    let content: (Date) -> DateView
-
-    init(
-        interval: DateInterval,
-        showHeaders: Bool = true,
-        @ViewBuilder content: @escaping (Date) -> DateView
-    ) {
+    
+    init(interval: DateInterval, showHeaders: Bool = true) {
         self.interval = interval
         self.showHeaders = showHeaders
-        self.content = content
     }
 
     var body: some View {
         LazyVGrid(columns: Array(repeating: GridItem(), count: 7)) {
             ForEach(months, id: \.self) { month in
                 Section(header: header(for: month)) {
-                    ForEach(days(for: month), id: \.self) { date in
-                        if calendar.isDate(date, equalTo: month, toGranularity: .month) {
-                            content(date).id(date)
-                        } else {
-                            content(date).hidden()
+                    ForEach(daysOfTheWeek()) { dayOfTheWeek in
+                        Text(dayOfTheWeek.name)
+                            .frame(width: 22, height: 20, alignment: .center)
+                            .padding(.vertical, 2)
+                            .opacity(0.4)
+                    }
+                    Group {
+                        ForEach(days(for: month), id: \.self) { date in
+                            Text(String(self.calendar.component(.day, from: date)))
+                                .frame(width: 22, height: 20, alignment: .center)
+                                .clipShape(Circle())
+                                .padding(.vertical, 2)
                         }
                     }
                 }
@@ -130,6 +126,22 @@ struct MiniCalendarIntervalView<DateView>: View where DateView: View {
             inside: DateInterval(start: monthFirstWeek.start, end: monthLastWeek.end),
             matching: DateComponents(hour: 0, minute: 0, second: 0)
         )
+    }
+    
+    struct DayOfTheWeek: Identifiable {
+        var id: Int
+        var name: String
+    }
+    
+    private func daysOfTheWeek() -> [DayOfTheWeek] {
+        var localeCalendar = calendar
+        localeCalendar.locale = Locale.autoupdatingCurrent
+        return localeCalendar.veryShortWeekdaySymbols.enumerated().map { (index, element) in
+            DayOfTheWeek(
+                id: index,
+                name: element
+            )
+        }
     }
 }
 
