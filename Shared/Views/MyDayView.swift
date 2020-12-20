@@ -30,9 +30,14 @@ struct MyDayView: View {
             }
             .padding()
             
-            MyDayPlannerView()
-                .padding()
-            
+            AdaptiveStack {
+                MyDayPlannerView()
+                    .padding(.leading)
+                
+                MyDayRemindersView()
+                    .padding(.horizontal)
+            }
+                
             Spacer()
         }
         .frame(
@@ -74,9 +79,22 @@ struct MyDayPlannerView: View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Planner")
                 .font(.title)
-            
+
             ScrollView {
                 PlannerDayView(date: Date())
+            }
+        }
+    }
+}
+
+struct MyDayRemindersView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("Reminders")
+                .font(.title)
+
+            ScrollView {
+                RemindersDayView(date: Date())
             }
         }
     }

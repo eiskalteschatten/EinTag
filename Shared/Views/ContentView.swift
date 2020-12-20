@@ -85,7 +85,7 @@ struct MainSidebarContent: View {
 //            )
         }
         .listStyle(SidebarListStyle())
-        .onChange(of: state, perform: { value in
+        .onChange(of: state, perform: { _ in
             UserDefaults.standard.set(state?.rawValue, forKey: USER_DEFAULT_SCREEN_KEY)
         })
     }

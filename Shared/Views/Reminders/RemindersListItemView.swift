@@ -1,13 +1,13 @@
 //
-//  PlannerListItemView.swift
+//  RemindersListItemView.swift
 //  EinTag
 //
-//  Created by Alex Seifert on 12/19/20.
+//  Created by Alex Seifert on 12/20/20.
 //
 
 import SwiftUI
 
-let plannerTestItem = PlannerListItem(
+let remindersTestItem = RemindersListItem(
                 id: 0,
                 calendar: "Home",
                 calendarColor: Color.blue,
@@ -16,10 +16,10 @@ let plannerTestItem = PlannerListItem(
                 date: Date()
             )
 
-struct PlannerListItemView: View {
-    let listItem: PlannerListItem
+struct RemindersListItemView: View {
+    let listItem: RemindersListItem
     
-    init(listItem: PlannerListItem) {
+    init(listItem: RemindersListItem) {
         self.listItem = listItem
     }
     
@@ -50,9 +50,10 @@ struct PlannerListItemView: View {
     }
 }
 
-struct PlannerListItemView_Previews: PreviewProvider {
+struct RemindersListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        PlannerListItemView(listItem: plannerTestItem)
+        RemindersListItemView(listItem: remindersTestItem)
     }
 }
+
 
