@@ -15,6 +15,13 @@ func getLocalizedDate(date: Date = Date()) -> String {
     return dateFormatter.string(from: date)
 }
 
+func getLocalizedDateWithFormat(date: Date = Date(), format: String) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = format
+    dateFormatter.locale = Locale.current
+    return dateFormatter.string(from: date)
+}
+
 func getLocalizedTime(date: Date = Date()) -> String {
     let dateFormatter = DateFormatter()
     dateFormatter.dateStyle = .none
