@@ -36,14 +36,9 @@ struct RemindersListItemView: View {
                 Text(listItem.title)
                     .bold()
                 
-                HStack(alignment: .bottom) {
-                    Text(getLocalizedTime(date: listItem.date))
-                        .padding(.trailing, 3)
-                    
-                    Text(listItem.note)
-                        .opacity(0.6)
-                        .font(.system(size: 11))
-                }
+                Text(listItem.note)
+                    .opacity(0.6)
+                    .font(.system(size: 11))
             }
         }
         .padding(.vertical, 5)
