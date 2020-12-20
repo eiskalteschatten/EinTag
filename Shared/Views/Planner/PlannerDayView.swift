@@ -28,13 +28,15 @@ let plannerTestItems = [
 ]
 
 struct PlannerDayView: View {
+    @ObservedObject var plannerData = PlannerData()
+    @State var finishedLoading: Bool = false
+    
+    var eventStore = EKEventStore()
     let date: Date
-    let plannerData: PlannerData
     let hideDate: Bool
     
-    init(date: Date, plannerData: PlannerData, hideDate: Bool = false) {
+    init(date: Date, hideDate: Bool = false) {
         self.date = date
-        self.plannerData = plannerData
         self.hideDate = hideDate
     }
     
@@ -55,7 +57,7 @@ struct PlannerDayView: View {
                 }
             }
             else {
-                if !plannerData.finishedLoading {
+                if !finishedLoading {
                     HStack {
                         Spacer()
                         
@@ -79,11 +81,35 @@ struct PlannerDayView: View {
             maxHeight: .infinity,
             alignment: .topLeading
         )
+        .onAppear{
+            eventStore.requestAccess(to: .event, completion:
+                {(granted: Bool, error: Error?) -> Void in
+                    if granted {
+                        DispatchQueue.main.async(execute: {
+                            var allEvents: [EKEvent] = []
+                            
+                            plannerData.calendars = eventStore.calendars(for: .event)
+                            
+                            for calendar in plannerData.calendars {
+                                let predicate = eventStore.predicateForEvents(withStart: date.startOfDay, end: date.endOfDay, calendars: [calendar])
+                                let events = eventStore.events(matching: predicate)
+                                allEvents.append(contentsOf: events)
+                            }
+                            
+                            plannerData.events = allEvents
+                            finishedLoading = true
+                        })
+                    }
+                    else {
+                        finishedLoading = true
+                    }
+            })
+        }
     }
 }
 
 struct PlannerDayView_Previews: PreviewProvider {
     static var previews: some View {
-        PlannerDayView(date: Date(), plannerData: PlannerData())
+        PlannerDayView(date: Date())
     }
 }

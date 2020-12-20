@@ -6,16 +6,14 @@
 //
 
 import SwiftUI
-import EventKit
 
 struct PlannerView: View {
     var body: some View {
         ScrollView {
             VStack {
-//                PlannerDayView(date: Date())
-//                PlannerDayView(date: Date())
+                PlannerDayView(date: Date())
             }
-            .padding(.leading)
+            .padding()
         }
         .toolbar {
             #if os(macOS)
@@ -26,6 +24,7 @@ struct PlannerView: View {
             }
             #endif
         }
+        
     }
 }
 

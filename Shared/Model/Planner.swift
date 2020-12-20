@@ -11,6 +11,5 @@ import EventKit
 class PlannerData: ObservableObject {
     @Published var calendars: [EKCalendar] = []
     @Published var events: [EKEvent] = []
-    @Published var finishedLoading: Bool = false
 }
 
