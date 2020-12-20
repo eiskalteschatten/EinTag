@@ -66,7 +66,7 @@ struct MyDayView: View {
 }
 
 struct MyDayPlannerView: View {
-    @ObservedObject var calendarData = CalendarData()
+    @ObservedObject var plannerData = PlannerData()
     var eventStore = EKEventStore()
     
     var body: some View {
@@ -74,7 +74,7 @@ struct MyDayPlannerView: View {
             Text("Planner")
                 .font(.title)
 
-            PlannerDayView(date: Date(), calendarData: calendarData, hideDate: true)
+            PlannerDayView(date: Date(), plannerData: plannerData, hideDate: true)
         }
         .onAppear{
             eventStore.requestAccess(to: .event, completion:
@@ -84,15 +84,15 @@ struct MyDayPlannerView: View {
                         let today = Date()
                         var allEvents: [EKEvent] = []
 
-                        calendarData.calendars = eventStore.calendars(for: .event)
+                        plannerData.calendars = eventStore.calendars(for: .event)
                         
-                        for calendar in calendarData.calendars {
+                        for calendar in plannerData.calendars {
                             let predicate = eventStore.predicateForEvents(withStart: today.startOfDay, end: today.endOfDay, calendars: [calendar])
                             let events = eventStore.events(matching: predicate)
                             allEvents.append(contentsOf: events)
                         }
                         
-                        calendarData.events = allEvents
+                        plannerData.events = allEvents
                     })
                   }
                   else {

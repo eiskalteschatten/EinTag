@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9325C764258FAFAF00D63484 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9325C763258FAFAF00D63484 /* Calendar.swift */; };
-		9325C765258FAFAF00D63484 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9325C763258FAFAF00D63484 /* Calendar.swift */; };
+		9325C764258FAFAF00D63484 /* Planner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9325C763258FAFAF00D63484 /* Planner.swift */; };
+		9325C765258FAFAF00D63484 /* Planner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9325C763258FAFAF00D63484 /* Planner.swift */; };
 		93BE3EA4258E02E500EA17CC /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3EA3258E02E500EA17CC /* Tests_iOS.swift */; };
 		93BE3EAF258E02E500EA17CC /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3EAE258E02E500EA17CC /* Tests_macOS.swift */; };
 		93BE3EB1258E02E500EA17CC /* EinTagApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3E88258E02E200EA17CC /* EinTagApp.swift */; };
@@ -69,7 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		9325C763258FAFAF00D63484 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		9325C763258FAFAF00D63484 /* Planner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planner.swift; sourceTree = "<group>"; };
 		93BE3E88258E02E200EA17CC /* EinTagApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EinTagApp.swift; sourceTree = "<group>"; };
 		93BE3E89258E02E200EA17CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		93BE3E8A258E02E500EA17CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -226,9 +226,9 @@
 			isa = PBXGroup;
 			children = (
 				93E01C8D258E866D00DD4808 /* PlannerListItem.swift */,
+				9325C763258FAFAF00D63484 /* Planner.swift */,
 				93CD8230258F4E12009AE52B /* RemindersListItem.swift */,
 				93CD823F258F644E009AE52B /* WeatherDay.swift */,
-				9325C763258FAFAF00D63484 /* Calendar.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -442,7 +442,7 @@
 				93BE3EE4258E2C4200EA17CC /* RemindersView.swift in Sources */,
 				93BE3EB1258E02E500EA17CC /* EinTagApp.swift in Sources */,
 				93BE3ED6258E1F8500EA17CC /* PlannerView.swift in Sources */,
-				9325C764258FAFAF00D63484 /* Calendar.swift in Sources */,
+				9325C764258FAFAF00D63484 /* Planner.swift in Sources */,
 				93E01C8E258E866D00DD4808 /* PlannerListItem.swift in Sources */,
 				93CD8240258F644E009AE52B /* WeatherDay.swift in Sources */,
 			);
@@ -468,7 +468,7 @@
 				93BE3EE5258E2C4200EA17CC /* RemindersView.swift in Sources */,
 				93BE3EB2258E02E500EA17CC /* EinTagApp.swift in Sources */,
 				93BE3ED7258E1F8500EA17CC /* PlannerView.swift in Sources */,
-				9325C765258FAFAF00D63484 /* Calendar.swift in Sources */,
+				9325C765258FAFAF00D63484 /* Planner.swift in Sources */,
 				93E01C8F258E866D00DD4808 /* PlannerListItem.swift in Sources */,
 				93CD8241258F644E009AE52B /* WeatherDay.swift in Sources */,
 			);

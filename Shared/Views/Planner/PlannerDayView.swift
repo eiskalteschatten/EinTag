@@ -29,12 +29,12 @@ let plannerTestItems = [
 
 struct PlannerDayView: View {
     let date: Date
-    let calendarData: CalendarData
+    let plannerData: PlannerData
     let hideDate: Bool
     
-    init(date: Date, calendarData: CalendarData, hideDate: Bool = false) {
+    init(date: Date, plannerData: PlannerData, hideDate: Bool = false) {
         self.date = date
-        self.calendarData = calendarData
+        self.plannerData = plannerData
         self.hideDate = hideDate
     }
     
@@ -48,7 +48,7 @@ struct PlannerDayView: View {
                     .padding(.bottom, 15)
             }
             
-            ForEach(calendarData.events, id: \.self) { event in
+            ForEach(plannerData.events, id: \.self) { event in
                 PlannerListItemView(event: event)
             }
         }
@@ -65,6 +65,6 @@ struct PlannerDayView: View {
 
 struct PlannerDayView_Previews: PreviewProvider {
     static var previews: some View {
-        PlannerDayView(date: Date(), calendarData: CalendarData())
+        PlannerDayView(date: Date(), plannerData: PlannerData())
     }
 }
