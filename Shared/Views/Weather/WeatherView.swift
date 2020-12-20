@@ -59,7 +59,6 @@ struct WeatherView: View {
             }
             #endif
         }
-        .background(Color.blue)
     }
 }
 
@@ -76,15 +75,14 @@ struct WeatherDayView: View {
         
         let date = getLocalizedDateWithFormat(date: weatherDay.date, format: "EE, dd")
         
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 15) {
             Text(date)
                 .font(.title2)
             
-            Image(systemName: "cloud.rain.fill")
-                .renderingMode(.original)
+            Image(systemName: "cloud.rain")
                 .font(.system(size: 25.0))
             
-            HStack {
+            HStack(spacing: 15) {
                 Text(highTemperature)
                     .bold()
                     .font(.title2)
@@ -92,6 +90,8 @@ struct WeatherDayView: View {
                 Text(lowTemperature)
                     .font(.title3)
             }
+            
+            Text("Rain")
         }
     }
 }
