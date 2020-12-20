@@ -40,14 +40,14 @@ struct PlannerListItemView: View {
     var body: some View {
         HStack(spacing: 10) {
             #if os(macOS)
-            let calendarColor = event.calendar.color!
-            #else
-            let calendarColor = UIColor(cgColor: event.calendar.cgColor!)
-            #endif
-            
             RoundedRectangle(cornerRadius: 100, style: .continuous)
-                .fill(Color(calendarColor))
+                .fill(Color(event.calendar.color!))
                 .frame(width: 6)
+            #else
+            RoundedRectangle(cornerRadius: 100, style: .continuous)
+                .fill(Color(UIColor(cgColor: event.calendar.cgColor!)))
+                .frame(width: 6, height: 40)
+            #endif
             
             VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .top) {
@@ -81,7 +81,7 @@ struct PlannerListItemView: View {
                     .opacity(0.8)
             }
         }
-        .padding(6)
+        .padding(.vertical, 6)
         .if(event.endDate.isInThePast) { $0.opacity(0.4) }
         .frame(
             maxHeight: 50
