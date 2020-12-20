@@ -70,8 +70,8 @@ struct PlannerDayView: View {
                     }
                 }
                 else {
-                    Text("No events could be found in your planner for this day.")
-                        .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                    Text("No events found.")
+                        .opacity(0.3)
                 }
             }
         }
