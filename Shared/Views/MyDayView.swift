@@ -66,12 +66,14 @@ struct MyDayView: View {
 }
 
 struct MyDayPlannerView: View {
+    @ObservedObject var plannerData = PlannerData()
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Planner")
                 .font(.title)
 
-            PlannerDayView(date: Date(), hideDate: true)
+            PlannerDayView(date: Date(), plannerData: plannerData, hideDate: true)
         }
     }
 }

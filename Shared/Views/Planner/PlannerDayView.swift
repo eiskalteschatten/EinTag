@@ -28,19 +28,22 @@ let plannerTestItems = [
 ]
 
 struct PlannerDayView: View {
-    @ObservedObject var plannerData = PlannerData()
-    @State var finishedLoading: Bool = false
-    
     var eventStore = EKEventStore()
     let date: Date
     let hideDate: Bool
+    let plannerData: PlannerData
     
-    init(date: Date, hideDate: Bool = false) {
+    init(date: Date, plannerData: PlannerData, hideDate: Bool = false) {
         self.date = date
         self.hideDate = hideDate
+        self.plannerData = plannerData
     }
     
     var body: some View {
+        let events = plannerData.events.filter { event in
+            return date.isEqual(to: event.startDate, toGranularity: .day)
+        }
+        
         VStack(alignment: .leading, spacing: 0) {
             if !hideDate {
                 Text(getLocalizedDate(date: date))
@@ -50,14 +53,13 @@ struct PlannerDayView: View {
                     .padding(.bottom, 15)
             }
             
-            
-            if plannerData.events.count > 0 {
-                ForEach(plannerData.events, id: \.self) { event in
+            if events.count > 0 {
+                ForEach(events, id: \.self) { event in
                     PlannerListItemView(event: event)
                 }
             }
             else {
-                if !finishedLoading {
+                if !plannerData.finishedLoading {
                     HStack {
                         Spacer()
                         
@@ -81,35 +83,11 @@ struct PlannerDayView: View {
             maxHeight: .infinity,
             alignment: .topLeading
         )
-        .onAppear{
-            eventStore.requestAccess(to: .event, completion:
-                {(granted: Bool, error: Error?) -> Void in
-                    if granted {
-                        DispatchQueue.main.async(execute: {
-                            var allEvents: [EKEvent] = []
-                            
-                            plannerData.calendars = eventStore.calendars(for: .event)
-                            
-                            for calendar in plannerData.calendars {
-                                let predicate = eventStore.predicateForEvents(withStart: date.startOfDay, end: date.endOfDay, calendars: [calendar])
-                                let events = eventStore.events(matching: predicate)
-                                allEvents.append(contentsOf: events)
-                            }
-                            
-                            plannerData.events = allEvents
-                            finishedLoading = true
-                        })
-                    }
-                    else {
-                        finishedLoading = true
-                    }
-            })
-        }
     }
 }
 
 struct PlannerDayView_Previews: PreviewProvider {
     static var previews: some View {
-        PlannerDayView(date: Date())
+        PlannerDayView(date: Date(), plannerData: PlannerData())
     }
 }
