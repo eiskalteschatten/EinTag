@@ -93,13 +93,13 @@ struct MyDayPlannerView: View {
                             }
                             
                             plannerData.events = allEvents
+                            plannerData.finishedLoading = true
                         })
                     }
                     else {
                         print("Access to calendars denied")
+                        plannerData.finishedLoading = true
                     }
-                    
-                    plannerData.finishedLoading = true
                 })
         }
     }
