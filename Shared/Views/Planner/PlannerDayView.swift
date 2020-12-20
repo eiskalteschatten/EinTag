@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventKit
 
 let plannerTestItems = [
     PlannerListItem(
@@ -28,10 +29,12 @@ let plannerTestItems = [
 
 struct PlannerDayView: View {
     let date: Date
+    let calendarData: CalendarData
     let hideDate: Bool
     
-    init(date: Date, hideDate: Bool = false) {
+    init(date: Date, calendarData: CalendarData, hideDate: Bool = false) {
         self.date = date
+        self.calendarData = calendarData
         self.hideDate = hideDate
     }
     
@@ -45,8 +48,8 @@ struct PlannerDayView: View {
                     .padding(.bottom, 15)
             }
             
-            ForEach(plannerTestItems) { item in
-                PlannerListItemView(listItem: item)
+            ForEach(calendarData.events, id: \.self) { event in
+                PlannerListItemView(event: event)
             }
         }
         .padding(.vertical)
@@ -62,7 +65,7 @@ struct PlannerDayView: View {
 
 struct PlannerDayView_Previews: PreviewProvider {
     static var previews: some View {
-        PlannerDayView(date: Date())
+        PlannerDayView(date: Date(), calendarData: CalendarData())
     }
 }
 

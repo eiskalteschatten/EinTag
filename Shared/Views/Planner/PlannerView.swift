@@ -11,8 +11,8 @@ struct PlannerView: View {
     var body: some View {
         ScrollView {
             VStack {
-                PlannerDayView(date: Date())
-                PlannerDayView(date: Date())
+//                PlannerDayView(date: Date())
+//                PlannerDayView(date: Date())
             }
             .padding(.leading)
         }

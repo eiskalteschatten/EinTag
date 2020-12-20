@@ -6,53 +6,73 @@
 //
 
 import SwiftUI
+import EventKit
 
-let plannerTestItem = PlannerListItem(
-                id: 0,
-                calendar: "Home",
-                calendarColor: Color.blue,
-                title: "Test Event",
-                note: "A note of some sort goes here",
-                date: Date()
-            )
+//let plannerTestEvent = EkEvent(
+//                id: 0,
+//                calendar: "Home",
+//                calendarColor: Color.blue,
+//                title: "Test Event",
+//                notes: "A note of some sort goes here",
+//                date: Date()
+//            )
 
 struct PlannerListItemView: View {
-    let listItem: PlannerListItem
+    let event: EKEvent
     
-    init(listItem: PlannerListItem) {
-        self.listItem = listItem
+    init(event: EKEvent) {
+        self.event = event
     }
     
     var body: some View {
         HStack(spacing: 10) {
             RoundedRectangle(cornerRadius: 100, style: .continuous)
-                .fill(listItem.calendarColor)
+                .fill(Color(event.calendar.color))
                 .frame(width: 6)
             
             VStack(alignment: .leading, spacing: 0) {
-                Text(listItem.title)
-                    .bold()
+                HStack(alignment: .top) {
+                    Text(event.title)
+                        .bold()
+                    
+                    Spacer()
+                    
+                    if !event.isAllDay {
+                        Text(getLocalizedTime(date: event.startDate))
+                    }
+                }
                 
                 HStack(alignment: .bottom) {
-                    Text(getLocalizedTime(date: listItem.date))
-                        .padding(.trailing, 3)
-                    
-                    Text(listItem.note)
+                    Text(event.calendar.title.trim())
                         .opacity(0.6)
-                        .font(.system(size: 11))
+                    
+                    Spacer()
+                    
+                    if !event.isAllDay {
+                        Text(getLocalizedTime(date: event.endDate))
+                            .opacity(0.5)
+                    }
                 }
+            }
+            
+            if event.isAllDay {
+                Spacer()
+                
+                Text("All-day")
+                    .opacity(0.8)
             }
         }
         .padding(.vertical, 5)
+        .if(event.endDate.isInThePast) { $0.opacity(0.4) }
         .frame(
             maxHeight: 50
         )
     }
 }
 
-struct PlannerListItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        PlannerListItemView(listItem: plannerTestItem)
-    }
-}
+//struct PlannerListItemView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PlannerListItemView(listItem: plannerTestItem)
+//    }
+//}
 

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventKit
 
 struct MyDayView: View {
     #if os(macOS)
@@ -65,12 +66,39 @@ struct MyDayView: View {
 }
 
 struct MyDayPlannerView: View {
+    @ObservedObject var calendarData = CalendarData()
+    var eventStore = EKEventStore()
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Planner")
                 .font(.title)
 
-            PlannerDayView(date: Date(), hideDate: true)
+            PlannerDayView(date: Date(), calendarData: calendarData, hideDate: true)
+        }
+        .onAppear{
+            eventStore.requestAccess(to: .event, completion:
+              {(granted: Bool, error: Error?) -> Void in
+                  if granted {
+                    DispatchQueue.main.async(execute: {
+                        let today = Date()
+                        var allEvents: [EKEvent] = []
+
+                        calendarData.calendars = eventStore.calendars(for: .event)
+                        
+                        for calendar in calendarData.calendars {
+                            let predicate = eventStore.predicateForEvents(withStart: today.startOfDay, end: today.endOfDay, calendars: [calendar])
+                            let events = eventStore.events(matching: predicate)
+                            allEvents.append(contentsOf: events)
+                        }
+                        
+                        calendarData.events = allEvents
+                    })
+                  }
+                  else {
+                    print("Access to calendars denied")
+                  }
+            })
         }
     }
 }
@@ -89,6 +117,5 @@ struct MyDayRemindersView: View {
 struct MyDayView_Previews: PreviewProvider {
     static var previews: some View {
         MyDayView()
-            
     }
 }
