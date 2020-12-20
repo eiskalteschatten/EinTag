@@ -68,4 +68,3 @@ struct PlannerDayView_Previews: PreviewProvider {
         PlannerDayView(date: Date(), calendarData: CalendarData())
     }
 }
-

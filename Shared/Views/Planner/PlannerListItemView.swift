@@ -13,7 +13,12 @@ fileprivate func createTestEvent() -> EKEvent {
     let newCalendar = EKCalendar(for: .event, eventStore: eventStore)
     
     newCalendar.title = "Test Calendar"
-    newCalendar.color = NSColor(Color.blue)
+    
+    #if os(macOS)
+    newCalendar.color = NSColor.blue
+    #else
+    newCalendar.cgColor = UIColor.blue.cgColor
+    #endif
     
     let newEvent = EKEvent(eventStore: eventStore)
     
@@ -34,8 +39,14 @@ struct PlannerListItemView: View {
     
     var body: some View {
         HStack(spacing: 10) {
+            #if os(macOS)
+            let calendarColor = event.calendar.color!
+            #else
+            let calendarColor = event.calendar.cgColor!
+            #endif
+            
             RoundedRectangle(cornerRadius: 100, style: .continuous)
-                .fill(Color(event.calendar.color))
+                .fill(Color(calendarColor))
                 .frame(width: 6)
             
             VStack(alignment: .leading, spacing: 0) {
