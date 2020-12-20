@@ -42,6 +42,7 @@ struct MainSidebarContent: View {
     var body: some View {
         VStack {
             MiniCalendarView()
+                .padding(.bottom)
 
             List {
                 NavigationLink(

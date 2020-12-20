@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-private let testWeatherDays = [
+fileprivate let testWeatherDays = [
     WeatherDay(
         id: 0,
         temperatureInCelcius: -2.0,
