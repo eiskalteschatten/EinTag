@@ -61,7 +61,7 @@ struct MiniCalendarView: View {
         VStack {
             MiniCalendarIntervalView(interval: month) { date in
                 Text(String(self.calendar.component(.day, from: date)))
-                    .frame(width: 20, height: 20, alignment: .center)
+                    .frame(width: 22, height: 20, alignment: .center)
                     .clipShape(Circle())
                     .padding(.vertical, 2)
             }
@@ -114,7 +114,7 @@ struct MiniCalendarIntervalView<DateView>: View where DateView: View {
         return Group {
             if showHeaders {
                 Text(DateFormatter.monthAndYear.string(from: month))
-                    .font(.title)
+                    .font(.title2)
                     .padding(.bottom)
             }
         }
