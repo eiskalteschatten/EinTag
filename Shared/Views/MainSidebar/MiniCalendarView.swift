@@ -69,6 +69,13 @@ struct MiniCalendarIntervalView: View {
 
     let interval: DateInterval
     let showHeaders: Bool
+    let today = Date()
+    
+    #if os(macOS)
+    let daySize: CGFloat = 20
+    #else
+    let daySize: CGFloat = 30
+    #endif
     
     init(interval: DateInterval, showHeaders: Bool = true) {
         self.interval = interval
@@ -81,16 +88,19 @@ struct MiniCalendarIntervalView: View {
                 Section(header: header(for: month)) {
                     ForEach(daysOfTheWeek()) { dayOfTheWeek in
                         Text(dayOfTheWeek.name)
-                            .frame(width: 22, height: 20, alignment: .center)
+                            .frame(width: daySize, height: daySize, alignment: .center)
                             .padding(.vertical, 2)
                             .opacity(0.4)
                     }
                     Group {
                         ForEach(days(for: month), id: \.self) { date in
                             Text(String(self.calendar.component(.day, from: date)))
-                                .frame(width: 22, height: 20, alignment: .center)
-                                .clipShape(Circle())
+                                .frame(width: daySize, height: daySize, alignment: .center)
                                 .padding(.vertical, 2)
+                                .if(date.isInToday) { $0.background(Color.red) }
+                                .if(date.isInToday) { $0.foregroundColor(Color.white) }
+                                .if(!date.isInSameMonth(as: today)) { $0.opacity(0.2) }
+                                .clipShape(Circle())
                         }
                     }
                 }
