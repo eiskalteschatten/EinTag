@@ -8,14 +8,22 @@
 import SwiftUI
 import EventKit
 
-//let plannerTestEvent = EkEvent(
-//                id: 0,
-//                calendar: "Home",
-//                calendarColor: Color.blue,
-//                title: "Test Event",
-//                notes: "A note of some sort goes here",
-//                date: Date()
-//            )
+fileprivate func createTestEvent() -> EKEvent {
+    let eventStore = EKEventStore()
+    let newCalendar = EKCalendar(for: .event, eventStore: eventStore)
+    
+    newCalendar.title = "Test Calendar"
+    newCalendar.color = NSColor(Color.blue)
+    
+    let newEvent = EKEvent(eventStore: eventStore)
+    
+    newEvent.calendar = newCalendar
+    newEvent.title = "Test Event"
+    newEvent.startDate = Date()
+    newEvent.endDate = Date().addingTimeInterval(5 * 60)
+    
+    return newEvent
+}
 
 struct PlannerListItemView: View {
     let event: EKEvent
@@ -70,9 +78,9 @@ struct PlannerListItemView: View {
     }
 }
 
-//struct PlannerListItemView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PlannerListItemView(listItem: plannerTestItem)
-//    }
-//}
+struct PlannerListItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        PlannerListItemView(event: createTestEvent())
+    }
+}
 
