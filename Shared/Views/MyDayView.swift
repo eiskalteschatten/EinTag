@@ -78,27 +78,29 @@ struct MyDayPlannerView: View {
         }
         .onAppear{
             eventStore.requestAccess(to: .event, completion:
-              {(granted: Bool, error: Error?) -> Void in
-                  if granted {
-                    DispatchQueue.main.async(execute: {
-                        let today = Date()
-                        var allEvents: [EKEvent] = []
-
-                        plannerData.calendars = eventStore.calendars(for: .event)
-                        
-                        for calendar in plannerData.calendars {
-                            let predicate = eventStore.predicateForEvents(withStart: today.startOfDay, end: today.endOfDay, calendars: [calendar])
-                            let events = eventStore.events(matching: predicate)
-                            allEvents.append(contentsOf: events)
-                        }
-                        
-                        plannerData.events = allEvents
-                    })
-                  }
-                  else {
-                    print("Access to calendars denied")
-                  }
-            })
+                {(granted: Bool, error: Error?) -> Void in
+                    if granted {
+                        DispatchQueue.main.async(execute: {
+                            let today = Date()
+                            var allEvents: [EKEvent] = []
+                            
+                            plannerData.calendars = eventStore.calendars(for: .event)
+                            
+                            for calendar in plannerData.calendars {
+                                let predicate = eventStore.predicateForEvents(withStart: today.startOfDay, end: today.endOfDay, calendars: [calendar])
+                                let events = eventStore.events(matching: predicate)
+                                allEvents.append(contentsOf: events)
+                            }
+                            
+                            plannerData.events = allEvents
+                        })
+                    }
+                    else {
+                        print("Access to calendars denied")
+                    }
+                    
+                    plannerData.finishedLoading = true
+                })
         }
     }
 }

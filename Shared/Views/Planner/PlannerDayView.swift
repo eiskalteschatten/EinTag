@@ -48,8 +48,27 @@ struct PlannerDayView: View {
                     .padding(.bottom, 15)
             }
             
-            ForEach(plannerData.events, id: \.self) { event in
-                PlannerListItemView(event: event)
+            
+            if plannerData.events.count > 0 {
+                ForEach(plannerData.events, id: \.self) { event in
+                    PlannerListItemView(event: event)
+                }
+            }
+            else {
+                if !plannerData.finishedLoading {
+                    HStack {
+                        Spacer()
+                        
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                        
+                        Spacer()
+                    }
+                }
+                else {
+                    Text("No events could be found in your planner for this day.")
+                        .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                }
             }
         }
         .padding(.vertical)
