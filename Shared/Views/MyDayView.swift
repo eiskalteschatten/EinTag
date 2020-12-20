@@ -63,6 +63,7 @@ struct MyDayWeatherView: View {
     var body: some View {
         HStack(alignment: .bottom, spacing: 6) {
             Image(systemName: "cloud.sun.bolt.fill")
+                .renderingMode(.original)
                 .font(.system(size: 60.0))
             
             let temperature = getLocalizedTemperature(temperatureInCelcius: 25.0)
