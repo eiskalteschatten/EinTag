@@ -35,7 +35,7 @@ struct MyDayView: View {
             
             AdaptiveStack {
                 MyDayPlannerView()
-                    .padding(.leading)
+                    .padding([.leading, .bottom])
                 
                 MyDayRemindersView()
                     .padding(.horizontal)
