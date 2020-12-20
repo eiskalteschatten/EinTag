@@ -25,7 +25,7 @@ struct PlannerListItemView: View {
     
     var body: some View {
         HStack(spacing: 10) {
-            Rectangle()
+            RoundedRectangle(cornerRadius: 100, style: .continuous)
                 .fill(listItem.calendarColor)
                 .frame(width: 6)
             
