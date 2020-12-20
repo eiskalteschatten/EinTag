@@ -30,18 +30,22 @@ let remindersTestItems = [
 
 struct RemindersDayView: View {
     let date: Date
+    let hideDate: Bool
     
-    init(date: Date) {
+    init(date: Date, hideDate: Bool = false) {
         self.date = date
+        self.hideDate = hideDate
     }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text(getLocalizedDate(date: date))
-                .font(.subheadline)
-                .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
-                .opacity(0.7)
-                .padding(.bottom, 15)
+            if !hideDate {
+                Text(getLocalizedDate(date: date))
+                    .font(.subheadline)
+                    .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
+                    .opacity(0.7)
+                    .padding(.bottom, 15)
+            }
             
             ForEach(remindersTestItems) { item in
                 RemindersListItemView(listItem: item)

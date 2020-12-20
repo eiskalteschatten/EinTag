@@ -69,7 +69,7 @@ struct MyDayPlannerView: View {
                 .font(.title)
 
             ScrollView {
-                PlannerDayView(date: Date())
+                PlannerDayView(date: Date(), hideDate: true)
             }
         }
     }
@@ -82,7 +82,7 @@ struct MyDayRemindersView: View {
                 .font(.title)
 
             ScrollView {
-                RemindersDayView(date: Date())
+                RemindersDayView(date: Date(), hideDate: true)
             }
         }
     }
