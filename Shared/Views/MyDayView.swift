@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct MyDayView: View {
-    #if !os(macOS)
+    #if os(macOS)
+    let minWidth: CGFloat = 500
+    #else
     @Environment(\.horizontalSizeClass) var sizeClass
+    let minWidth: CGFloat = 300
     #endif
     
     var body: some View {
@@ -41,7 +44,7 @@ struct MyDayView: View {
             Spacer()
         }
         .frame(
-            minWidth: 400,
+            minWidth: minWidth,
             maxWidth: .infinity,
             minHeight: 200,
             maxHeight: .infinity,
@@ -62,9 +65,15 @@ struct MyDayView: View {
 struct MyDayWeatherView: View {
     var body: some View {
         HStack(alignment: .bottom, spacing: 6) {
-            Image(systemName: "cloud.sun.bolt.fill")
-                .renderingMode(.original)
-                .font(.system(size: 60.0))
+            ZStack(alignment: .center) {
+                Circle()
+                    .fill(Color.blue)
+                    .frame(width: 100, height: 100)
+                
+                Image(systemName: "cloud.sun.bolt.fill")
+                    .renderingMode(.original)
+                    .font(.system(size: 50.0))
+            }
             
             let temperature = getLocalizedTemperature(temperatureInCelcius: 25.0)
             
@@ -104,5 +113,6 @@ struct MyDayRemindersView: View {
 struct MyDayView_Previews: PreviewProvider {
     static var previews: some View {
         MyDayView()
+            
     }
 }
