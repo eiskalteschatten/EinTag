@@ -53,16 +53,14 @@ fileprivate struct CalendarsOptionsSheetViewContent: View {
                         .padding(.bottom)
                         #else
                         HeaderElement(text: source)
-                            .padding(.horizontal)
+                            .padding([.top, .horizontal])
                         
-                        Divider()
-                
                         VStack(alignment: .leading) {
                             ForEach(calendarsBySource, id: \.self) { calendar in
                                 CalendarsOptionView(calendar: calendar)
                             }
                         }
-                        .padding(.horizontal)
+                        .padding([.bottom, .horizontal])
                         #endif
                     }
                 }

@@ -9,9 +9,11 @@ import SwiftUI
 
 struct HeaderElement: View {
     private var text: String
+    private var showDivider: Bool
     
-    init(text: String) {
+    init(text: String, showDivider: Bool = true) {
         self.text = text
+        self.showDivider = showDivider
     }
     
     var body: some View {
@@ -21,7 +23,9 @@ struct HeaderElement: View {
                 .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
                 .opacity(0.7)
             
-            Divider()
+            if showDivider {
+                Divider()
+            }
         }
         .padding(.bottom, 8)
     }
