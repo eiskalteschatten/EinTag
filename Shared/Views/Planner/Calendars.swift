@@ -42,6 +42,7 @@ fileprivate struct CalendarsOptionsSheetViewContent: View {
                     ForEach(sources, id: \.self) { source in
                         let calendarsBySource = plannerData.calendarsBySource[source] ?? []
                         
+                        #if os(macOS)
                         Text(source)
                             .bold()
                         
@@ -52,7 +53,21 @@ fileprivate struct CalendarsOptionsSheetViewContent: View {
                                 CalendarsOptionView(calendar: calendar)
                             }
                         }
-                        .padding(.bottom)
+                        .padding([.bottom, .horizontal])
+                        #else
+                        Text(source)
+                            .bold()
+                            .padding([.top, .horizontal])
+                        
+                        Divider()
+                
+                        VStack(alignment: .leading) {
+                            ForEach(calendarsBySource, id: \.self) { calendar in
+                                CalendarsOptionView(calendar: calendar)
+                            }
+                        }
+                        .padding(.horizontal)
+                        #endif
                     }
                 }
             }
@@ -79,9 +94,15 @@ fileprivate struct CalendarsOptionView: View {
         HStack {
             let circle = "circle" //listItem.done ? "checkmark.circle.fill" : "circle"
             
+            #if os(macOS)
             Image(systemName: circle)
                 .font(.system(size: 20.0))
                 .foregroundColor(Color(calendar.color))
+            #else
+            Image(systemName: circle)
+                .font(.system(size: 20.0))
+                .foregroundColor(Color(UIColor(cgColor: calendar.cgColor!)))
+            #endif
             
             Text(self.calendar.title)
         }
