@@ -15,15 +15,18 @@ class PlannerData: ObservableObject {
     @Published var eventsDict: [Date: [EKEvent]] = [:]
     
     private var eventStore = EKEventStore()
+    private var startDate: Date
+    private var endDate: Date
     
-    init() {
+    init(startDate: Date, endDate: Date) {
+        self.startDate = startDate
+        self.endDate = endDate
+        
         eventStore.requestAccess(to: .event, completion:
             {(granted: Bool, error: Error?) -> Void in
                 if granted {
                     DispatchQueue.main.async(execute: {
-                        let today = Date()
-                        let oneWeekFromToday = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: today)!
-                        self.fetchEventsFromCalendar(withStart: today, end: oneWeekFromToday)
+                        self.fetchEventsFromCalendar()
                         self.finishedLoading = true
                     })
                 }
@@ -33,13 +36,13 @@ class PlannerData: ObservableObject {
             })
     }
     
-    func fetchEventsFromCalendar(withStart: Date, end: Date) {
+    func fetchEventsFromCalendar() {
         var allEvents: [EKEvent] = []
         
         self.calendars = self.eventStore.calendars(for: .event)
         
         for calendar in self.calendars {
-            let predicate = self.eventStore.predicateForEvents(withStart: withStart.startOfDay, end: end.endOfDay, calendars: [calendar])
+            let predicate = self.eventStore.predicateForEvents(withStart: self.startDate.startOfDay, end: self.endDate.endOfDay, calendars: [calendar])
             let events = self.eventStore.events(matching: predicate)
             allEvents.append(contentsOf: events)
         }
@@ -49,6 +52,8 @@ class PlannerData: ObservableObject {
     }
     
     private func transformData() {
+        self.eventsDict = [:]
+        
         for event in self.allEvents {
             if eventsDict[event.startDate.startOfDay] == nil {
                 eventsDict[event.startDate.startOfDay] = []

@@ -84,7 +84,10 @@ struct PlannerDayView: View {
 
 struct PlannerDayView_Previews: PreviewProvider {
     static var previews: some View {
+        let startDate = Date()
+        let endDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date())!
+        
         PlannerDayView(date: Date())
-            .environmentObject(PlannerData())
+            .environmentObject(PlannerData(startDate: startDate, endDate: endDate))
     }
 }
