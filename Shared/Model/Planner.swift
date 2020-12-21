@@ -13,6 +13,7 @@ class PlannerData: ObservableObject {
     @Published var allEvents: [EKEvent] = []
     @Published var finishedLoading: Bool = false
     @Published var eventsDict: [Date: [EKEvent]] = [:]
+    @Published var calendarsBySource: [String: [EKCalendar]] = [:]
     
     private var eventStore = EKEventStore()
     private var startDate: Date
@@ -53,6 +54,7 @@ class PlannerData: ObservableObject {
     
     private func transformData() {
         var _eventsDict: [Date: [EKEvent]] = [:]
+        var _calendarsBySource: [String: [EKCalendar]] = [:]
         
         for event in self.allEvents {
             if _eventsDict[event.startDate.startOfDay] == nil {
@@ -65,7 +67,7 @@ class PlannerData: ObservableObject {
         for (key, value) in _eventsDict {
             _eventsDict[key] = value.sorted {
                 if $0.isAllDay && !$1.isAllDay {
-                    return $0.title < $1.title
+                    return $0.title.lowercased() < $1.title.lowercased()
                 }
                 
                 return $0.startDate < $1.startDate
@@ -73,5 +75,23 @@ class PlannerData: ObservableObject {
         }
         
         self.eventsDict = _eventsDict
+        
+        for calendar in self.calendars {
+            let source = calendar.source.title
+            
+            if _calendarsBySource[source] == nil {
+                _calendarsBySource[source] = []
+            }
+            
+            _calendarsBySource[source]?.append(calendar)
+        }
+        
+        for (key, value) in _calendarsBySource {
+            _calendarsBySource[key] = value.sorted {
+                return $0.source.title.lowercased() < $1.source.title.lowercased()
+            }
+        }
+        
+        self.calendarsBySource = _calendarsBySource
     }
 }

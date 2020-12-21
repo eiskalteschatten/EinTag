@@ -37,7 +37,7 @@ struct PlannerView: View {
             ToolbarItem(placement: .primaryAction) {
                 Menu {
                     Button(action: { self.showingCalendarOptions.toggle() }) {
-                        Label("Calendars", systemImage: "calendar.circle")
+                        Label("Manage Calendars", systemImage: "calendar.circle")
                     }
                 }
                 label: {
