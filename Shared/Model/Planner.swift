@@ -65,7 +65,7 @@ class PlannerData: ObservableObject {
         for (key, value) in _eventsDict {
             _eventsDict[key] = value.sorted {
                 if $0.isAllDay && !$1.isAllDay {
-                    return true
+                    return $0.title < $1.title
                 }
                 
                 return $0.startDate < $1.startDate
