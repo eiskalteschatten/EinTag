@@ -83,7 +83,7 @@ fileprivate struct CalendarsOptionView: View {
     
     var body: some View {
         HStack {
-            let circle = "circle" //listItem.done ? "checkmark.circle.fill" : "circle"
+            let circle = "checkmark.circle.fill" //listItem.done ? "checkmark.circle.fill" : "circle"
             
             #if os(macOS)
             Image(systemName: circle)
@@ -97,7 +97,19 @@ fileprivate struct CalendarsOptionView: View {
             
             Text(self.calendar.title)
         }
-        .frame(height: 40)
+        .frame(
+            minWidth: 0,
+            maxWidth: .infinity,
+            minHeight: 40,
+            maxHeight: .infinity,
+            alignment: .leading
+        )
+        .gesture(
+            TapGesture()
+                .onEnded { _ in
+                    print("tap")
+                }
+        )
     }
 }
 
