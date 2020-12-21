@@ -14,7 +14,7 @@ struct CalendarsOptionsSheetView: View {
     var body: some View {
         #if os(macOS)
         CalendarsOptionsSheetViewContent(showingCalendarOptions: $showingCalendarOptions)
-            .frame(minWidth: 200, minHeight: 200, alignment: .topLeading)
+            .frame(maxWidth: .infinity, maxHeight: 500)
             .padding()
         #else
         NavigationView {
