@@ -40,9 +40,7 @@ struct PlannerDayView: View {
     }
     
     var body: some View {
-        let events = plannerData.events.filter { event in
-            return date.isEqual(to: event.startDate, toGranularity: .day)
-        }
+        let events = plannerData.eventsDict[date.startOfDay] ?? []
         
         VStack(alignment: .leading, spacing: 0) {
             if !hideDate {
@@ -62,10 +60,8 @@ struct PlannerDayView: View {
                 if !plannerData.finishedLoading {
                     HStack {
                         Spacer()
-                        
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle())
-                        
                         Spacer()
                     }
                 }
