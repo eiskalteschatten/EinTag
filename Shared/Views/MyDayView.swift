@@ -68,7 +68,7 @@ struct MyDayView: View {
 struct MyDayPlannerView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("Planner")
+            Text("Events")
                 .font(.title)
 
             PlannerDayView(date: Date(), hideDate: true)

@@ -54,11 +54,11 @@ struct MainSidebarContent: View {
                     }
                 )
                 NavigationLink(
-                    destination: PlannerView().navigationTitle("Planner"),
+                    destination: PlannerView().navigationTitle("My Week"),
                     tag: Screen.planner,
                     selection: $state,
                     label: {
-                        Label("Planner", systemImage: "calendar")
+                        Label("My Week", systemImage: "calendar")
                     }
                 )
                 NavigationLink(
