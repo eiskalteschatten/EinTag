@@ -16,6 +16,8 @@ struct MyDayView: View {
     let minWidth: CGFloat = 300
     #endif
     
+    @State var showingCalendarOptions = false
+    
     var body: some View {
         VStack(alignment: .leading) {
             ScrollView {
@@ -55,17 +57,30 @@ struct MyDayView: View {
         )
         .toolbar {
             #if os(macOS)
-            ToolbarItem(placement: .primaryAction) {
+            ToolbarItem {
                 Button(action: {}) {
                     Label("Refresh", systemImage: "arrow.clockwise")
                 }
             }
             #endif
+            ToolbarItem(placement: .primaryAction) {
+                Menu {
+                    Button(action: { self.showingCalendarOptions.toggle() }) {
+                        Label("Calendars", systemImage: "calendar.circle")
+                    }
+                }
+                label: {
+                    Label("Menu", systemImage: "ellipsis.circle")
+                }
+            }
+        }
+        .sheet(isPresented: $showingCalendarOptions) {
+            CalendarsOptionsSheetView(showingCalendarOptions: $showingCalendarOptions)
         }
     }
 }
 
-struct MyDayPlannerView: View {
+fileprivate struct MyDayPlannerView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Events")
@@ -76,7 +91,7 @@ struct MyDayPlannerView: View {
     }
 }
 
-struct MyDayRemindersView: View {
+fileprivate struct MyDayRemindersView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Reminders")
