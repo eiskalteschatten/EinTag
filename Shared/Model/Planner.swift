@@ -14,6 +14,7 @@ class PlannerData: ObservableObject {
     @Published var finishedLoading: Bool = false
     @Published var eventsDict: [Date: [EKEvent]] = [:]
     @Published var calendarsBySource: [String: [EKCalendar]] = [:]
+    @Published var activatedCalendars: [String] = UserDefaults.standard.stringArray(forKey: USER_DEFAULT_ACTIVATED_CALENDARS_KEY) ?? []
     
     private var eventStore = EKEventStore()
     private var startDate: Date
@@ -42,6 +43,11 @@ class PlannerData: ObservableObject {
         
         self.calendars = self.eventStore.calendars(for: .event)
         
+        if (self.activatedCalendars.count == 0) {
+            self.activatedCalendars = self.calendars.map { $0.calendarIdentifier }
+            self.updateActivatedCalendars()
+        }
+        
         for calendar in self.calendars {
             let predicate = self.eventStore.predicateForEvents(withStart: self.startDate.startOfDay, end: self.endDate.endOfDay, calendars: [calendar])
             let events = self.eventStore.events(matching: predicate)
@@ -52,29 +58,28 @@ class PlannerData: ObservableObject {
         self.transformData()
     }
     
+    func disableCalendar(calendarIdentifier: String) {
+        if let index = self.activatedCalendars.firstIndex(of: calendarIdentifier) {
+            self.activatedCalendars.remove(at: index)
+        }
+        
+        self.updateActivatedCalendars()
+        self.transformData()
+    }
+    
+    func enableCalendar(calendarIdentifier: String) {
+        self.activatedCalendars.append(calendarIdentifier)
+        self.updateActivatedCalendars()
+    }
+    
+    private func updateActivatedCalendars() {
+        UserDefaults.standard.set(self.activatedCalendars, forKey: USER_DEFAULT_ACTIVATED_CALENDARS_KEY)
+        self.transformData()
+    }
+    
     private func transformData() {
-        var _eventsDict: [Date: [EKEvent]] = [:]
         var _calendarsBySource: [String: [EKCalendar]] = [:]
-        
-        for event in self.allEvents {
-            if _eventsDict[event.startDate.startOfDay] == nil {
-                _eventsDict[event.startDate.startOfDay] = []
-            }
-            
-            _eventsDict[event.startDate.startOfDay]?.append(event)
-        }
-        
-        for (key, value) in _eventsDict {
-            _eventsDict[key] = value.sorted {
-                if $0.isAllDay && !$1.isAllDay {
-                    return $0.title.lowercased() < $1.title.lowercased()
-                }
-                
-                return $0.startDate < $1.startDate
-            }
-        }
-        
-        self.eventsDict = _eventsDict
+        var _eventsDict: [Date: [EKEvent]] = [:]
         
         for calendar in self.calendars {
             let source = calendar.source.title
@@ -93,5 +98,27 @@ class PlannerData: ObservableObject {
         }
         
         self.calendarsBySource = _calendarsBySource
+        
+        for event in self.allEvents {
+            if _eventsDict[event.startDate.startOfDay] == nil {
+                _eventsDict[event.startDate.startOfDay] = []
+            }
+            
+            if self.activatedCalendars.contains(event.calendar.calendarIdentifier) {
+                _eventsDict[event.startDate.startOfDay]?.append(event)
+            }
+        }
+        
+        for (key, value) in _eventsDict {
+            _eventsDict[key] = value.sorted {
+                if $0.isAllDay && !$1.isAllDay {
+                    return $0.title.lowercased() < $1.title.lowercased()
+                }
+                
+                return $0.startDate < $1.startDate
+            }
+        }
+        
+        self.eventsDict = _eventsDict
     }
 }

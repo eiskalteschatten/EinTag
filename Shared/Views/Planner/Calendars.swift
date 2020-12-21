@@ -75,6 +75,7 @@ fileprivate struct CalendarsOptionsSheetViewContent: View {
 
 fileprivate struct CalendarsOptionView: View {
     @Environment(\.defaultMinListRowHeight) var minRowHeight
+    @EnvironmentObject var plannerData: PlannerData
     private var calendar: EKCalendar
     
     init(calendar: EKCalendar) {
@@ -82,8 +83,10 @@ fileprivate struct CalendarsOptionView: View {
     }
     
     var body: some View {
+        let calendarActivated = plannerData.activatedCalendars.contains(calendar.calendarIdentifier)
+        
         HStack {
-            let circle = "checkmark.circle.fill" //listItem.done ? "checkmark.circle.fill" : "circle"
+            let circle = calendarActivated ? "checkmark.circle.fill" : "circle"
             
             #if os(macOS)
             Image(systemName: circle)
@@ -107,7 +110,12 @@ fileprivate struct CalendarsOptionView: View {
         .gesture(
             TapGesture()
                 .onEnded { _ in
-                    print("tap")
+                    if calendarActivated {
+                        plannerData.disableCalendar(calendarIdentifier: calendar.calendarIdentifier)
+                    }
+                    else {
+                        plannerData.enableCalendar(calendarIdentifier: calendar.calendarIdentifier)
+                    }
                 }
         )
     }
