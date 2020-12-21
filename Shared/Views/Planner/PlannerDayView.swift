@@ -44,11 +44,7 @@ struct PlannerDayView: View {
         
         VStack(alignment: .leading, spacing: 0) {
             if !hideDate {
-                Text(getLocalizedDate(date: date))
-                    .font(.subheadline)
-                    .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
-                    .opacity(0.7)
-                    .padding(.bottom, 15)
+                HeaderElement(text: getLocalizedDate(date: date))
             }
             
             if events.count > 0 {

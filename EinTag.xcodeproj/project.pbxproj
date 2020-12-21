@@ -25,6 +25,8 @@
 		93BE3EDE258E28F200EA17CC /* MyDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3EDC258E28F100EA17CC /* MyDayView.swift */; };
 		93BE3EE4258E2C4200EA17CC /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3EE3258E2C4200EA17CC /* RemindersView.swift */; };
 		93BE3EE5258E2C4200EA17CC /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3EE3258E2C4200EA17CC /* RemindersView.swift */; };
+		93CC053D2591373900365484 /* Elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CC053C2591373900365484 /* Elements.swift */; };
+		93CC053E2591373900365484 /* Elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CC053C2591373900365484 /* Elements.swift */; };
 		93CD8223258F4D63009AE52B /* RemindersDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD8222258F4D63009AE52B /* RemindersDayView.swift */; };
 		93CD8224258F4D63009AE52B /* RemindersDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD8222258F4D63009AE52B /* RemindersDayView.swift */; };
 		93CD822A258F4DAB009AE52B /* RemindersListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD8229258F4DAB009AE52B /* RemindersListItemView.swift */; };
@@ -91,6 +93,7 @@
 		93BE3ED5258E1F8500EA17CC /* PlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerView.swift; sourceTree = "<group>"; };
 		93BE3EDC258E28F100EA17CC /* MyDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDayView.swift; sourceTree = "<group>"; };
 		93BE3EE3258E2C4200EA17CC /* RemindersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersView.swift; sourceTree = "<group>"; };
+		93CC053C2591373900365484 /* Elements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elements.swift; sourceTree = "<group>"; };
 		93CD8222258F4D63009AE52B /* RemindersDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersDayView.swift; sourceTree = "<group>"; };
 		93CD8229258F4DAB009AE52B /* RemindersListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersListItemView.swift; sourceTree = "<group>"; };
 		93CD8230258F4E12009AE52B /* RemindersListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersListItem.swift; sourceTree = "<group>"; };
@@ -221,6 +224,7 @@
 				93E01C6E258E6E7100DD4808 /* Planner */,
 				93BE3EDC258E28F100EA17CC /* MyDayView.swift */,
 				93E01C67258E56B500DD4808 /* AdaptiveStack.swift */,
+				93CC053C2591373900365484 /* Elements.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -444,6 +448,7 @@
 				93E01C49258E512200DD4808 /* Helpers.swift in Sources */,
 				93BE3EDD258E28F100EA17CC /* MyDayView.swift in Sources */,
 				93BE3EE4258E2C4200EA17CC /* RemindersView.swift in Sources */,
+				93CC053D2591373900365484 /* Elements.swift in Sources */,
 				93BE3EB1258E02E500EA17CC /* EinTagApp.swift in Sources */,
 				933D541E2590E76200858652 /* Calendars.swift in Sources */,
 				93BE3ED6258E1F8500EA17CC /* PlannerView.swift in Sources */,
@@ -471,6 +476,7 @@
 				93E01C4A258E512200DD4808 /* Helpers.swift in Sources */,
 				93BE3EDE258E28F200EA17CC /* MyDayView.swift in Sources */,
 				93BE3EE5258E2C4200EA17CC /* RemindersView.swift in Sources */,
+				93CC053E2591373900365484 /* Elements.swift in Sources */,
 				93BE3EB2258E02E500EA17CC /* EinTagApp.swift in Sources */,
 				933D541F2590E76200858652 /* Calendars.swift in Sources */,
 				93BE3ED7258E1F8500EA17CC /* PlannerView.swift in Sources */,

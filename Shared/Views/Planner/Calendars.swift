@@ -38,26 +38,22 @@ fileprivate struct CalendarsOptionsSheetViewContent: View {
         VStack {
             ScrollView {
                 let sources = plannerData.calendarsBySource.map{ $0.key }
-                VStack(alignment: .leading) {
+                VStack(alignment: .leading, spacing: 0) {
                     ForEach(sources, id: \.self) { source in
                         let calendarsBySource = plannerData.calendarsBySource[source] ?? []
                         
                         #if os(macOS)
-                        Text(source)
-                            .bold()
-                        
-                        Divider()
+                        HeaderElement(text: source)
                 
-                        VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 0) {
                             ForEach(calendarsBySource, id: \.self) { calendar in
                                 CalendarsOptionView(calendar: calendar)
                             }
                         }
-                        .padding([.bottom, .horizontal])
+                        .padding(.bottom)
                         #else
-                        Text(source)
-                            .bold()
-                            .padding([.top, .horizontal])
+                        HeaderElement(text: source)
+                            .padding(.horizontal)
                         
                         Divider()
                 
