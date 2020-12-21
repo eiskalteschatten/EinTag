@@ -52,14 +52,26 @@ class PlannerData: ObservableObject {
     }
     
     private func transformData() {
-        self.eventsDict = [:]
+        var _eventsDict: [Date: [EKEvent]] = [:]
         
         for event in self.allEvents {
-            if eventsDict[event.startDate.startOfDay] == nil {
-                eventsDict[event.startDate.startOfDay] = []
+            if _eventsDict[event.startDate.startOfDay] == nil {
+                _eventsDict[event.startDate.startOfDay] = []
             }
             
-            eventsDict[event.startDate.startOfDay]?.append(event)
+            _eventsDict[event.startDate.startOfDay]?.append(event)
         }
+        
+        for (key, value) in _eventsDict {
+            _eventsDict[key] = value.sorted {
+                if $0.isAllDay && !$1.isAllDay {
+                    return true
+                }
+                
+                return $0.startDate < $1.startDate
+            }
+        }
+        
+        self.eventsDict = _eventsDict
     }
 }
