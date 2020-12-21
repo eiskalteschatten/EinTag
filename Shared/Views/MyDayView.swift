@@ -63,7 +63,7 @@ struct MyDayView: View {
                 }
             }
             #endif
-            ToolbarItem(placement: .primaryAction) {
+            ToolbarItem() {
                 Menu {
                     Button(action: { self.showingCalendarOptions.toggle() }) {
                         Label("Manage Calendars", systemImage: "calendar.circle")

@@ -67,10 +67,7 @@ fileprivate struct CalendarsOptionsSheetViewContent: View {
             }
             
             #if os(macOS)
-            HStack {
-                Button("OK") { self.showingCalendarOptions = false }
-            }
-            .padding()
+            Button("OK") { self.showingCalendarOptions = false }
             #endif
         }
     }
