@@ -69,7 +69,6 @@ struct RemindersDayView: View {
                 }
             }
         }
-        .padding(.vertical)
         .frame(
             minWidth: 0,
             maxWidth: .infinity,

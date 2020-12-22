@@ -39,10 +39,7 @@ struct MyDayView: View {
             
                 AdaptiveStack(verticalAlignment: .top) {
                     MyDayPlannerView()
-                        .padding(.horizontal)
-                    
                     MyDayRemindersView()
-                        .padding(.horizontal)
                 }
             }
         }
@@ -85,7 +82,9 @@ fileprivate struct MyDayPlannerView: View {
                 .font(.title)
 
             PlannerDayView(date: Date(), hideDate: true)
+                .padding(.vertical)
         }
+        .padding(.horizontal)
     }
 }
 
@@ -96,7 +95,9 @@ fileprivate struct MyDayRemindersView: View {
                 .font(.title)
 
             RemindersDayView(date: Date(), hideDate: true)
+                .padding(.vertical)
         }
+        .padding(.horizontal)
     }
 }
 
