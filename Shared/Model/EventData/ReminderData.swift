@@ -10,8 +10,7 @@ import EventKit
 
 class ReminderData: AbstractEventData {
     init(startDate: Date, endDate: Date) {
-        super.init(startDate: startDate, endDate: endDate, entityType: EKEntityType.reminder)
-        self.activatedCalendars = UserDefaults.standard.stringArray(forKey: USER_DEFAULT_ACTIVATED_REMINDERS_KEY) ?? []
+        super.init(startDate: startDate, endDate: endDate, entityType: EKEntityType.reminder, userDefaultsKey: USER_DEFAULT_ACTIVATED_REMINDERS_KEY)
     }
 }
 

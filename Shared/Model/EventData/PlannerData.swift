@@ -10,7 +10,6 @@ import EventKit
 
 class PlannerData: AbstractEventData {
     init(startDate: Date, endDate: Date) {
-        super.init(startDate: startDate, endDate: endDate, entityType: EKEntityType.event)
-        self.activatedCalendars = UserDefaults.standard.stringArray(forKey: USER_DEFAULT_ACTIVATED_CALENDARS_KEY) ?? []
+        super.init(startDate: startDate, endDate: endDate, entityType: EKEntityType.event, userDefaultsKey: USER_DEFAULT_ACTIVATED_CALENDARS_KEY)
     }
 }

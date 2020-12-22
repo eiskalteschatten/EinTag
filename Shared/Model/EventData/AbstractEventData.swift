@@ -21,11 +21,14 @@ class AbstractEventData: ObservableObject {
     private var startDate: Date
     private var endDate: Date
     private var entityType: EKEntityType
+    private var userDefaultsKey: String
     
-    init(startDate: Date, endDate: Date, entityType: EKEntityType) {
+    init(startDate: Date, endDate: Date, entityType: EKEntityType, userDefaultsKey: String) {
         self.startDate = startDate
         self.endDate = endDate
         self.entityType = entityType
+        self.userDefaultsKey = userDefaultsKey
+        self.activatedCalendars = UserDefaults.standard.stringArray(forKey: userDefaultsKey) ?? []
         
         eventStore.requestAccess(to: self.entityType, completion:
             {(granted: Bool, error: Error?) -> Void in
@@ -75,7 +78,7 @@ class AbstractEventData: ObservableObject {
     }
     
     private func updateActivatedCalendars() {
-        UserDefaults.standard.set(self.activatedCalendars, forKey: USER_DEFAULT_ACTIVATED_CALENDARS_KEY)
+        UserDefaults.standard.set(self.activatedCalendars, forKey: userDefaultsKey)
         self.transformEvents()
     }
     
