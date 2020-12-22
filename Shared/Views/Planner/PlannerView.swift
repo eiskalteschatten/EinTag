@@ -16,8 +16,13 @@ struct PlannerView: View {
                 let dates = getDatesForNextWeek()
                 
                 ForEach(dates, id: \.self) { date in
-                    PlannerDayView(date: date)
-                        .padding(.horizontal)
+                    VStack {
+                        PlannerDayView(date: date)
+                            .padding([.horizontal, .top])
+                        
+                        RemindersDayView(date: date, hideDate: true)
+                            .padding()
+                    }
                 }
             }
         }
