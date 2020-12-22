@@ -1,5 +1,5 @@
 //
-//  Reminders.swift
+//  AbstractEventData.swift
 //  EinTag
 //
 //  Created by Alex Seifert on 12/22/20.
@@ -8,24 +8,26 @@
 import SwiftUI
 import EventKit
 
-class ReminderData: ObservableObject {
+class AbstractEventData: ObservableObject {
     @Published var calendars: [EKCalendar] = []
     @Published var allEvents: [EKEvent] = []
     @Published var finishedLoading: Bool = false
     @Published var eventsDict: [Date: [EKEvent]] = [:]
     @Published var calendarsBySource: [String: [EKCalendar]] = [:]
     @Published var sortedCalendarSources: [String] = []
-    @Published var activatedCalendars: [String] = UserDefaults.standard.stringArray(forKey: USER_DEFAULT_ACTIVATED_CALENDARS_KEY) ?? []
+    @Published var activatedCalendars: [String] = []
     
     private var eventStore = EKEventStore()
     private var startDate: Date
     private var endDate: Date
+    private var entityType: EKEntityType
     
-    init(startDate: Date, endDate: Date) {
+    init(startDate: Date, endDate: Date, entityType: EKEntityType) {
         self.startDate = startDate
         self.endDate = endDate
+        self.entityType = entityType
         
-        eventStore.requestAccess(to: .reminder, completion:
+        eventStore.requestAccess(to: self.entityType, completion:
             {(granted: Bool, error: Error?) -> Void in
                 if granted {
                     DispatchQueue.main.async(execute: {
@@ -42,7 +44,7 @@ class ReminderData: ObservableObject {
     func fetchEventsFromCalendar() {
         var allEvents: [EKEvent] = []
         
-        self.calendars = self.eventStore.calendars(for: .reminder)
+        self.calendars = self.eventStore.calendars(for: self.entityType)
         
         if (self.activatedCalendars.count == 0) {
             self.activatedCalendars = self.calendars.map { $0.calendarIdentifier }
