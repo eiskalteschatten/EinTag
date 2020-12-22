@@ -35,8 +35,6 @@
 		93CD8224258F4D63009AE52B /* RemindersDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD8222258F4D63009AE52B /* RemindersDayView.swift */; };
 		93CD822A258F4DAB009AE52B /* RemindersListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD8229258F4DAB009AE52B /* RemindersListItemView.swift */; };
 		93CD822B258F4DAB009AE52B /* RemindersListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD8229258F4DAB009AE52B /* RemindersListItemView.swift */; };
-		93CD8231258F4E12009AE52B /* RemindersListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD8230258F4E12009AE52B /* RemindersListItem.swift */; };
-		93CD8232258F4E12009AE52B /* RemindersListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD8230258F4E12009AE52B /* RemindersListItem.swift */; };
 		93CD8239258F5ECC009AE52B /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD8238258F5ECC009AE52B /* WeatherView.swift */; };
 		93CD823A258F5ECC009AE52B /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD8238258F5ECC009AE52B /* WeatherView.swift */; };
 		93CD8240258F644E009AE52B /* WeatherDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CD823F258F644E009AE52B /* WeatherDay.swift */; };
@@ -55,8 +53,6 @@
 		93E01C75258E6E9800DD4808 /* PlannerDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E01C73258E6E9800DD4808 /* PlannerDayView.swift */; };
 		93E01C7F258E858A00DD4808 /* PlannerListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E01C7E258E858A00DD4808 /* PlannerListItemView.swift */; };
 		93E01C80258E858A00DD4808 /* PlannerListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E01C7E258E858A00DD4808 /* PlannerListItemView.swift */; };
-		93E01C8E258E866D00DD4808 /* PlannerListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E01C8D258E866D00DD4808 /* PlannerListItem.swift */; };
-		93E01C8F258E866D00DD4808 /* PlannerListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E01C8D258E866D00DD4808 /* PlannerListItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,7 +98,6 @@
 		93CC053C2591373900365484 /* Elements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elements.swift; sourceTree = "<group>"; };
 		93CD8222258F4D63009AE52B /* RemindersDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersDayView.swift; sourceTree = "<group>"; };
 		93CD8229258F4DAB009AE52B /* RemindersListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersListItemView.swift; sourceTree = "<group>"; };
-		93CD8230258F4E12009AE52B /* RemindersListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersListItem.swift; sourceTree = "<group>"; };
 		93CD8238258F5ECC009AE52B /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		93CD823F258F644E009AE52B /* WeatherDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDay.swift; sourceTree = "<group>"; };
 		93CD824D258F737A009AE52B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -112,7 +107,6 @@
 		93E01C67258E56B500DD4808 /* AdaptiveStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptiveStack.swift; sourceTree = "<group>"; };
 		93E01C73258E6E9800DD4808 /* PlannerDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerDayView.swift; sourceTree = "<group>"; };
 		93E01C7E258E858A00DD4808 /* PlannerListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerListItemView.swift; sourceTree = "<group>"; };
-		93E01C8D258E866D00DD4808 /* PlannerListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerListItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,8 +243,6 @@
 			isa = PBXGroup;
 			children = (
 				930E74F22592051100610899 /* EventData */,
-				93E01C8D258E866D00DD4808 /* PlannerListItem.swift */,
-				93CD8230258F4E12009AE52B /* RemindersListItem.swift */,
 				93CD823F258F644E009AE52B /* WeatherDay.swift */,
 			);
 			path = Model;
@@ -457,7 +449,6 @@
 				93CD825B258F74B7009AE52B /* MiniCalendarView.swift in Sources */,
 				93CD8223258F4D63009AE52B /* RemindersDayView.swift in Sources */,
 				93D91F0B258F96C1000B61B6 /* GlobalExtensions.swift in Sources */,
-				93CD8231258F4E12009AE52B /* RemindersListItem.swift in Sources */,
 				93CD8239258F5ECC009AE52B /* WeatherView.swift in Sources */,
 				93E01C7F258E858A00DD4808 /* PlannerListItemView.swift in Sources */,
 				93E01C68258E56B500DD4808 /* AdaptiveStack.swift in Sources */,
@@ -471,7 +462,6 @@
 				933D541E2590E76200858652 /* Calendars.swift in Sources */,
 				93BE3ED6258E1F8500EA17CC /* PlannerView.swift in Sources */,
 				9325C764258FAFAF00D63484 /* PlannerData.swift in Sources */,
-				93E01C8E258E866D00DD4808 /* PlannerListItem.swift in Sources */,
 				93CD8240258F644E009AE52B /* WeatherDay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,7 +477,6 @@
 				93CD825C258F74B7009AE52B /* MiniCalendarView.swift in Sources */,
 				93CD8224258F4D63009AE52B /* RemindersDayView.swift in Sources */,
 				93D91F0C258F96C1000B61B6 /* GlobalExtensions.swift in Sources */,
-				93CD8232258F4E12009AE52B /* RemindersListItem.swift in Sources */,
 				93CD823A258F5ECC009AE52B /* WeatherView.swift in Sources */,
 				93E01C80258E858A00DD4808 /* PlannerListItemView.swift in Sources */,
 				93E01C69258E56B500DD4808 /* AdaptiveStack.swift in Sources */,
@@ -501,7 +490,6 @@
 				933D541F2590E76200858652 /* Calendars.swift in Sources */,
 				93BE3ED7258E1F8500EA17CC /* PlannerView.swift in Sources */,
 				9325C765258FAFAF00D63484 /* PlannerData.swift in Sources */,
-				93E01C8F258E866D00DD4808 /* PlannerListItem.swift in Sources */,
 				93CD8241258F644E009AE52B /* WeatherDay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

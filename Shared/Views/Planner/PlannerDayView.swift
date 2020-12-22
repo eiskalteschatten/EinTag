@@ -8,25 +8,6 @@
 import SwiftUI
 import EventKit
 
-let plannerTestItems = [
-    PlannerListItem(
-        id: 0,
-        calendar: "Work",
-        calendarColor: Color.red,
-        title: "Test Event",
-        note: "A note of some sort goes here",
-        date: Date()
-    ),
-    PlannerListItem(
-        id: 1,
-        calendar: "Home",
-        calendarColor: Color.blue,
-        title: "Some other event",
-        note: "More notes!",
-        date: Date().addingTimeInterval(5 * 60)
-    )
-]
-
 struct PlannerDayView: View {
     @EnvironmentObject var plannerData: PlannerData
     
@@ -47,7 +28,7 @@ struct PlannerDayView: View {
             }
             
             if events.count > 0 {
-                ForEach(events, id: \.self) { event in
+                ForEach(events, id: \.self.calendarItemIdentifier) { event in
                     PlannerListItemView(event: event)
                 }
             }

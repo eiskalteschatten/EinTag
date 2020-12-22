@@ -7,27 +7,6 @@
 
 import SwiftUI
 
-let remindersTestItems = [
-    RemindersListItem(
-        id: 0,
-        list: "Band",
-        listColor: Color.green,
-        done: true,
-        title: "Test Reminder",
-        note: "A note of some sort goes here",
-        date: Date()
-    ),
-    RemindersListItem(
-        id: 1,
-        list: "Home",
-        listColor: Color.blue,
-        done: false,
-        title: "Some other reminder",
-        note: "More notes!",
-        date: Date().addingTimeInterval(5 * 60)
-    )
-]
-
 struct RemindersDayView: View {
     @EnvironmentObject var reminderData: ReminderData
     
@@ -50,7 +29,7 @@ struct RemindersDayView: View {
             }
             
             if reminders.count > 0 {
-                ForEach(reminders, id: \.self) { reminder in
+                ForEach(reminders, id: \.self.calendarItemIdentifier) { reminder in
                     RemindersListItemView(reminder: reminder)
                 }
             }
