@@ -54,11 +54,25 @@ struct RemindersListItemView: View {
                 Text(reminder.title)
                     .bold()
                 
-                if reminder.notes != nil {
-                    Text(reminder.notes!)
+                HStack(alignment: .bottom) {
+                    Text(reminder.calendar.title.trim())
                         .opacity(0.6)
-                        .font(.system(size: 11))
+                    
+                    if reminder.notes != nil {
+                        Text(reminder.notes!)
+                            .opacity(0.6)
+                            .font(.system(size: 11))
+                    }
                 }
+            }
+            
+            if reminder.dueDateComponents?.hour != nil && reminder.dueDateComponents?.minute != nil {
+                let date = (reminder.dueDateComponents?.date)!
+                Spacer()
+                
+                Text(getLocalizedTime(date: date))
+                    .opacity(0.8)
+                    .if(date < Date()) { $0.foregroundColor(Color.red) }
             }
         }
         .padding(.vertical, 5)

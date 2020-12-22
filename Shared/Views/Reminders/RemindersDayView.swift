@@ -41,7 +41,9 @@ struct RemindersDayView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            let reminders = reminderData.allReminders.filter { $0.dueDateComponents?.date?.startOfDay == date.startOfDay }
+            let reminders = reminderData.allReminders
+                .filter { $0.dueDateComponents?.date?.startOfDay == date.startOfDay }
+                .sorted { ($0.dueDateComponents?.date)! < ($1.dueDateComponents?.date)! }
             
             if !hideDate {
                 HeaderElement(text: getLocalizedDate(date: date))
