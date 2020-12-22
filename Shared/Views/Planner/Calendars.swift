@@ -37,9 +37,8 @@ fileprivate struct CalendarsOptionsSheetViewContent: View {
     var body: some View {
         VStack {
             ScrollView {
-                let sources = plannerData.calendarsBySource.map{ $0.key }
                 VStack(alignment: .leading, spacing: 0) {
-                    ForEach(sources, id: \.self) { source in
+                    ForEach(plannerData.sortedCalendarSources, id: \.self) { source in
                         let calendarsBySource = plannerData.calendarsBySource[source] ?? []
                         
                         #if os(macOS)

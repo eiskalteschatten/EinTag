@@ -14,6 +14,7 @@ class PlannerData: ObservableObject {
     @Published var finishedLoading: Bool = false
     @Published var eventsDict: [Date: [EKEvent]] = [:]
     @Published var calendarsBySource: [String: [EKCalendar]] = [:]
+    @Published var sortedCalendarSources: [String] = []
     @Published var activatedCalendars: [String] = UserDefaults.standard.stringArray(forKey: USER_DEFAULT_ACTIVATED_CALENDARS_KEY) ?? []
     
     private var eventStore = EKEventStore()
@@ -81,22 +82,16 @@ class PlannerData: ObservableObject {
         var _calendarsBySource: [String: [EKCalendar]] = [:]
         var _eventsDict: [Date: [EKEvent]] = [:]
         
-        for calendar in self.calendars {
-            let source = calendar.source.title
-            
+        self.sortedCalendarSources = Array(Set(self.calendars.map { $0.source.title })).sorted { $0.lowercased() < $1.lowercased() }
+        
+        for source in self.sortedCalendarSources {
             if _calendarsBySource[source] == nil {
                 _calendarsBySource[source] = []
             }
             
-            _calendarsBySource[source]?.append(calendar)
+            _calendarsBySource[source] = self.calendars.filter { $0.source.title == source }.sorted { $0.title.lowercased() < $1.title.lowercased() }
         }
-        
-        for (key, value) in _calendarsBySource {
-            _calendarsBySource[key] = value.sorted {
-                return $0.source.title.lowercased() < $1.source.title.lowercased()
-            }
-        }
-        
+
         self.calendarsBySource = _calendarsBySource
         
         for event in self.allEvents {
