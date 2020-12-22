@@ -9,19 +9,19 @@ import SwiftUI
 import EventKit
 
 struct CalendarOptionsSheetView: View {
-    @Binding var showSheet: Bool
+    @Binding var sheetView: CalendarRemindersSheetViewOptions?
     
     var body: some View {
         #if os(macOS)
-        CalendarOptionsSheetViewContent(showSheet: $showSheet)
+        CalendarOptionsSheetViewContent(sheetView: $sheetView)
             .frame(maxWidth: .infinity, maxHeight: 500)
             .padding()
         #else
         NavigationView {
-            CalendarOptionsSheetViewContent(showSheet: $showSheet)
+            CalendarOptionsSheetViewContent(sheetView: $sheetView)
                 .navigationBarTitle(Text("Calendars"), displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: {
-                    self.showSheet = false
+                    self.sheetView = nil
                 }) {
                     Text("Done").bold()
                 })
@@ -32,7 +32,7 @@ struct CalendarOptionsSheetView: View {
 
 fileprivate struct CalendarOptionsSheetViewContent: View {
     @EnvironmentObject var calendarData: CalendarData
-    @Binding var showSheet: Bool
+    @Binding var sheetView: CalendarRemindersSheetViewOptions?
     
     var body: some View {
         VStack {
@@ -66,7 +66,7 @@ fileprivate struct CalendarOptionsSheetViewContent: View {
             }
             
             #if os(macOS)
-            Button("OK") { self.showSheet = false }
+            Button("OK") { self.sheetView = nil }
             #endif
         }
     }
@@ -125,7 +125,7 @@ struct CalendarOptionsSheetView_Previews: PreviewProvider {
         let startDate = Date()
         let endDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date())!
         
-        CalendarOptionsSheetView(showSheet: .constant(true))
+        CalendarOptionsSheetView(sheetView: .constant(.calendarOptions))
             .environmentObject(CalendarData(startDate: startDate, endDate: endDate))
     }
 }

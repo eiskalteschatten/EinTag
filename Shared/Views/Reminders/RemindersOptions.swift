@@ -9,19 +9,19 @@ import SwiftUI
 import EventKit
 
 struct RemindersOptionsSheetView: View {
-    @Binding var showSheet: Bool
+    @Binding var sheetView: CalendarRemindersSheetViewOptions?
     
     var body: some View {
         #if os(macOS)
-        RemindersOptionsSheetViewContent(showSheet: $showSheet)
+        RemindersOptionsSheetViewContent(sheetView: $sheetView)
             .frame(maxWidth: .infinity, maxHeight: 500)
             .padding()
         #else
         NavigationView {
-            RemindersOptionsSheetViewContent(showSheet: $showSheet)
+            RemindersOptionsSheetViewContent(sheetView: $sheetView)
                 .navigationBarTitle(Text("Reminder Lists"), displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: {
-                    self.showSheet = false
+                    self.sheetView = nil
                 }) {
                     Text("Done").bold()
                 })
@@ -32,7 +32,7 @@ struct RemindersOptionsSheetView: View {
 
 fileprivate struct RemindersOptionsSheetViewContent: View {
     @EnvironmentObject var reminderData: ReminderData
-    @Binding var showSheet: Bool
+    @Binding var sheetView: CalendarRemindersSheetViewOptions?
     
     var body: some View {
         VStack {
@@ -66,7 +66,7 @@ fileprivate struct RemindersOptionsSheetViewContent: View {
             }
             
             #if os(macOS)
-            Button("OK") { self.showSheet = false }
+            Button("OK") { self.sheetView = nil }
             #endif
         }
     }
@@ -125,7 +125,7 @@ struct RemindersOptionsSheetView_Previews: PreviewProvider {
         let startDate = Date()
         let endDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date())!
         
-        RemindersOptionsSheetView(showSheet: .constant(true))
+        RemindersOptionsSheetView(sheetView: .constant(.remindersOptions))
             .environmentObject(CalendarData(startDate: startDate, endDate: endDate))
     }
 }

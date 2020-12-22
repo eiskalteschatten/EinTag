@@ -7,13 +7,8 @@
 
 import SwiftUI
 
-fileprivate enum SheetViewOptions {
-    case calendarOptions, remindersOptions
-}
-
 struct MyWeekView: View {
-    @State private var showSheet = false
-    @State private var sheetView: SheetViewOptions = .calendarOptions
+    @State private var sheetView: CalendarRemindersSheetViewOptions?
     
     var body: some View {
         ScrollView {
@@ -41,16 +36,10 @@ struct MyWeekView: View {
             #endif
             ToolbarItem() {
                 Menu {
-                    Button(action: {
-                        self.sheetView = .calendarOptions
-                        self.showSheet.toggle()
-                    }) {
+                    Button(action: { sheetView = .calendarOptions }) {
                         Label("Manage Calendars", systemImage: "calendar.circle")
                     }
-                    Button(action: {
-                        self.sheetView = .remindersOptions
-                        self.showSheet.toggle()
-                    }) {
+                    Button(action: { sheetView = .remindersOptions }) {
                         Label("Manage Reminder Lists", systemImage: "checkmark.circle")
                     }
                 }
@@ -59,12 +48,12 @@ struct MyWeekView: View {
                 }
             }
         }
-        .sheet(isPresented: $showSheet) {
-            if self.sheetView == .calendarOptions {
-                CalendarOptionsSheetView(showSheet: $showSheet)
-            }
-            else if self.sheetView == .remindersOptions {
-                RemindersOptionsSheetView(showSheet: $showSheet)
+        .sheet(item: $sheetView) { item in
+            switch item {
+            case .calendarOptions:
+                CalendarOptionsSheetView(sheetView: $sheetView)
+            case .remindersOptions:
+                RemindersOptionsSheetView(sheetView: $sheetView)
             }
         }
     }
