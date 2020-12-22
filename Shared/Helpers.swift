@@ -44,8 +44,8 @@ func getDatesForNextWeek() -> [Date] {
     var dates: [Date] = []
     
     while date <= endDate {
-        date = calendar.date(byAdding: .day, value: 1, to: date)!
         dates.append(date)
+        date = calendar.date(byAdding: .day, value: 1, to: date)!
     }
     
     return dates
