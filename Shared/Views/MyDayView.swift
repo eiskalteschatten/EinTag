@@ -104,6 +104,11 @@ fileprivate struct MyDayRemindersView: View {
 
 struct MyDayView_Previews: PreviewProvider {
     static var previews: some View {
+        let startDate = Date()
+        let endDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date())!
+        
         MyDayView()
+            .environmentObject(PlannerData(startDate: startDate, endDate: endDate))
+            .environmentObject(ReminderData(startDate: startDate, endDate: endDate))
     }
 }
