@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum Screen: Int {
-    case myDay, planner, reminders, weather, notes, news
+    case myDay, planner, weather, notes, news
 }
 
 struct ContentView: View {
@@ -59,14 +59,6 @@ struct MainSidebarContent: View {
                     selection: $state,
                     label: {
                         Label("My Week", systemImage: "calendar")
-                    }
-                )
-                NavigationLink(
-                    destination: RemindersView().navigationTitle("Reminders"),
-                    tag: Screen.reminders,
-                    selection: $state,
-                    label: {
-                        Label("Reminders", systemImage: "checkmark.circle")
                     }
                 )
                 NavigationLink(
