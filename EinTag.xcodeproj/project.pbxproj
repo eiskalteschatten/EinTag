@@ -176,10 +176,10 @@
 				93BE3E88258E02E200EA17CC /* EinTagApp.swift */,
 				93BE3ED2258E1D9500EA17CC /* Views */,
 				93BE3ED4258E1F2700EA17CC /* Model */,
-				93BE3E8A258E02E500EA17CC /* Assets.xcassets */,
 				93E01C48258E512200DD4808 /* Helpers.swift */,
 				93CD824D258F737A009AE52B /* Constants.swift */,
 				93D91F0A258F96C1000B61B6 /* GlobalExtensions.swift */,
+				93BE3E8A258E02E500EA17CC /* Assets.xcassets */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
