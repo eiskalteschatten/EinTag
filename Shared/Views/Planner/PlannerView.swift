@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct PlannerView: View {
-    @EnvironmentObject var plannerData: PlannerData
     @State var showingCalendarOptions = false
     
     var body: some View {
