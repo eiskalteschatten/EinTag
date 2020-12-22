@@ -29,6 +29,8 @@ let remindersTestItems = [
 ]
 
 struct RemindersDayView: View {
+    @EnvironmentObject var reminderData: ReminderData
+    
     let date: Date
     let hideDate: Bool
     
@@ -39,16 +41,30 @@ struct RemindersDayView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
+            let reminders = reminderData.allReminders.filter { $0.dueDateComponents?.date == date }
+            
             if !hideDate {
-                Text(getLocalizedDate(date: date))
-                    .font(.subheadline)
-                    .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
-                    .opacity(0.7)
-                    .padding(.bottom, 15)
+                HeaderElement(text: getLocalizedDate(date: date))
             }
             
-            ForEach(remindersTestItems) { item in
-                RemindersListItemView(listItem: item)
+            if reminders.count > 0 {
+                ForEach(reminders, id: \.self) { reminder in
+                    RemindersListItemView(reminder: reminder)
+                }
+            }
+            else {
+                if !reminderData.finishedLoading {
+                    HStack {
+                        Spacer()
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                        Spacer()
+                    }
+                }
+                else {
+                    Text("No reminders found.")
+                        .opacity(0.3)
+                }
             }
         }
         .padding(.vertical)

@@ -10,18 +10,16 @@ import EventKit
 
 class AbstractEventData: ObservableObject {
     @Published var calendars: [EKCalendar] = []
-    @Published var allEvents: [EKEvent] = []
     @Published var finishedLoading: Bool = false
-    @Published var eventsDict: [Date: [EKEvent]] = [:]
     @Published var calendarsBySource: [String: [EKCalendar]] = [:]
     @Published var sortedCalendarSources: [String] = []
     @Published var activatedCalendars: [String] = []
     
-    private var eventStore = EKEventStore()
-    private var startDate: Date
-    private var endDate: Date
-    private var entityType: EKEntityType
-    private var userDefaultsKey: String
+    internal var eventStore = EKEventStore()
+    internal var startDate: Date
+    internal var endDate: Date
+    internal var entityType: EKEntityType
+    internal var userDefaultsKey: String
     
     init(startDate: Date, endDate: Date, entityType: EKEntityType, userDefaultsKey: String) {
         self.startDate = startDate
@@ -45,23 +43,7 @@ class AbstractEventData: ObservableObject {
     }
     
     func fetchEventsFromCalendar() {
-        var allEvents: [EKEvent] = []
-        
-        self.calendars = self.eventStore.calendars(for: self.entityType)
-        
-        if (self.activatedCalendars.count == 0) {
-            self.activatedCalendars = self.calendars.map { $0.calendarIdentifier }
-            self.updateActivatedCalendars()
-        }
-        
-        for calendar in self.calendars {
-            let predicate = self.eventStore.predicateForEvents(withStart: self.startDate.startOfDay, end: self.endDate.endOfDay, calendars: [calendar])
-            let events = self.eventStore.events(matching: predicate)
-            allEvents.append(contentsOf: events)
-        }
-        
-        self.allEvents = allEvents
-        self.transformData()
+        fatalError("Must override this function")
     }
     
     func disableCalendar(calendarIdentifier: String) {
@@ -77,12 +59,12 @@ class AbstractEventData: ObservableObject {
         self.updateActivatedCalendars()
     }
     
-    private func updateActivatedCalendars() {
+    internal func updateActivatedCalendars() {
         UserDefaults.standard.set(self.activatedCalendars, forKey: userDefaultsKey)
         self.transformEvents()
     }
     
-    private func transformData() {
+    internal func transformData() {
         self.transformCalendars()
         self.transformEvents()
     }
@@ -103,30 +85,8 @@ class AbstractEventData: ObservableObject {
         self.calendarsBySource = _calendarsBySource
     }
     
-    private func transformEvents() {
-        var _eventsDict: [Date: [EKEvent]] = [:]
-        
-        for event in self.allEvents {
-            if _eventsDict[event.startDate.startOfDay] == nil {
-                _eventsDict[event.startDate.startOfDay] = []
-            }
-            
-            if self.activatedCalendars.contains(event.calendar.calendarIdentifier) {
-                _eventsDict[event.startDate.startOfDay]?.append(event)
-            }
-        }
-        
-        for (key, value) in _eventsDict {
-            _eventsDict[key] = value.sorted {
-                if $0.isAllDay && !$1.isAllDay {
-                    return $0.title.lowercased() < $1.title.lowercased()
-                }
-                
-                return $0.startDate < $1.startDate
-            }
-        }
-        
-        self.eventsDict = _eventsDict
+    internal func transformEvents() {
+        fatalError("Must override this function")
     }
 }
 

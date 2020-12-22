@@ -83,9 +83,7 @@ struct PlannerListItemView: View {
         }
         .padding(.vertical, 6)
         .if(event.endDate.isInThePast) { $0.opacity(0.4) }
-        .frame(
-            maxHeight: 50
-        )
+        .frame(maxHeight: 50)
     }
 }
 
