@@ -26,9 +26,8 @@ class ReminderData: AbstractEventData {
         let predicate = self.eventStore.predicateForReminders(in: nil)
         self.eventStore.fetchReminders(matching: predicate, completion: { reminders in
             self.allReminders = reminders ?? []
+            self.transformData()
         })
-        
-        self.transformData()
     }
     
     override func transformEvents() {}
