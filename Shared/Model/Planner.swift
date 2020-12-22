@@ -65,7 +65,6 @@ class PlannerData: ObservableObject {
         }
         
         self.updateActivatedCalendars()
-        self.transformData()
     }
     
     func enableCalendar(calendarIdentifier: String) {
@@ -75,12 +74,16 @@ class PlannerData: ObservableObject {
     
     private func updateActivatedCalendars() {
         UserDefaults.standard.set(self.activatedCalendars, forKey: USER_DEFAULT_ACTIVATED_CALENDARS_KEY)
-        self.transformData()
+        self.transformEvents()
     }
     
     private func transformData() {
+        self.transformCalendars()
+        self.transformEvents()
+    }
+    
+    private func transformCalendars() {
         var _calendarsBySource: [String: [EKCalendar]] = [:]
-        var _eventsDict: [Date: [EKEvent]] = [:]
         
         self.sortedCalendarSources = Array(Set(self.calendars.map { $0.source.title })).sorted { $0.lowercased() < $1.lowercased() }
         
@@ -93,6 +96,10 @@ class PlannerData: ObservableObject {
         }
 
         self.calendarsBySource = _calendarsBySource
+    }
+    
+    private func transformEvents() {
+        var _eventsDict: [Date: [EKEvent]] = [:]
         
         for event in self.allEvents {
             if _eventsDict[event.startDate.startOfDay] == nil {
