@@ -19,21 +19,21 @@ class PlannerData: AbstractEventData {
     override func fetchEventsFromCalendar() {
         var allEvents: [EKEvent] = []
         
-        self.calendars = super.eventStore.calendars(for: super.entityType)
+        self.calendars = self.eventStore.calendars(for: self.entityType)
         
         if (self.activatedCalendars.count == 0) {
             self.activatedCalendars = self.calendars.map { $0.calendarIdentifier }
-            super.updateActivatedCalendars()
+            self.updateActivatedCalendars()
         }
         
         for calendar in self.calendars {
-            let predicate = super.eventStore.predicateForEvents(withStart: self.startDate.startOfDay, end: self.endDate.endOfDay, calendars: [calendar])
-            let events = super.eventStore.events(matching: predicate)
+            let predicate = self.eventStore.predicateForEvents(withStart: self.startDate.startOfDay, end: self.endDate.endOfDay, calendars: [calendar])
+            let events = self.eventStore.events(matching: predicate)
             allEvents.append(contentsOf: events)
         }
         
         self.allEvents = allEvents
-        super.transformData()
+        self.transformData()
     }
     
     override func transformEvents() {

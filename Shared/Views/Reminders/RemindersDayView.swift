@@ -31,8 +31,8 @@ let remindersTestItems = [
 struct RemindersDayView: View {
     @EnvironmentObject var reminderData: ReminderData
     
-    let date: Date
-    let hideDate: Bool
+    private let date: Date
+    private let hideDate: Bool
     
     init(date: Date, hideDate: Bool = false) {
         self.date = date

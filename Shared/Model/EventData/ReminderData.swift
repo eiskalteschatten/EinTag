@@ -16,19 +16,19 @@ class ReminderData: AbstractEventData {
     }
     
     override func fetchEventsFromCalendar() {
-        self.calendars = super.eventStore.calendars(for: super.entityType)
+        self.calendars = self.eventStore.calendars(for: self.entityType)
         
         if (self.activatedCalendars.count == 0) {
             self.activatedCalendars = self.calendars.map { $0.calendarIdentifier }
-            super.updateActivatedCalendars()
+            self.updateActivatedCalendars()
         }
         
-        let predicate = super.eventStore.predicateForReminders(in: nil)
-        super.eventStore.fetchReminders(matching: predicate, completion: { reminders in
+        let predicate = self.eventStore.predicateForReminders(in: nil)
+        self.eventStore.fetchReminders(matching: predicate, completion: { reminders in
             self.allReminders = reminders ?? []
         })
         
-        super.transformData()
+        self.transformData()
     }
     
     override func transformEvents() {}

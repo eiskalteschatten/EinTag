@@ -30,9 +30,8 @@ let plannerTestItems = [
 struct PlannerDayView: View {
     @EnvironmentObject var plannerData: PlannerData
     
-    var eventStore = EKEventStore()
-    let date: Date
-    let hideDate: Bool
+    private let date: Date
+    private let hideDate: Bool
     
     init(date: Date, hideDate: Bool = false) {
         self.date = date
