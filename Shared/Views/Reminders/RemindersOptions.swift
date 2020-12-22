@@ -1,25 +1,25 @@
 //
-//  CalendarOptions.swift
+//  RemindersOptions.swift
 //  EinTag
 //
-//  Created by Alex Seifert on 21.12.20.
+//  Created by Alex Seifert on 12/22/20.
 //
 
 import SwiftUI
 import EventKit
 
-struct CalendarOptionsSheetView: View {
+struct RemindersOptionsSheetView: View {
     @Binding var showSheet: Bool
     
     var body: some View {
         #if os(macOS)
-        CalendarOptionsSheetViewContent(showSheet: $showSheet)
+        RemindersOptionsSheetViewContent(showSheet: $showSheet)
             .frame(maxWidth: .infinity, maxHeight: 500)
             .padding()
         #else
         NavigationView {
-            CalendarOptionsSheetViewContent(showSheet: $showSheet)
-                .navigationBarTitle(Text("Calendars"), displayMode: .inline)
+            RemindersOptionsSheetViewContent(showSheet: $showSheet)
+                .navigationBarTitle(Text("Reminder Lists"), displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: {
                     self.showSheet = false
                 }) {
@@ -30,7 +30,7 @@ struct CalendarOptionsSheetView: View {
     }
 }
 
-fileprivate struct CalendarOptionsSheetViewContent: View {
+fileprivate struct RemindersOptionsSheetViewContent: View {
     @EnvironmentObject var calendarData: CalendarData
     @Binding var showSheet: Bool
     
@@ -46,7 +46,7 @@ fileprivate struct CalendarOptionsSheetViewContent: View {
                 
                         VStack(alignment: .leading, spacing: 0) {
                             ForEach(calendarsBySource, id: \.self) { calendar in
-                                CalendarOptionView(calendar: calendar)
+                                RemindersOptionView(calendar: calendar)
                             }
                         }
                         .padding(.bottom)
@@ -56,7 +56,7 @@ fileprivate struct CalendarOptionsSheetViewContent: View {
                         
                         VStack(alignment: .leading) {
                             ForEach(calendarsBySource, id: \.self) { calendar in
-                                CalendarOptionView(calendar: calendar)
+                                RemindersOptionView(calendar: calendar)
                             }
                         }
                         .padding([.bottom, .horizontal])
@@ -72,7 +72,7 @@ fileprivate struct CalendarOptionsSheetViewContent: View {
     }
 }
 
-fileprivate struct CalendarOptionView: View {
+fileprivate struct RemindersOptionView: View {
     @Environment(\.defaultMinListRowHeight) var minRowHeight
     @EnvironmentObject var calendarData: CalendarData
     private var calendar: EKCalendar
@@ -120,12 +120,13 @@ fileprivate struct CalendarOptionView: View {
     }
 }
 
-struct CalendarOptionsSheetView_Previews: PreviewProvider {
+struct RemindersOptionsSheetView_Previews: PreviewProvider {
     static var previews: some View {
         let startDate = Date()
         let endDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date())!
         
-        CalendarOptionsSheetView(showSheet: .constant(true))
+        RemindersOptionsSheetView(showSheet: .constant(true))
             .environmentObject(CalendarData(startDate: startDate, endDate: endDate))
     }
 }
+

@@ -8,6 +8,10 @@
 import SwiftUI
 import EventKit
 
+fileprivate enum SheetViewOptions {
+    case calendarOptions, remindersOptions
+}
+
 struct MyDayView: View {
     #if os(macOS)
     let minWidth: CGFloat = 500
@@ -16,7 +20,8 @@ struct MyDayView: View {
     let minWidth: CGFloat = 300
     #endif
     
-    @State var showingCalendarOptions = false
+    @State private var showSheet = false
+    @State private var sheetView: SheetViewOptions = .calendarOptions
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -60,8 +65,17 @@ struct MyDayView: View {
             #endif
             ToolbarItem() {
                 Menu {
-                    Button(action: { self.showingCalendarOptions.toggle() }) {
+                    Button(action: {
+                        self.showSheet.toggle()
+                        self.sheetView = .calendarOptions
+                    }) {
                         Label("Manage Calendars", systemImage: "calendar.circle")
+                    }
+                    Button(action: {
+                        self.showSheet.toggle()
+                        self.sheetView = .remindersOptions
+                    }) {
+                        Label("Manage Reminder Lists", systemImage: "checkmark.circle")
                     }
                 }
                 label: {
@@ -69,8 +83,13 @@ struct MyDayView: View {
                 }
             }
         }
-        .sheet(isPresented: $showingCalendarOptions) {
-            CalendarsOptionsSheetView(showingCalendarOptions: $showingCalendarOptions)
+        .sheet(isPresented: $showSheet) {
+            if self.sheetView == .calendarOptions {
+                CalendarOptionsSheetView(showSheet: $showSheet)
+            }
+            else if self.sheetView == .remindersOptions {
+                RemindersOptionsSheetView(showSheet: $showSheet)
+            }
         }
     }
 }

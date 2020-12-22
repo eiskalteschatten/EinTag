@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		930B1EC725924F0200A10A8D /* RemindersOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B1EC625924F0200A10A8D /* RemindersOptions.swift */; };
+		930B1EC825924F0200A10A8D /* RemindersOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930B1EC625924F0200A10A8D /* RemindersOptions.swift */; };
 		930E74DD259202D800610899 /* ReminderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930E74DC259202D800610899 /* ReminderData.swift */; };
 		930E74DE259202D800610899 /* ReminderData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930E74DC259202D800610899 /* ReminderData.swift */; };
 		930E74EC2592050900610899 /* AbstractEventData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930E74EB2592050900610899 /* AbstractEventData.swift */; };
@@ -71,6 +73,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		930B1EC625924F0200A10A8D /* RemindersOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersOptions.swift; sourceTree = "<group>"; };
 		930E74DC259202D800610899 /* ReminderData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderData.swift; sourceTree = "<group>"; };
 		930E74EB2592050900610899 /* AbstractEventData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractEventData.swift; sourceTree = "<group>"; };
 		9325C763258FAFAF00D63484 /* CalendarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarData.swift; sourceTree = "<group>"; };
@@ -251,6 +254,7 @@
 			children = (
 				93CD8222258F4D63009AE52B /* RemindersDayView.swift */,
 				93CD8229258F4DAB009AE52B /* RemindersListItemView.swift */,
+				930B1EC625924F0200A10A8D /* RemindersOptions.swift */,
 			);
 			path = Reminders;
 			sourceTree = "<group>";
@@ -440,6 +444,7 @@
 			files = (
 				93E01C74258E6E9800DD4808 /* CalendarDayView.swift in Sources */,
 				93CD824E258F737A009AE52B /* Constants.swift in Sources */,
+				930B1EC725924F0200A10A8D /* RemindersOptions.swift in Sources */,
 				93CD822A258F4DAB009AE52B /* RemindersListItemView.swift in Sources */,
 				93BE3EB3258E02E500EA17CC /* ContentView.swift in Sources */,
 				93CD825B258F74B7009AE52B /* MiniCalendarView.swift in Sources */,
@@ -467,6 +472,7 @@
 			files = (
 				93E01C75258E6E9800DD4808 /* CalendarDayView.swift in Sources */,
 				93CD824F258F737A009AE52B /* Constants.swift in Sources */,
+				930B1EC825924F0200A10A8D /* RemindersOptions.swift in Sources */,
 				93CD822B258F4DAB009AE52B /* RemindersListItemView.swift in Sources */,
 				93BE3EB4258E02E500EA17CC /* ContentView.swift in Sources */,
 				93CD825C258F74B7009AE52B /* MiniCalendarView.swift in Sources */,
