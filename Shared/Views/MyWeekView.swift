@@ -42,14 +42,14 @@ struct MyWeekView: View {
             ToolbarItem() {
                 Menu {
                     Button(action: {
-                        self.showSheet.toggle()
                         self.sheetView = .calendarOptions
+                        self.showSheet.toggle()
                     }) {
                         Label("Manage Calendars", systemImage: "calendar.circle")
                     }
                     Button(action: {
-                        self.showSheet.toggle()
                         self.sheetView = .remindersOptions
+                        self.showSheet.toggle()
                     }) {
                         Label("Manage Reminder Lists", systemImage: "checkmark.circle")
                     }

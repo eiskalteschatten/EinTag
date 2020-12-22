@@ -10,6 +10,7 @@ import EventKit
 
 class ReminderData: AbstractEventData {
     @Published var allReminders: [EKReminder] = []
+    @Published var activeReminders: [EKReminder] = []
     
     init(startDate: Date, endDate: Date) {
         super.init(startDate: startDate, endDate: endDate, entityType: EKEntityType.reminder, userDefaultsKey: USER_DEFAULT_ACTIVATED_REMINDERS_KEY)
@@ -30,5 +31,7 @@ class ReminderData: AbstractEventData {
         })
     }
     
-    override func transformEvents() {}
+    override func transformEvents() {
+        self.activeReminders = self.allReminders.filter { self.activatedCalendars.contains($0.calendar.calendarIdentifier) }
+    }
 }

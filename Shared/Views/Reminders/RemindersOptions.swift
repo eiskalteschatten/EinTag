@@ -31,15 +31,15 @@ struct RemindersOptionsSheetView: View {
 }
 
 fileprivate struct RemindersOptionsSheetViewContent: View {
-    @EnvironmentObject var calendarData: CalendarData
+    @EnvironmentObject var reminderData: ReminderData
     @Binding var showSheet: Bool
     
     var body: some View {
         VStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    ForEach(calendarData.sortedCalendarSources, id: \.self) { source in
-                        let calendarsBySource = calendarData.calendarsBySource[source] ?? []
+                    ForEach(reminderData.sortedCalendarSources, id: \.self) { source in
+                        let calendarsBySource = reminderData.calendarsBySource[source] ?? []
                         
                         #if os(macOS)
                         HeaderElement(text: source)
@@ -74,7 +74,7 @@ fileprivate struct RemindersOptionsSheetViewContent: View {
 
 fileprivate struct RemindersOptionView: View {
     @Environment(\.defaultMinListRowHeight) var minRowHeight
-    @EnvironmentObject var calendarData: CalendarData
+    @EnvironmentObject var reminderData: ReminderData
     private var calendar: EKCalendar
     
     init(calendar: EKCalendar) {
@@ -82,7 +82,7 @@ fileprivate struct RemindersOptionView: View {
     }
     
     var body: some View {
-        let calendarActivated = calendarData.activatedCalendars.contains(calendar.calendarIdentifier)
+        let calendarActivated = reminderData.activatedCalendars.contains(calendar.calendarIdentifier)
         
         HStack {
             let circle = calendarActivated ? "checkmark.circle.fill" : "circle"
@@ -110,10 +110,10 @@ fileprivate struct RemindersOptionView: View {
             TapGesture()
                 .onEnded { _ in
                     if calendarActivated {
-                        calendarData.disableCalendar(calendarIdentifier: calendar.calendarIdentifier)
+                        reminderData.disableCalendar(calendarIdentifier: calendar.calendarIdentifier)
                     }
                     else {
-                        calendarData.enableCalendar(calendarIdentifier: calendar.calendarIdentifier)
+                        reminderData.enableCalendar(calendarIdentifier: calendar.calendarIdentifier)
                     }
                 }
         )
