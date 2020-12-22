@@ -8,20 +8,16 @@
 import SwiftUI
 
 struct PlannerView: View {
+    @EnvironmentObject var plannerData: PlannerData
     @State var showingCalendarOptions = false
     
     var body: some View {
         ScrollView {
             VStack {
-                let calendar = Calendar.current
-                let today = calendar.startOfDay(for: Date())
-                let dayOfWeek = calendar.component(.weekday, from: today)
-                let weekdays = calendar.range(of: .weekday, in: .weekOfYear, for: today)!
-                let days = (weekdays.lowerBound ..< weekdays.upperBound)
-                    .compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: today) }
+                let dates = getDatesForNextWeek()
                 
-                ForEach(days, id: \.self) { days in
-                    PlannerDayView(date: days)
+                ForEach(dates, id: \.self) { date in
+                    PlannerDayView(date: date)
                         .padding(.horizontal)
                 }
             }

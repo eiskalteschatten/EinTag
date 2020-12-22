@@ -36,3 +36,17 @@ func getLocalizedTemperature(temperatureInCelcius: Double) -> String {
     formatter.locale = Locale.autoupdatingCurrent
     return formatter.string(from: temperature)
 }
+
+func getDatesForNextWeek() -> [Date] {
+    let calendar = Calendar.current
+    var date = calendar.startOfDay(for: Date())
+    let endDate = calendar.date(byAdding: .weekOfYear, value: 1, to: date)!
+    var dates: [Date] = []
+    
+    while date <= endDate {
+        date = calendar.date(byAdding: .day, value: 1, to: date)!
+        dates.append(date)
+    }
+    
+    return dates
+}
