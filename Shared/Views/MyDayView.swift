@@ -44,8 +44,6 @@ struct MyDayView: View {
                     MyDayRemindersView()
                         .padding(.horizontal)
                 }
-                
-                Spacer()
             }
         }
         .frame(
