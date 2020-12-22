@@ -1,5 +1,5 @@
 //
-//  PlannerView.swift
+//  MyWeekView.swift
 //  EinTag
 //
 //  Created by Alex Seifert on 12/19/20.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PlannerView: View {
+struct MyWeekView: View {
     @State var showingCalendarOptions = false
     
     var body: some View {
@@ -17,7 +17,7 @@ struct PlannerView: View {
                 
                 ForEach(dates, id: \.self) { date in
                     VStack {
-                        PlannerDayView(date: date)
+                        CalendarDayView(date: date)
                             .padding([.horizontal, .top])
                         
                         RemindersDayView(date: date, hideDate: true)
@@ -51,9 +51,9 @@ struct PlannerView: View {
     }
 }
 
-struct PlannerView_Previews: PreviewProvider {
+struct MyWeekView_Previews: PreviewProvider {
     static var previews: some View {
-        PlannerView()
+        MyWeekView()
     }
 }
     

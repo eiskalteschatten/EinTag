@@ -15,24 +15,24 @@ struct EinTagApp: App {
     let foregroundNotification = UIApplication.willEnterForegroundNotification
     #endif
     
-    private var plannerData: PlannerData
+    private var calendarData: CalendarData
     private var reminderData: ReminderData
     
     init() {
         let startDate = Date()
         let endDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: startDate)!
-        self.plannerData = PlannerData(startDate: startDate, endDate: endDate)
+        self.calendarData = CalendarData(startDate: startDate, endDate: endDate)
         self.reminderData = ReminderData(startDate: startDate, endDate: endDate)
     }
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(plannerData)
+                .environmentObject(calendarData)
                 .environmentObject(reminderData)
                 .onReceive(NotificationCenter.default.publisher(for: foregroundNotification)) { _ in
-                    self.plannerData.fetchEventsFromCalendar()
-                    self.reminderData.fetchEventsFromCalendar()
+                    self.calendarData.fetchData()
+                    self.reminderData.fetchData()
                 }
         }
         .commands {

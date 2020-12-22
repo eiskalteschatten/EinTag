@@ -15,7 +15,7 @@ class ReminderData: AbstractEventData {
         super.init(startDate: startDate, endDate: endDate, entityType: EKEntityType.reminder, userDefaultsKey: USER_DEFAULT_ACTIVATED_REMINDERS_KEY)
     }
     
-    override func fetchEventsFromCalendar() {
+    override func fetchData() {
         self.calendars = self.eventStore.calendars(for: self.entityType)
         
         if (self.activatedCalendars.count == 0) {
@@ -32,4 +32,3 @@ class ReminderData: AbstractEventData {
     
     override func transformEvents() {}
 }
-

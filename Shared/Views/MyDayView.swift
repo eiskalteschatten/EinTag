@@ -38,7 +38,7 @@ struct MyDayView: View {
                 .padding()
             
                 AdaptiveStack(verticalAlignment: .top) {
-                    MyDayPlannerView()
+                    MyDayCalendarView()
                     MyDayRemindersView()
                 }
             }
@@ -75,13 +75,13 @@ struct MyDayView: View {
     }
 }
 
-fileprivate struct MyDayPlannerView: View {
+fileprivate struct MyDayCalendarView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("Events")
+            Text("Calendar")
                 .font(.title)
 
-            PlannerDayView(date: Date(), hideDate: true)
+            CalendarDayView(date: Date(), hideDate: true)
                 .padding(.vertical)
         }
         .padding(.horizontal)
@@ -107,7 +107,7 @@ struct MyDayView_Previews: PreviewProvider {
         let endDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date())!
         
         MyDayView()
-            .environmentObject(PlannerData(startDate: startDate, endDate: endDate))
+            .environmentObject(CalendarData(startDate: startDate, endDate: endDate))
             .environmentObject(ReminderData(startDate: startDate, endDate: endDate))
     }
 }

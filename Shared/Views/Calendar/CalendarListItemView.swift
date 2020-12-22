@@ -1,5 +1,5 @@
 //
-//  PlannerListItemView.swift
+//  CalendarListItemView.swift
 //  EinTag
 //
 //  Created by Alex Seifert on 12/19/20.
@@ -30,7 +30,7 @@ fileprivate func createTestEvent() -> EKEvent {
     return newEvent
 }
 
-struct PlannerListItemView: View {
+struct CalendarListItemView: View {
     let event: EKEvent
     
     init(event: EKEvent) {
@@ -87,9 +87,9 @@ struct PlannerListItemView: View {
     }
 }
 
-struct PlannerListItemView_Previews: PreviewProvider {
+struct CalendarListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        PlannerListItemView(event: createTestEvent())
+        CalendarListItemView(event: createTestEvent())
     }
 }
 

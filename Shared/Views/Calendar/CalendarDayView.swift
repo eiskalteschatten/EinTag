@@ -1,5 +1,5 @@
 //
-//  PlannerDayView.swift
+//  CalendarDayView.swift
 //  EinTag
 //
 //  Created by Alex Seifert on 12/19/20.
@@ -8,8 +8,8 @@
 import SwiftUI
 import EventKit
 
-struct PlannerDayView: View {
-    @EnvironmentObject var plannerData: PlannerData
+struct CalendarDayView: View {
+    @EnvironmentObject var calendarData: CalendarData
     
     private let date: Date
     private let hideDate: Bool
@@ -20,7 +20,7 @@ struct PlannerDayView: View {
     }
     
     var body: some View {
-        let events = plannerData.eventsDict[date.startOfDay] ?? []
+        let events = calendarData.eventsDict[date.startOfDay] ?? []
         
         VStack(alignment: .leading, spacing: 0) {
             if !hideDate {
@@ -29,11 +29,11 @@ struct PlannerDayView: View {
             
             if events.count > 0 {
                 ForEach(events, id: \.self.calendarItemIdentifier) { event in
-                    PlannerListItemView(event: event)
+                    CalendarListItemView(event: event)
                 }
             }
             else {
-                if !plannerData.finishedLoading {
+                if !calendarData.finishedLoading {
                     HStack {
                         Spacer()
                         ProgressView()
@@ -55,12 +55,12 @@ struct PlannerDayView: View {
     }
 }
 
-struct PlannerDayView_Previews: PreviewProvider {
+struct CalendarDayView_Previews: PreviewProvider {
     static var previews: some View {
         let startDate = Date()
         let endDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date())!
         
-        PlannerDayView(date: Date())
-            .environmentObject(PlannerData(startDate: startDate, endDate: endDate))
+        CalendarDayView(date: Date())
+            .environmentObject(CalendarData(startDate: startDate, endDate: endDate))
     }
 }

@@ -32,7 +32,7 @@ class AbstractEventData: ObservableObject {
             {(granted: Bool, error: Error?) -> Void in
                 if granted {
                     DispatchQueue.main.async(execute: {
-                        self.fetchEventsFromCalendar()
+                        self.fetchData()
                         self.finishedLoading = true
                     })
                 }
@@ -42,7 +42,7 @@ class AbstractEventData: ObservableObject {
             })
     }
     
-    func fetchEventsFromCalendar() {
+    func fetchData() {
         fatalError("Must override this function")
     }
     

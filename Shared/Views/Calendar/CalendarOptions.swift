@@ -1,5 +1,5 @@
 //
-//  Calendars.swift
+//  CalendarOptions.swift
 //  EinTag
 //
 //  Created by Alex Seifert on 21.12.20.
@@ -31,15 +31,15 @@ struct CalendarsOptionsSheetView: View {
 }
 
 fileprivate struct CalendarsOptionsSheetViewContent: View {
-    @EnvironmentObject var plannerData: PlannerData
+    @EnvironmentObject var calendarData: CalendarData
     @Binding var showingCalendarOptions: Bool
     
     var body: some View {
         VStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    ForEach(plannerData.sortedCalendarSources, id: \.self) { source in
-                        let calendarsBySource = plannerData.calendarsBySource[source] ?? []
+                    ForEach(calendarData.sortedCalendarSources, id: \.self) { source in
+                        let calendarsBySource = calendarData.calendarsBySource[source] ?? []
                         
                         #if os(macOS)
                         HeaderElement(text: source)
@@ -74,7 +74,7 @@ fileprivate struct CalendarsOptionsSheetViewContent: View {
 
 fileprivate struct CalendarsOptionView: View {
     @Environment(\.defaultMinListRowHeight) var minRowHeight
-    @EnvironmentObject var plannerData: PlannerData
+    @EnvironmentObject var calendarData: CalendarData
     private var calendar: EKCalendar
     
     init(calendar: EKCalendar) {
@@ -82,7 +82,7 @@ fileprivate struct CalendarsOptionView: View {
     }
     
     var body: some View {
-        let calendarActivated = plannerData.activatedCalendars.contains(calendar.calendarIdentifier)
+        let calendarActivated = calendarData.activatedCalendars.contains(calendar.calendarIdentifier)
         
         HStack {
             let circle = calendarActivated ? "checkmark.circle.fill" : "circle"
@@ -110,10 +110,10 @@ fileprivate struct CalendarsOptionView: View {
             TapGesture()
                 .onEnded { _ in
                     if calendarActivated {
-                        plannerData.disableCalendar(calendarIdentifier: calendar.calendarIdentifier)
+                        calendarData.disableCalendar(calendarIdentifier: calendar.calendarIdentifier)
                     }
                     else {
-                        plannerData.enableCalendar(calendarIdentifier: calendar.calendarIdentifier)
+                        calendarData.enableCalendar(calendarIdentifier: calendar.calendarIdentifier)
                     }
                 }
         )
@@ -126,6 +126,6 @@ struct CalendarsOptionsSheetView_Previews: PreviewProvider {
         let endDate = Calendar.current.date(byAdding: .weekOfYear, value: 1, to: Date())!
         
         CalendarsOptionsSheetView(showingCalendarOptions: .constant(true))
-            .environmentObject(PlannerData(startDate: startDate, endDate: endDate))
+            .environmentObject(CalendarData(startDate: startDate, endDate: endDate))
     }
 }

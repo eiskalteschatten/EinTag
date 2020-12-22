@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum Screen: Int {
-    case myDay, planner, weather, notes, news
+    case myDay, myWeek, weather, notes, news
 }
 
 struct ContentView: View {
@@ -54,8 +54,8 @@ struct MainSidebarContent: View {
                     }
                 )
                 NavigationLink(
-                    destination: PlannerView().navigationTitle("My Week"),
-                    tag: Screen.planner,
+                    destination: MyWeekView().navigationTitle("My Week"),
+                    tag: Screen.myWeek,
                     selection: $state,
                     label: {
                         Label("My Week", systemImage: "calendar")
@@ -70,7 +70,7 @@ struct MainSidebarContent: View {
                     }
                 )
     //            NavigationLink(
-    //                destination: PlannerView().navigationTitle("Notes"),
+    //                destination: MyWeekView().navigationTitle("Notes"),
     //                tag: Screen.notes,
     //                selection: $state,
     //                label: {

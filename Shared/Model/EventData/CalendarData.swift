@@ -1,5 +1,5 @@
 //
-//  Planner.swift
+//  CalendarData.swift
 //  EinTag
 //
 //  Created by Alex Seifert on 12/20/20.
@@ -8,7 +8,7 @@
 import SwiftUI
 import EventKit
 
-class PlannerData: AbstractEventData {
+class CalendarData: AbstractEventData {
     @Published var allEvents: [EKEvent] = []
     @Published var eventsDict: [Date: [EKEvent]] = [:]
     
@@ -16,7 +16,7 @@ class PlannerData: AbstractEventData {
         super.init(startDate: startDate, endDate: endDate, entityType: EKEntityType.event, userDefaultsKey: USER_DEFAULT_ACTIVATED_CALENDARS_KEY)
     }
     
-    override func fetchEventsFromCalendar() {
+    override func fetchData() {
         var allEvents: [EKEvent] = []
         
         self.calendars = self.eventStore.calendars(for: self.entityType)
