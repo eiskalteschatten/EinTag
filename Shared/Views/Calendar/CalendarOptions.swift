@@ -93,7 +93,7 @@ fileprivate struct CalendarOptionView: View {
                 .foregroundColor(Color(calendar.color))
             #else
             Image(systemName: circle)
-                .font(.system(size: 20.0))
+                .font(.system(size: 25.0))
                 .foregroundColor(Color(UIColor(cgColor: calendar.cgColor!)))
             #endif
             
@@ -106,6 +106,7 @@ fileprivate struct CalendarOptionView: View {
             maxHeight: .infinity,
             alignment: .leading
         )
+        .padding(.vertical, 2)
         .gesture(
             TapGesture()
                 .onEnded { _ in

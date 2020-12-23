@@ -54,7 +54,8 @@ struct WeatherView: View {
             #if os(macOS)
             ToolbarItem(placement: .primaryAction) {
                 Button(action: {}) {
-                    Label("Refresh", systemImage: "arrow.clockwise")
+                    Image(systemName: "arrow.clockwise")
+                        .font(.system(size: 22.0))
                 }
             }
             #endif

@@ -46,7 +46,7 @@ struct RemindersListItemView: View {
                 .foregroundColor(Color(reminder.calendar.color!))
             #else
             Image(systemName: circle)
-                .font(.system(size: 20.0))
+                .font(.system(size: 25.0))
                 .foregroundColor(Color(UIColor(cgColor: reminder.calendar.cgColor!)))
             #endif
             

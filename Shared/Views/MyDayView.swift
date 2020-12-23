@@ -54,7 +54,8 @@ struct MyDayView: View {
             #if os(macOS)
             ToolbarItem {
                 Button(action: {}) {
-                    Label("Refresh", systemImage: "arrow.clockwise")
+                    Image(systemName: "arrow.clockwise")
+                        .font(.system(size: 22.0))
                 }
             }
             #endif
@@ -68,7 +69,8 @@ struct MyDayView: View {
                     }
                 }
                 label: {
-                    Label("Menu", systemImage: "ellipsis.circle")
+                    Image(systemName: "ellipsis.circle")
+                        .font(.system(size: 22.0))
                 }
             }
         }
