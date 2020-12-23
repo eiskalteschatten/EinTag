@@ -24,7 +24,6 @@ fileprivate func createTestReminder() -> EKReminder {
     
     newReminder.calendar = newCalendar
     newReminder.title = "Test Event"
-//    newReminder.startDate = Date()
     
     return newReminder
 }
@@ -37,6 +36,20 @@ struct RemindersListItemView: View {
     }
     
     var body: some View {
+        #if os(macOS)
+        let titleSize = CGFloat(14)
+        let titlePadding = CGFloat(0)
+        let calendarTitleSize = CGFloat(12)
+        let maxHeight = CGFloat(50)
+        let verticalPadding = CGFloat(6)
+        #else
+        let titleSize = CGFloat(16)
+        let titlePadding = CGFloat(4)
+        let calendarTitleSize = CGFloat(14)
+        let maxHeight = CGFloat(55)
+        let verticalPadding = CGFloat(20)
+        #endif
+        
         HStack(spacing: 10) {
             let circle = reminder.isCompleted ? "largecircle.fill.circle" : "circle"
             
@@ -52,10 +65,12 @@ struct RemindersListItemView: View {
             
             VStack(alignment: .leading, spacing: 0) {
                 Text(reminder.title)
-                    .bold()
+                    .font(.system(size: titleSize))
+                    .padding(.bottom, titlePadding)
                 
                 HStack(alignment: .bottom) {
                     Text(reminder.calendar.title.trim())
+                        .font(.system(size: calendarTitleSize))
                         .opacity(0.6)
                     
                     if reminder.notes != nil {
@@ -75,9 +90,9 @@ struct RemindersListItemView: View {
                     .if(date < Date()) { $0.foregroundColor(Color.red) }
             }
         }
-        .padding(.vertical, 5)
+        .padding(.vertical, verticalPadding)
         .if(reminder.isCompleted) { $0.opacity(0.4) }
-        .frame(maxHeight: 50)
+        .frame(maxHeight: maxHeight)
     }
 }
 

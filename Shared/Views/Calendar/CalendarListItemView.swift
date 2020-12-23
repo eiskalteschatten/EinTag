@@ -38,21 +38,34 @@ struct CalendarListItemView: View {
     }
     
     var body: some View {
+        #if os(macOS)
+        let titleSize = CGFloat(14)
+        let titlePadding = CGFloat(0)
+        let calendarTitleSize = CGFloat(12)
+        let calendarColorHeight = CGFloat(35)
+        let calendarColor = Color(event.calendar.color!)
+        let maxHeight = CGFloat(50)
+        let verticalPadding = CGFloat(6)
+        #else
+        let titleSize = CGFloat(16)
+        let titlePadding = CGFloat(4)
+        let calendarTitleSize = CGFloat(14)
+        let calendarColor = Color(UIColor(cgColor: event.calendar.cgColor!))
+        let calendarColorHeight = CGFloat(40)
+        let maxHeight = CGFloat(55)
+        let verticalPadding = CGFloat(20)
+        #endif
+        
         HStack(spacing: 10) {
-            #if os(macOS)
             RoundedRectangle(cornerRadius: 100, style: .continuous)
-                .fill(Color(event.calendar.color!))
-                .frame(width: 6)
-            #else
-            RoundedRectangle(cornerRadius: 100, style: .continuous)
-                .fill(Color(UIColor(cgColor: event.calendar.cgColor!)))
-                .frame(width: 6, height: 40)
-            #endif
+                .fill(calendarColor)
+                .frame(width: 6, height: calendarColorHeight)
             
             VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .top) {
                     Text(event.title)
-                        .bold()
+                        .font(.system(size: titleSize))
+                        .padding(.bottom, titlePadding)
                     
                     Spacer()
                     
@@ -63,6 +76,7 @@ struct CalendarListItemView: View {
                 
                 HStack(alignment: .bottom) {
                     Text(event.calendar.title.trim())
+                        .font(.system(size: calendarTitleSize))
                         .opacity(0.6)
                     
                     Spacer()
@@ -81,9 +95,9 @@ struct CalendarListItemView: View {
                     .opacity(0.8)
             }
         }
-        .padding(.vertical, 6)
+        .padding(.vertical, verticalPadding)
         .if(event.endDate.isInThePast) { $0.opacity(0.4) }
-        .frame(maxHeight: 50)
+        .frame(maxHeight: maxHeight)
     }
 }
 
