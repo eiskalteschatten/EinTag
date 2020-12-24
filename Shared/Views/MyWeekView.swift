@@ -38,10 +38,10 @@ struct MyWeekView: View {
             ToolbarItem() {
                 Menu {
                     Button(action: { sheetView = .calendarOptions }) {
-                        Label("Manage Calendars", systemImage: "calendar.circle")
+                        Label("Calendars Preferences", systemImage: "calendar.circle")
                     }
                     Button(action: { sheetView = .remindersOptions }) {
-                        Label("Manage Reminder Lists", systemImage: "checkmark.circle")
+                        Label("Reminders Preferences", systemImage: "checkmark.circle")
                     }
                 }
                 label: {

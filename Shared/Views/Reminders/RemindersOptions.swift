@@ -38,6 +38,11 @@ fileprivate struct RemindersOptionsSheetViewContent: View {
         VStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
+                    HStack {
+                        Image(systemName: "checkmark")
+                        Text("Hide Completed Reminders")
+                    }
+                    
                     ForEach(reminderData.sortedCalendarSources, id: \.self) { source in
                         let calendarsBySource = reminderData.calendarsBySource[source] ?? []
                         
