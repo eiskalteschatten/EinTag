@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RemindersDayView: View {
     @EnvironmentObject var reminderData: ReminderData
+    @ObservedObject var hideCompletedReminders = HideCompletedReminders()
     
     private let date: Date
     private let hideDate: Bool
@@ -21,7 +22,14 @@ struct RemindersDayView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             let reminders = reminderData.activeReminders
-                .filter { $0.dueDateComponents?.date?.startOfDay == date.startOfDay }
+                .filter {
+                    if hideCompletedReminders.hide {
+                        return $0.dueDateComponents?.date?.startOfDay == date.startOfDay && !$0.isCompleted
+                    }
+                    else {
+                        return $0.dueDateComponents?.date?.startOfDay == date.startOfDay
+                    }
+                }
                 .sorted { ($0.dueDateComponents?.date)! < ($1.dueDateComponents?.date)! }
             
             if !hideDate {

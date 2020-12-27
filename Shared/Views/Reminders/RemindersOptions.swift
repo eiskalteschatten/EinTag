@@ -33,7 +33,7 @@ struct RemindersOptionsSheetView: View {
 fileprivate struct RemindersOptionsSheetViewContent: View {
     @EnvironmentObject var reminderData: ReminderData
     @Binding var sheetView: CalendarRemindersSheetViewOptions?
-    @State var hideCompletedReminders: Bool = UserDefaults.standard.bool(forKey: USER_DEFAULT_HIDE_COMPLETED_REMINDERS_KEY)
+    @ObservedObject var hideCompletedReminders = HideCompletedReminders()
     
     var body: some View {
         VStack {
@@ -46,8 +46,8 @@ fileprivate struct RemindersOptionsSheetViewContent: View {
                     let togglePadding = CGFloat(20)
                     let toggleBottomPadding = CGFloat(10)
                     #endif
-                    
-                    Toggle(isOn: $hideCompletedReminders) {
+
+                    Toggle(isOn: $hideCompletedReminders.hide) {
                         Text("Hide Completed Reminders")
                     }
                     .padding(.bottom, toggleBottomPadding)

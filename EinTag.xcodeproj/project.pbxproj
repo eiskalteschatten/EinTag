@@ -19,6 +19,8 @@
 		9325C765258FAFAF00D63484 /* CalendarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9325C763258FAFAF00D63484 /* CalendarData.swift */; };
 		933D541E2590E76200858652 /* CalendarOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933D541D2590E76200858652 /* CalendarOptions.swift */; };
 		933D541F2590E76200858652 /* CalendarOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933D541D2590E76200858652 /* CalendarOptions.swift */; };
+		93ABCBF82598AE2E0016A051 /* HideCompletedReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ABCBF72598AE2E0016A051 /* HideCompletedReminders.swift */; };
+		93ABCBF92598AE2E0016A051 /* HideCompletedReminders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ABCBF72598AE2E0016A051 /* HideCompletedReminders.swift */; };
 		93BE3EA4258E02E500EA17CC /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3EA3258E02E500EA17CC /* Tests_iOS.swift */; };
 		93BE3EAF258E02E500EA17CC /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3EAE258E02E500EA17CC /* Tests_macOS.swift */; };
 		93BE3EB1258E02E500EA17CC /* EinTagApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BE3E88258E02E200EA17CC /* EinTagApp.swift */; };
@@ -81,6 +83,7 @@
 		930E74EB2592050900610899 /* AbstractEventData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractEventData.swift; sourceTree = "<group>"; };
 		9325C763258FAFAF00D63484 /* CalendarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarData.swift; sourceTree = "<group>"; };
 		933D541D2590E76200858652 /* CalendarOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarOptions.swift; sourceTree = "<group>"; };
+		93ABCBF72598AE2E0016A051 /* HideCompletedReminders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideCompletedReminders.swift; sourceTree = "<group>"; };
 		93BE3E88258E02E200EA17CC /* EinTagApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EinTagApp.swift; sourceTree = "<group>"; };
 		93BE3E89258E02E200EA17CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		93BE3E8A258E02E500EA17CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -249,6 +252,7 @@
 			children = (
 				930E74F22592051100610899 /* EventData */,
 				93CD823F258F644E009AE52B /* WeatherDay.swift */,
+				93ABCBF72598AE2E0016A051 /* HideCompletedReminders.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -457,6 +461,7 @@
 				93CD8239258F5ECC009AE52B /* WeatherView.swift in Sources */,
 				93E01C7F258E858A00DD4808 /* CalendarListItemView.swift in Sources */,
 				93E01C68258E56B500DD4808 /* AdaptiveStack.swift in Sources */,
+				93ABCBF82598AE2E0016A051 /* HideCompletedReminders.swift in Sources */,
 				930E74DD259202D800610899 /* ReminderData.swift in Sources */,
 				93E01C49258E512200DD4808 /* Helpers.swift in Sources */,
 				93BE3EDD258E28F100EA17CC /* MyDayView.swift in Sources */,
@@ -486,6 +491,7 @@
 				93CD823A258F5ECC009AE52B /* WeatherView.swift in Sources */,
 				93E01C80258E858A00DD4808 /* CalendarListItemView.swift in Sources */,
 				93E01C69258E56B500DD4808 /* AdaptiveStack.swift in Sources */,
+				93ABCBF92598AE2E0016A051 /* HideCompletedReminders.swift in Sources */,
 				930E74DE259202D800610899 /* ReminderData.swift in Sources */,
 				93E01C4A258E512200DD4808 /* Helpers.swift in Sources */,
 				93BE3EDE258E28F200EA17CC /* MyDayView.swift in Sources */,
