@@ -33,15 +33,25 @@ struct RemindersOptionsSheetView: View {
 fileprivate struct RemindersOptionsSheetViewContent: View {
     @EnvironmentObject var reminderData: ReminderData
     @Binding var sheetView: CalendarRemindersSheetViewOptions?
+    @State var hideCompletedReminders: Bool = UserDefaults.standard.bool(forKey: USER_DEFAULT_HIDE_COMPLETED_REMINDERS_KEY)
     
     var body: some View {
         VStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 0) {
-                    HStack {
-                        Image(systemName: "checkmark")
+                    #if os(macOS)
+                    let togglePadding = CGFloat(0)
+                    let toggleBottomPadding = CGFloat(30)
+                    #else
+                    let togglePadding = CGFloat(20)
+                    let toggleBottomPadding = CGFloat(10)
+                    #endif
+                    
+                    Toggle(isOn: $hideCompletedReminders) {
                         Text("Hide Completed Reminders")
                     }
+                    .padding(.bottom, toggleBottomPadding)
+                    .padding(togglePadding)
                     
                     ForEach(reminderData.sortedCalendarSources, id: \.self) { source in
                         let calendarsBySource = reminderData.calendarsBySource[source] ?? []
