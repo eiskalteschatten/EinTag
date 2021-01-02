@@ -29,6 +29,7 @@ fileprivate func createTestReminder() -> EKReminder {
 }
 
 struct RemindersListItemView: View {
+    @EnvironmentObject var reminderData: ReminderData
     let reminder: EKReminder
     
     init(reminder: EKReminder) {
@@ -57,10 +58,22 @@ struct RemindersListItemView: View {
             Image(systemName: circle)
                 .font(.system(size: 20.0))
                 .foregroundColor(Color(reminder.calendar.color!))
+                .gesture(
+                    TapGesture()
+                        .onEnded { _ in
+                            self.toggleReminderIsCompleted()
+                        }
+                )
             #else
             Image(systemName: circle)
                 .font(.system(size: 25.0))
                 .foregroundColor(Color(UIColor(cgColor: reminder.calendar.cgColor!)))
+                .gesture(
+                    TapGesture()
+                        .onEnded { _ in
+                            self.toggleReminderIsCompleted()
+                        }
+                )
             #endif
             
             VStack(alignment: .leading, spacing: 0) {
@@ -93,6 +106,10 @@ struct RemindersListItemView: View {
         .padding(.vertical, verticalPadding)
         .if(reminder.isCompleted) { $0.opacity(0.4) }
         .frame(maxHeight: maxHeight)
+    }
+    
+    private func toggleReminderIsCompleted() {
+        reminderData.toggleReminderIsCompleted(reminder: self.reminder)
     }
 }
 
