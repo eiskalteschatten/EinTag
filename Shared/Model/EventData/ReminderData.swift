@@ -39,7 +39,6 @@ class ReminderData: AbstractEventData {
         DispatchQueue.main.async(execute: {
             do {
                 try self.eventStore.save(updatedReminder, commit: true)
-                self.fetchData()
             }
             catch {
                 print("Could not update the reminder!")
