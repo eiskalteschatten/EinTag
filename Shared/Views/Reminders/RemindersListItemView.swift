@@ -109,7 +109,8 @@ struct RemindersListItemView: View {
     }
     
     private func toggleReminderIsCompleted() {
-        reminderData.toggleReminderIsCompleted(reminder: self.reminder)
+        self.reminder.isCompleted = !self.reminder.isCompleted
+        reminderData.updateReminder(updatedReminder: self.reminder)
     }
 }
 

@@ -35,12 +35,9 @@ class ReminderData: AbstractEventData {
         self.activeReminders = self.allReminders.filter { self.activatedCalendars.contains($0.calendar.calendarIdentifier) }
     }
     
-    func toggleReminderIsCompleted(reminder: EKReminder) {
-        print("complete in data")
-        reminder.isCompleted = !reminder.isCompleted
-        
+    func updateReminder(updatedReminder: EKReminder) {
         do {
-            try self.eventStore.save(reminder, commit: true)
+            try self.eventStore.save(updatedReminder, commit: true)
             self.fetchData()
         }
         catch {
