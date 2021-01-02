@@ -51,14 +51,6 @@ struct MyDayView: View {
             alignment: .topLeading
         )
         .toolbar {
-            #if os(macOS)
-            ToolbarItem {
-                Button(action: {}) {
-                    Image(systemName: "arrow.clockwise")
-                        .font(.system(size: 22.0))
-                }
-            }
-            #endif
             ToolbarItem() {
                 Menu {
                     Button(action: { sheetView = .calendarOptions }) {
