@@ -1,5 +1,5 @@
 //
-//  Reminders.swift
+//  ReminderData.swift
 //  EinTag
 //
 //  Created by Alex Seifert on 12/22/20.
