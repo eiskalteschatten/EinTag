@@ -37,6 +37,12 @@ struct EinTagApp: App {
                     self.calendarData.fetchData()
                     self.reminderData.fetchData()
                 }
+                .onAppear(perform: {
+                    #if !os(macOS)
+                    self.calendarData.fetchData()
+                    self.reminderData.fetchData()
+                    #endif
+                })
         }
         .commands {
             SidebarCommands()
