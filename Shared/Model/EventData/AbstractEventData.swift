@@ -70,19 +70,21 @@ class AbstractEventData: ObservableObject {
     }
     
     private func transformCalendars() {
-        var _calendarsBySource: [String: [EKCalendar]] = [:]
-        
-        self.sortedCalendarSources = Array(Set(self.calendars.map { $0.source.title })).sorted { $0.lowercased() < $1.lowercased() }
-        
-        for source in self.sortedCalendarSources {
-            if _calendarsBySource[source] == nil {
-                _calendarsBySource[source] = []
-            }
+        DispatchQueue.main.async(execute: {
+            var _calendarsBySource: [String: [EKCalendar]] = [:]
             
-            _calendarsBySource[source] = self.calendars.filter { $0.source.title == source }.sorted { $0.title.lowercased() < $1.title.lowercased() }
-        }
+            self.sortedCalendarSources = Array(Set(self.calendars.map { $0.source.title })).sorted { $0.lowercased() < $1.lowercased() }
+            
+            for source in self.sortedCalendarSources {
+                if _calendarsBySource[source] == nil {
+                    _calendarsBySource[source] = []
+                }
+                
+                _calendarsBySource[source] = self.calendars.filter { $0.source.title == source }.sorted { $0.title.lowercased() < $1.title.lowercased() }
+            }
 
-        self.calendarsBySource = _calendarsBySource
+            self.calendarsBySource = _calendarsBySource
+        })
     }
     
     internal func transformEvents() {
