@@ -36,6 +36,12 @@ class ReminderData: AbstractEventData {
     }
     
     func updateReminder(updatedReminder: EKReminder) {
+        if let index = self.allReminders.firstIndex(where: { $0.calendarItemIdentifier == updatedReminder.calendarItemIdentifier }) {
+            self.allReminders[index] = updatedReminder
+            self.transformEvents()
+            self.objectWillChange.send()
+        }
+        
         DispatchQueue.main.async(execute: {
             do {
                 try self.eventStore.save(updatedReminder, commit: true)

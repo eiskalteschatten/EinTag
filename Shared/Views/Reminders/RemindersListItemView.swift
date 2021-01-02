@@ -30,12 +30,10 @@ fileprivate func createTestReminder() -> EKReminder {
 
 struct RemindersListItemView: View {
     @EnvironmentObject var reminderData: ReminderData
-    @State var isCompleted: Bool = false
     let reminder: EKReminder
     
     init(reminder: EKReminder) {
         self.reminder = reminder
-        self.isCompleted = reminder.isCompleted
     }
     
     var body: some View {
@@ -54,7 +52,7 @@ struct RemindersListItemView: View {
         #endif
         
         HStack(spacing: 10) {
-            let circle = self.isCompleted ? "largecircle.fill.circle" : "circle"
+            let circle = self.reminder.isCompleted ? "largecircle.fill.circle" : "circle"
             
             #if os(macOS)
             Image(systemName: circle)
@@ -106,13 +104,12 @@ struct RemindersListItemView: View {
             }
         }
         .padding(.vertical, verticalPadding)
-        .if(self.isCompleted) { $0.opacity(0.4) }
+        .if(self.reminder.isCompleted) { $0.opacity(0.4) }
         .frame(maxHeight: maxHeight)
     }
     
     private func toggleReminderIsCompleted() {
-        self.isCompleted = !self.isCompleted
-        self.reminder.isCompleted = self.isCompleted
+        self.reminder.isCompleted = !self.reminder.isCompleted
         reminderData.updateReminder(updatedReminder: self.reminder)
     }
 }
