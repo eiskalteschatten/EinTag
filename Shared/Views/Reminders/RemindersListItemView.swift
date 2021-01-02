@@ -107,25 +107,21 @@ struct RemindersListItemView: View {
         .if(self.reminder.isCompleted) { $0.opacity(0.4) }
         .frame(maxHeight: maxHeight)
         .contextMenu {
-            ContextMenuView()
+            let isCompletedToggleText = self.reminder.isCompleted ? "Mark as Incomplete" : "Mark as Completed"
+            
+            Button(isCompletedToggleText) {
+                self.toggleReminderIsCompleted()
+            }
+            
+            Button("Delete Reminder") {
+                print("delete")
+            }
         }
     }
     
-    private func toggleReminderIsCompleted() {
+    func toggleReminderIsCompleted() {
         self.reminder.isCompleted = !self.reminder.isCompleted
         reminderData.updateReminder(updatedReminder: self.reminder)
-    }
-}
-
-fileprivate struct ContextMenuView: View {
-    var body: some View {
-        Button("Mark as Completed") {
-            print("mark as completed")
-        }
-        
-        Button("Delete Reminder") {
-            print("delete")
-        }
     }
 }
 
