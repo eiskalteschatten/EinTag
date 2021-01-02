@@ -51,4 +51,22 @@ class ReminderData: AbstractEventData {
             }
         })
     }
+    
+    func deleteReminder(reminderToDelete: EKReminder) {
+        if let index = self.allReminders.firstIndex(where: { $0.calendarItemIdentifier == reminderToDelete.calendarItemIdentifier }) {
+            self.allReminders.remove(at: index)
+            self.transformEvents()
+            self.objectWillChange.send()
+        }
+        
+        DispatchQueue.main.async(execute: {
+            do {
+                try self.eventStore.remove(reminderToDelete, commit: true)
+                self.fetchData()
+            }
+            catch {
+                print("Could not delete the reminder!")
+            }
+        })
+    }
 }

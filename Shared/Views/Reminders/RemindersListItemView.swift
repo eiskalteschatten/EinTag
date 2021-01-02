@@ -30,6 +30,7 @@ fileprivate func createTestReminder() -> EKReminder {
 
 struct RemindersListItemView: View {
     @EnvironmentObject var reminderData: ReminderData
+    @State var showDeleteConfirmation = false
     let reminder: EKReminder
     
     init(reminder: EKReminder) {
@@ -114,12 +115,22 @@ struct RemindersListItemView: View {
             }
             
             Button("Delete Reminder") {
-                print("delete")
+                self.showDeleteConfirmation.toggle()
             }
+        }
+        .alert(isPresented: self.$showDeleteConfirmation) {
+            Alert(
+                title: Text("Delete reminder?"),
+                message: Text("Are you sure you want to delete this reminder?"),
+                primaryButton: .default(Text("No")),
+                secondaryButton: .default(Text("Yes"), action: {
+                    self.reminderData.deleteReminder(reminderToDelete: self.reminder)
+                })
+            )
         }
     }
     
-    func toggleReminderIsCompleted() {
+    private func toggleReminderIsCompleted() {
         self.reminder.isCompleted = !self.reminder.isCompleted
         reminderData.updateReminder(updatedReminder: self.reminder)
     }
