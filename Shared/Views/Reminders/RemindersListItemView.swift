@@ -116,9 +116,22 @@ struct RemindersListItemView: View {
                     .if(date < Date()) { $0.foregroundColor(Color.red) }
             }
             
-            Image(systemName: "ellipsis.circle")
-                .font(.system(size: 22.0))
-                .foregroundColor(Color.blue)
+            Menu {
+                let isCompletedToggleText = self.reminder.isCompleted ? "Mark as Incomplete" : "Mark as Completed"
+                Button(action: self.toggleReminderIsCompleted) {
+                    Label(isCompletedToggleText, systemImage: "checkmark")
+                }
+                
+                Button(action: {
+                    self.showDeleteConfirmation.toggle()
+                }) {
+                    Label("Delete Reminder", systemImage: "trash")
+                }
+            } label: {
+                Image(systemName: "ellipsis.circle")
+                    .font(.system(size: 22.0))
+                    .foregroundColor(Color.blue)
+            }
             #endif
         }
         .padding(.vertical, verticalPadding)
@@ -126,10 +139,7 @@ struct RemindersListItemView: View {
         .frame(maxHeight: maxHeight)
         .contextMenu {
             let isCompletedToggleText = self.reminder.isCompleted ? "Mark as Incomplete" : "Mark as Completed"
-            
-            Button(isCompletedToggleText) {
-                self.toggleReminderIsCompleted()
-            }
+            Button(isCompletedToggleText, action: self.toggleReminderIsCompleted)
             
             Button("Delete Reminder") {
                 self.showDeleteConfirmation.toggle()
