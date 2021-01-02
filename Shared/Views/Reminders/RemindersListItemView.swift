@@ -95,6 +95,7 @@ struct RemindersListItemView: View {
                 }
             }
             
+            #if os(macOS)
             if reminder.dueDateComponents?.hour != nil && reminder.dueDateComponents?.minute != nil {
                 let date = (reminder.dueDateComponents?.date)!
                 Spacer()
@@ -103,6 +104,22 @@ struct RemindersListItemView: View {
                     .opacity(0.8)
                     .if(date < Date()) { $0.foregroundColor(Color.red) }
             }
+            #else
+            Spacer()
+            
+            if reminder.dueDateComponents?.hour != nil && reminder.dueDateComponents?.minute != nil {
+                let date = (reminder.dueDateComponents?.date)!
+                
+                Text(getLocalizedTime(date: date))
+                    .opacity(0.8)
+                    .font(.system(size: 13.0))
+                    .if(date < Date()) { $0.foregroundColor(Color.red) }
+            }
+            
+            Image(systemName: "ellipsis.circle")
+                .font(.system(size: 22.0))
+                .foregroundColor(Color.blue)
+            #endif
         }
         .padding(.vertical, verticalPadding)
         .if(self.reminder.isCompleted) { $0.opacity(0.4) }
