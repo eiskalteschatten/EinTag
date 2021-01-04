@@ -5,7 +5,6 @@
 //  Created by Alex Seifert on 12/20/20.
 //
 
-import Foundation
 import SwiftUI
 
 struct WeatherDay: Hashable, Identifiable {
